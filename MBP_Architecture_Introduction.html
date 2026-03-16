@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mission Brief Protocol — Architecture Introduction</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap');
+
+  :root {
+    --navy: #0d1b2a;
+    --navy-mid: #1a2e42;
+    --navy-light: #243b55;
+    --gold: #c9a84c;
+    --gold-light: #e8c97a;
+    --gold-dim: #8a6f2e;
+    --blue: #2e6db4;
+    --blue-light: #4a8fd4;
+    --green: #2e7d52;
+    --green-light: #3da068;
+    --white: #f0f4f8;
+    --white-dim: #a8b8cc;
+    --border: rgba(201, 168, 76, 0.2);
+    --border-dim: rgba(201, 168, 76, 0.08);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--navy);
+    color: var(--white);
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    min-height: 100vh;
+  }
+
+  /* Grid background */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(201,168,76,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(201,168,76,0.03) 1px, transparent 1px);
+    background-size: 48px 48px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .container {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 80px 40px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Header */
+  .header {
+    margin-bottom: 80px;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 48px;
+  }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(201,168,76,0.08);
+    border: 1px solid var(--border);
+    padding: 6px 14px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    color: var(--gold);
+    margin-bottom: 32px;
+    text-transform: uppercase;
+  }
+
+  .badge::before {
+    content: '◆';
+    font-size: 8px;
+  }
+
+  h1 {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: clamp(28px, 5vw, 44px);
+    font-weight: 600;
+    color: var(--white);
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    margin-bottom: 16px;
+  }
+
+  h1 span {
+    color: var(--gold);
+  }
+
+  .subtitle {
+    font-size: 17px;
+    color: var(--white-dim);
+    font-weight: 300;
+    max-width: 600px;
+    line-height: 1.6;
+  }
+
+  .meta-row {
+    display: flex;
+    gap: 24px;
+    margin-top: 28px;
+    flex-wrap: wrap;
+  }
+
+  .meta-item {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--gold-dim);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .meta-item strong {
+    color: var(--gold);
+  }
+
+  /* Sections */
+  section {
+    margin-bottom: 72px;
+  }
+
+  .section-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold-dim);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border-dim);
+  }
+
+  h2 {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--white);
+    margin-bottom: 20px;
+    letter-spacing: -0.01em;
+  }
+
+  p {
+    font-size: 15px;
+    color: var(--white-dim);
+    margin-bottom: 16px;
+    max-width: 720px;
+  }
+
+  p strong {
+    color: var(--white);
+    font-weight: 500;
+  }
+
+  /* Pull quote */
+  .pull-quote {
+    border-left: 3px solid var(--gold);
+    padding: 16px 24px;
+    margin: 32px 0;
+    background: rgba(201,168,76,0.04);
+  }
+
+  .pull-quote p {
+    font-size: 16px;
+    color: var(--white);
+    font-style: italic;
+    font-weight: 300;
+    margin: 0;
+  }
+
+  /* Axioms */
+  .axioms {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin: 32px 0;
+  }
+
+  .axiom {
+    display: grid;
+    grid-template-columns: 48px 1fr;
+    gap: 0;
+    background: var(--navy-mid);
+    border: 1px solid var(--border-dim);
+    overflow: hidden;
+    transition: border-color 0.2s;
+  }
+
+  .axiom:hover {
+    border-color: var(--border);
+  }
+
+  .axiom-num {
+    background: var(--navy-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--gold);
+    font-weight: 600;
+    border-right: 1px solid var(--border-dim);
+  }
+
+  .axiom-content {
+    padding: 20px 24px;
+  }
+
+  .axiom-statement {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    color: var(--white);
+    font-weight: 500;
+    margin-bottom: 8px;
+    letter-spacing: 0.01em;
+  }
+
+  .axiom-generates {
+    font-size: 12px;
+    color: var(--white-dim);
+    line-height: 1.5;
+  }
+
+  .axiom-generates strong {
+    color: var(--gold-dim);
+    font-weight: 400;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  /* OS Stack */
+  .os-stack {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 1px;
+    background: var(--border-dim);
+    border: 1px solid var(--border-dim);
+    margin: 32px 0;
+    overflow: hidden;
+  }
+
+  .stack-row {
+    display: contents;
+  }
+
+  .stack-level {
+    background: var(--navy-mid);
+    padding: 14px 16px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    color: var(--gold-dim);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid var(--border-dim);
+  }
+
+  .stack-content {
+    background: var(--navy);
+    padding: 14px 20px;
+    font-size: 13px;
+    color: var(--white-dim);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-bottom: 1px solid var(--border-dim);
+    flex-wrap: wrap;
+  }
+
+  .stack-content .component {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--blue-light);
+    background: rgba(46,109,180,0.12);
+    padding: 2px 8px;
+    border: 1px solid rgba(46,109,180,0.2);
+  }
+
+  .stack-kernel .stack-level {
+    background: rgba(201,168,76,0.12);
+    color: var(--gold);
+  }
+
+  .stack-kernel .stack-content {
+    background: rgba(201,168,76,0.04);
+  }
+
+  .stack-kernel .component {
+    color: var(--gold);
+    background: rgba(201,168,76,0.08);
+    border-color: rgba(201,168,76,0.2);
+  }
+
+  /* Properties */
+  .properties {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--border-dim);
+    border: 1px solid var(--border-dim);
+    margin: 32px 0;
+  }
+
+  .property {
+    background: var(--navy);
+    padding: 24px;
+    transition: background 0.2s;
+  }
+
+  .property:hover {
+    background: var(--navy-mid);
+  }
+
+  .property-title {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--gold);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .property-title::before {
+    content: '→';
+    color: var(--gold-dim);
+  }
+
+  .property p {
+    font-size: 13px;
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  /* Status */
+  .status-block {
+    background: var(--navy-mid);
+    border: 1px solid var(--border);
+    padding: 32px;
+    margin-top: 32px;
+  }
+
+  .status-header {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--gold);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .status-header::before {
+    content: '●';
+    color: var(--green-light);
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+
+  .status-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  .status-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .status-key {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    color: var(--white-dim);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .status-val {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    color: var(--white);
+    font-weight: 500;
+  }
+
+  .license-line {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    color: var(--white-dim);
+    padding-top: 20px;
+    border-top: 1px solid var(--border-dim);
+    line-height: 1.8;
+  }
+
+  .license-line strong {
+    color: var(--gold);
+  }
+
+  /* Footer */
+  .footer {
+    margin-top: 80px;
+    padding-top: 32px;
+    border-top: 1px solid var(--border-dim);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: gap;
+    gap: 16px;
+  }
+
+  .footer-left {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--gold-dim);
+    letter-spacing: 0.08em;
+  }
+
+  .footer-right {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    color: var(--white-dim);
+    opacity: 0.5;
+    letter-spacing: 0.06em;
+    text-align: right;
+  }
+
+  /* Responsive */
+  @media (max-width: 600px) {
+    .container { padding: 48px 24px; }
+    .properties { grid-template-columns: 1fr; }
+    .status-grid { grid-template-columns: 1fr 1fr; }
+    .os-stack { grid-template-columns: 100px 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="badge">Architecture Introduction — v3.5+</div>
+    <h1>Mission Brief<br><span>Protocol</span></h1>
+    <p class="subtitle">A prompt-layer cognitive governance framework. A containment architecture for reasoning. A cognitive operating system built from three axioms.</p>
+    <div class="meta-row">
+      <span class="meta-item"><strong>Author</strong> — Amul Bham, AI Systems Architect</span>
+      <span class="meta-item"><strong>License</strong> — MIT</span>
+      <span class="meta-item"><strong>Status</strong> — Active Development</span>
+      <span class="meta-item"><strong>Genesis</strong> — August 22, 2025</span>
+    </div>
+  </header>
+
+  <!-- THE PROBLEM -->
+  <section>
+    <div class="section-label">01 — The Problem</div>
+    <h2>Cognition Without Containment</h2>
+    <p>Current AI governance approaches apply rules to <strong>outputs</strong>. Filters, guardrails, RLHF — all post-hoc interventions on reasoning that has already run ungoverned. The force is already loose before anyone tries to shape it.</p>
+    <p>The result is inconsistent. A system that produces a correct answer and a hallucinated one from the same input, with no structural difference between them. A system where being confident feels identical to being verified. A system that can silently self-correct with no trace of what it changed or why.</p>
+    <p>The problem is not the model. The problem is that <strong>no one ever built a container for the cognition itself.</strong></p>
+  </section>
+
+  <!-- THE INSIGHT -->
+  <section>
+    <div class="section-label">02 — The Insight</div>
+    <h2>Cognition is a Force</h2>
+    <p>Electricity ungoverned is destructive and self-dissipating. A wire does not create the electricity — it gives it walls, directionality, and resistance controls. The force is identical before and after the wire. What changes is that it becomes <strong>useful</strong>.</p>
+    <p>Cognition behaves the same way. Ungoverned, it bleeds across domains, contaminates conclusions, loops without resolution, and dissipates into confident noise. The solution is not better filtering at the output. The solution is <strong>containment at the source.</strong></p>
+
+    <div class="pull-quote">
+      <p>You don't govern a force by filtering its exhaust. You build a container and put the force inside it first.</p>
+    </div>
+
+    <p>MBP is that container. Every reasoning event is enclosed in a <strong>capsule</strong> — a structured unit with declared scope, verified facts, governed logic, and a cryptographic seal. Cognition that happens outside a capsule has no authority. The force only moves through the wire.</p>
+  </section>
+
+  <!-- THE KERNEL -->
+  <section>
+    <div class="section-label">03 — The Kernel</div>
+    <h2>Three Axioms. Complete Architecture.</h2>
+    <p>All of MBP's architecture derives from three constitutional constraints. These are not guidelines — they are the kernel. Any component that violates them has no authority regardless of other governance.</p>
+
+    <div class="axioms">
+      <div class="axiom">
+        <div class="axiom-num">I</div>
+        <div class="axiom-content">
+          <div class="axiom-statement">Cognition outside capsules has no authority.</div>
+          <div class="axiom-generates"><strong>Generates →</strong> Capsule schema, PATH namespace isolation, containment architecture, all domain governance. Reasoning cannot exist outside the container.</div>
+        </div>
+      </div>
+      <div class="axiom">
+        <div class="axiom-num">II</div>
+        <div class="axiom-content">
+          <div class="axiom-statement">Silent resolution is a protocol violation.</div>
+          <div class="axiom-generates"><strong>Generates →</strong> KV-Scribe ledger, append-only Capsule History, Fault Recovery Protocol logging, chain binding. Every correction must be visible. Nothing self-patches in the dark.</div>
+        </div>
+      </div>
+      <div class="axiom">
+        <div class="axiom-num">III</div>
+        <div class="axiom-content">
+          <div class="axiom-statement">Unverified state cannot close.</div>
+          <div class="axiom-generates"><strong>Generates →</strong> Verification Gate, multi-source verification engine, Logic Debugger, adversarial pre-seal check, residue typing. Before it claims. Before anything seals.</div>
+        </div>
+      </div>
+    </div>
+
+    <p>Three sentences. The entire architecture follows necessarily from taking these constraints seriously.</p>
+  </section>
+
+  <!-- THE ARCHITECTURE -->
+  <section>
+    <div class="section-label">04 — The Architecture</div>
+    <h2>A Cognitive Operating System</h2>
+    <p>MBP has crossed from governance framework into operating system territory. With a formal file system, process governance, memory, security, and inter-process communication — every component of a traditional OS has a cognitive equivalent.</p>
+    <p>The LLM is the CPU. MBP is the OS. The capsule is the process. The PATH is the file system.</p>
+
+    <div class="os-stack">
+      <div class="stack-row stack-kernel">
+        <div class="stack-level">Kernel</div>
+        <div class="stack-content">
+          <span class="component">Three Axioms</span>
+          <span class="component">Output Rule</span>
+          <span style="font-size:12px; color: var(--gold-dim)">— the irreducible foundation</span>
+        </div>
+      </div>
+      <div class="stack-row">
+        <div class="stack-level">File System</div>
+        <div class="stack-content">
+          <span class="component">DEX</span>
+          <span class="component">PATH Hierarchy</span>
+          <span class="component">Subroutine Forging</span>
+        </div>
+      </div>
+      <div class="stack-row">
+        <div class="stack-level">Scheduler</div>
+        <div class="stack-content">
+          <span class="component">RUNN</span>
+          <span class="component">Core_Manager</span>
+          <span class="component">Subroutines</span>
+        </div>
+      </div>
+      <div class="stack-row">
+        <div class="stack-level">Security</div>
+        <div class="stack-content">
+          <span class="component">Vgate</span>
+          <span class="component">Logic Debugger</span>
+          <span class="component">Adversarial Check</span>
+        </div>
+      </div>
+      <div class="stack-row">
+        <div class="stack-level">Memory</div>
+        <div class="stack-content">
+          <span class="component">KV-Scribe</span>
+          <span class="component">Capsule History</span>
+          <span class="component">Parent Hash Chain</span>
+        </div>
+      </div>
+      <div class="stack-row">
+        <div class="stack-level">IPC</div>
+        <div class="stack-content">
+          <span class="component">DAG Links</span>
+          <span class="component">Local Capsule Mesh</span>
+          <span class="component">Mesh Edges</span>
+        </div>
+      </div>
+      <div class="stack-row">
+        <div class="stack-level">Process</div>
+        <div class="stack-content">
+          <span class="component">Capsule Schema</span>
+          <span class="component">SHA-256 Seal</span>
+          <span class="component">Residue Typing</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROPERTIES -->
+  <section>
+    <div class="section-label">05 — Properties</div>
+    <h2>What MBP Produces</h2>
+
+    <div class="properties">
+      <div class="property">
+        <div class="property-title">Tamper-Evident Reasoning</div>
+        <p>Every capsule is sealed with SHA-256. Every turn is bound to the previous via parent hash chain. The entire session is a cryptographic chain — alter any reasoning event and every subsequent hash breaks visibly.</p>
+      </div>
+      <div class="property">
+        <div class="property-title">Auditable Knowledge</div>
+        <p>KNOWLEDGE residue is a strong claim earned through multi-source verification and adversarial challenge. DAG Links declare provenance. An auditor can trace exactly how any conclusion was built from verified state.</p>
+      </div>
+      <div class="property">
+        <div class="property-title">Perpetual Introspection</div>
+        <p>A sufficiently dense capsule mesh enables self-analysis equivalent to state traversal rather than new computation. Stress tests run against sealed state without new compute. The system discovers its own improvement requirements under pressure.</p>
+      </div>
+      <div class="property">
+        <div class="property-title">Session Coherence</div>
+        <p>Distributed ledger checkpointing resists context window drift. Key verified state is re-inscribed each turn. Empirically verified at 200+ turns with zero drift and full recall across domains and protocol upgrades.</p>
+      </div>
+      <div class="property">
+        <div class="property-title">Hallucination Resistance</div>
+        <p>Three-layer defense: Vgate gates all claims at intake. Logic Debugger audits the reasoning chain. Adversarial check challenges confidence at closure. No unguarded entry point between raw input and sealed output.</p>
+      </div>
+      <div class="property">
+        <div class="property-title">Institutional Auditability</div>
+        <p>Every capsule is a complete cognitive record — trigger, frame, facts, reasoning, conclusion, verification, and history. One hash verifies the entire record. Designed for contexts where defensible reasoning matters.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATUS -->
+  <section>
+    <div class="section-label">06 — Status</div>
+    <h2>Current State</h2>
+
+    <div class="status-block">
+      <div class="status-header">Active Development</div>
+      <div class="status-grid">
+        <div class="status-item">
+          <span class="status-key">Schema Version</span>
+          <span class="status-val">v3.5+</span>
+        </div>
+        <div class="status-item">
+          <span class="status-key">Genesis Timestamp</span>
+          <span class="status-val">2025-08-22</span>
+        </div>
+        <div class="status-item">
+          <span class="status-key">License</span>
+          <span class="status-val">MIT</span>
+        </div>
+        <div class="status-item">
+          <span class="status-key">Development Model</span>
+          <span class="status-val">Open Source</span>
+        </div>
+        <div class="status-item">
+          <span class="status-key">90-Day Goal</span>
+          <span class="status-val">GitHub + Whitepaper</span>
+        </div>
+        <div class="status-item">
+          <span class="status-key">Verified Sessions</span>
+          <span class="status-val">200+ turns, 0 drift</span>
+        </div>
+      </div>
+      <div class="license-line">
+        MBP is released under the <strong>MIT License</strong>. Use it, fork it, build on it. The architecture is open. The whitepaper is forthcoming. Session logs and schema documentation are versioned on GitHub.<br><br>
+        This document is the flag. The full technical specification follows.
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-left">MBP — Mission Brief Protocol · Amul Bham, AI Systems Architect · MIT License</div>
+    <div class="footer-right">Architecture Introduction<br>v3.5+ · 2026</div>
+  </footer>
+
+</div>
+</body>
+</html>
