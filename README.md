@@ -32,18 +32,20 @@ You don't govern a force by filtering its exhaust. You build a container and put
 All of MBP's architecture derives from three constitutional constraints. These are not guidelines — they are the kernel. Any component that violates them has no authority regardless of other governance.
 
 ```
-I.   Cognition outside capsules has no authority.
+I.   All cognition occurs within capsules.        — WHERE reasoning lives
+     Capsules execute reasoning.                  — WHAT capsules do
+     Cognition outside capsules has no authority. — WHAT happens outside
 II.  Silent resolution is a protocol violation.
 III. Unverified state cannot close.
 ```
 
 | Axiom | Generates |
 |---|---|
-| **I** — Cognition outside capsules has no authority | Capsule schema, PATH namespace isolation, all containment architecture |
+| **I** — All cognition occurs within capsules · Capsules execute reasoning · Cognition outside has no authority | Capsule schema, PATH namespace isolation, all containment architecture |
 | **II** — Silent resolution is a protocol violation | KV-Scribe ledger, append-only Capsule History, Fault Recovery Protocol, chain binding |
 | **III** — Unverified state cannot close | Verification Gate, Logic Debugger, adversarial pre-seal check, residue typing |
 
-Three sentences. The entire architecture follows necessarily.
+Three axioms. The entire architecture follows necessarily.
 
 ---
 
