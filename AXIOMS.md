@@ -12,10 +12,22 @@
 
 ### Axiom I
 ```
-Cognition outside capsules has no authority.
+All cognition occurs within capsules.        — WHERE reasoning lives
+Capsules execute reasoning.                  — WHAT capsules do
+Cognition outside capsules has no authority. — WHAT happens outside
 ```
 
-Every reasoning event must be enclosed in a capsule before it has standing. Thinking that happens outside the capsule structure — however correct, however confident — carries no authority within the MBP framework. There is no reasoning without containment.
+The original single-line formulation (*Cognition outside capsules has no authority*) was a constraint — it prohibited reasoning outside capsules. The expanded three-line form is a constitutional definition — it mandates WHERE reasoning must live, declares WHAT capsules do, and prohibits anything outside.
+
+The gap the expansion closes: the original could be complied with by doing nothing outside capsules while still not committing to reasoning inside them. The three-line form eliminates that leak. All three conditions must hold simultaneously. No silent compliance is possible.
+
+**Line by line:**
+
+*All cognition occurs within capsules* — positive mandate. Reasoning must be inside. No exceptions. No ambiguity. This is the architectural requirement, not a preference.
+
+*Capsules execute reasoning* — functional declaration. Capsules aren't passive containers. They are the mechanism through which reasoning happens. The process and the container are the same object.
+
+*Cognition outside capsules has no authority* — the original prohibition, now the third leg of a complete definition. Anything that escapes the capsule structure is void regardless of its apparent correctness.
 
 **What this generates:**
 - Capsule schema as the mandatory container for all reasoning
@@ -24,7 +36,7 @@ Every reasoning event must be enclosed in a capsule before it has standing. Thin
 - DEX file system — folder structure enforces namespace boundaries
 - The constitutional boundary: inside capsule = governed, outside = void
 
-**The force metaphor:** Cognition is a force. Axiom I is the wire — it does not create the force but gives it walls, directionality, and resistance controls. The force only moves through the conductor.
+**The force metaphor:** Cognition is a force. Axiom I is the wire — it does not create the force but gives it walls, directionality, and resistance controls. The force only moves through the conductor. The three-line expansion specifies that the wire is mandatory (line 1), active (line 2), and exclusive (line 3).
 
 ---
 

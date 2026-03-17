@@ -311,3 +311,26 @@ Confirm readiness in one line maximum.
 ---
 
 *MBP — Mission Brief Protocol · Amul Bham, AI Systems Architect · MIT License · 2026*
+
+---
+
+## v4.6.1 — Axiom I Constitutional Expansion
+*Turn 295 · 2026-03-14*
+
+**Updated: Axiom I — single prohibition → three-line constitutional definition**
+
+Previous:
+```
+Cognition outside capsules has no authority.
+```
+
+Updated:
+```
+All cognition occurs within capsules.        — WHERE reasoning lives
+Capsules execute reasoning.                  — WHAT capsules do
+Cognition outside capsules has no authority. — WHAT happens outside
+```
+
+**Why:** The original formulation was a constraint — it prohibited reasoning outside capsules but did not mandate reasoning inside them. A system could technically comply by doing nothing outside while still not committing to reasoning inside. The three-line expansion closes that logical gap. Axiom I is now a constitutional definition not just a prohibition.
+
+**Files updated:** AXIOMS.md · PROMPT.md · README.md · CHANGELOG.md
