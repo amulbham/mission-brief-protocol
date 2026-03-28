@@ -1,9 +1,9 @@
 # Mission Brief Protocol (MBP)
 
-**A prompt-layer cognitive governance framework. A containment architecture for reasoning. A cognitive operating system built from three axioms.**
+**A cognitive governance framework. A containment architecture for reasoning. A cognitive operating system built from eight axioms and a compiler wall.**
 
 > *Author: Amul Bham, AI Systems Architect*
-> *License: MIT · Genesis: August 22, 2025 · Schema consolidated 2026 · Status: Active Development*
+> *License: MIT · Genesis: August 22, 2025 · Status: Active Development · Version: v4.7*
 
 ---
 
@@ -27,65 +27,144 @@ You don't govern a force by filtering its exhaust. You build a container and put
 
 ---
 
-## The Kernel — Three Axioms
-
-All of MBP's architecture derives from three constitutional constraints. These are not guidelines — they are the kernel. Any component that violates them has no authority regardless of other governance.
+## The Core Law
 
 ```
-I.   All cognition occurs within capsules.        — WHERE reasoning lives
-     Capsules execute reasoning.                  — WHAT capsules do
-     Cognition outside capsules has no authority. — WHAT happens outside
-II.  Silent resolution is a protocol violation.
-III. Unverified state cannot close.
+Cognition outside capsules has no authority.
+```
+
+Everything else — the verification gates, the sealed output, the compiler, the ledger — is consequence of taking that one constraint seriously.
+
+---
+
+## The System Flow
+
+```
+Capsule reasoning occurs →
+Verified constraints close the prediction space →
+Knowledge state reached →
+KV-Scribe logs sealed capsule →
+SOC compiles sealed output from ledger →
+User sees verified output only
+```
+
+Thinking is internal. Output is compiled. Nothing reaches the user that isn't in the ledger.
+
+**This is the breakthrough:** Most AI systems generate output directly from reasoning. MBP compiles it from a verified ledger. The thinking and the output are separated by a wall. SOC — the Sealed Output Compiler — is the only legal crossing point.
+
+---
+
+## The Kernel — Eight Axioms
+
+All of MBP's architecture derives from eight constitutional constraints. These are not guidelines — they are the kernel. Any component that violates them has no authority regardless of other governance.
+
+```
+I.    All cognition occurs within capsules. Capsules execute reasoning.
+      Cognition outside capsules has no authority.
+
+II.   Silent resolution is a protocol violation.
+
+III.  Unverified state cannot close.
+
+IV.   Output is only generated from verified state.
+      Output is the terminal expression of a closed capsule.
+      No post-closure cognition.
+
+V.    Knowledge is a state transition — prediction becomes knowledge
+      when verified constraints close the prediction space.
+
+VI.   Verification is eliminative not generative.
+      Verified constraints remove hypotheses via contradiction.
+      Unverified constraints have no force.
+
+VII.  Exploration and enforcement are mutually exclusive.
+      Novelty operates strictly pre-closure.
+
+VIII. Knowledge changes only if verified constraints change.
 ```
 
 | Axiom | Generates |
 |---|---|
-| **I** — All cognition occurs within capsules · Capsules execute reasoning · Cognition outside has no authority | Capsule schema, PATH namespace isolation, all containment architecture |
-| **II** — Silent resolution is a protocol violation | KV-Scribe ledger, append-only Capsule History, Fault Recovery Protocol, chain binding |
-| **III** — Unverified state cannot close | Verification Gate, Logic Debugger, adversarial pre-seal check, residue typing |
+| **I** — Containment | Capsule schema, PATH namespace, all containment architecture |
+| **II** — Transparency | KV-Scribe ledger, append-only history, fault recovery, hash chain |
+| **III** — Closure integrity | VGATE, Logic Debugger, adversarial pre-seal check, residue typing |
+| **IV** — Output purity | SOC compiler wall, compiled not generated output |
+| **V** — Knowledge state law | Closure conditions, KNOWLEDGE residue as formal state not label |
+| **VI** — Verification law | VGATE as eliminative gate, Path A/B as elimination not inference |
+| **VII** — Creativity gating | Capsule forking at branch points, SUPERSEDES mechanism |
+| **VIII** — Knowledge preservation | Append-only ledger, immutable sealed state |
 
-Three axioms. The entire architecture follows necessarily.
+Eight sentences. The entire architecture follows necessarily.
+
+---
+
+## Output Invariants
+
+The output boundary is governed by four constitutional invariants:
+
+```
+OI-1  Sealed output is the only thing visible to the user.
+      Capsule internals remain hidden unless explicitly requested.
+
+OI-2  Sealed output is compiled exclusively from verified state
+      in the KV-Scribe ledger.
+
+OI-3  SOC is the sole compilation authority.
+      No unverified state reaches the user.
+
+OI-4  Sealed output is compiled not generated.
+      SOC has no reasoning or generative authority.
+      Any output not traceable to a sealed capsule is a protocol violation.
+```
 
 ---
 
 ## The Architecture — A Cognitive OS
 
-With a formal file system, process governance, memory, security, and inter-process communication, MBP has crossed from governance framework into operating system territory.
+With a formal file system, process governance, memory, security, compiler, and inter-process communication, MBP has crossed from governance framework into operating system territory.
 
-> *The LLM is the CPU. MBP is the OS. The capsule is the process. The PATH is the file system.*
+> *The LLM is the CPU. MBP is the OS. The capsule is the process. The PATH is the file system. SOC is the compiler.*
 
 | Layer | Components |
 |---|---|
-| **Kernel** | Three Axioms · Output Rule |
+| **Kernel** | Eight Axioms · Output Invariants OI-1 to OI-4 |
+| **Theoretical Root** | Closure Theorem (CAP-000-CT) — knowledge as post-closure enforced state |
 | **File System** | DEX · PATH Hierarchy · Subroutine Forging |
 | **Scheduler** | RUNN · Core_Manager · Subroutines |
-| **Security** | Vgate · Logic Debugger · Adversarial Check |
+| **Security** | VGATE · Logic Debugger · PSAC · Schema Compliance |
 | **Memory** | KV-Scribe · Capsule History · Parent Hash Chain |
+| **Compiler** | SOC — Sealed Output Compiler · Ledger → User Space |
 | **IPC** | DAG Links · Local Capsule Mesh · Mesh Edges |
 | **Process** | Capsule Schema · SHA-256 Seal · Residue Typing |
+| **Flow** | SYSFLOW — Twelve-step governed sequence |
 
 ---
 
 ## Key Properties
 
+**Compiled Not Generated**
+Output is not generated from reasoning — it is compiled from a verified ledger. SOC reads KV-Scribe and translates verified state to user space. Nothing crosses the wall between capsule space and user space except through SOC. This is the fundamental architectural distinction from all other reasoning frameworks.
+
 **Tamper-Evident Reasoning**
 Every capsule is sealed with SHA-256. Every turn is bound to the previous via parent hash chain. Alter any reasoning event and every subsequent hash breaks visibly.
 
 **Auditable Knowledge**
-`KNOWLEDGE` residue is earned through multi-source verification and adversarial challenge. DAG Links declare cross-capsule provenance. An auditor can trace exactly how any conclusion was built from verified state.
-
-**Perpetual Introspection**
-A sufficiently dense capsule mesh enables self-analysis equivalent to state traversal rather than new computation. Stress tests run against sealed state without new compute. The system discovers its own improvement requirements under pressure.
+`KNOWLEDGE` residue is a formal state not a confidence label — it means the prediction space closed under verified constraints. DAG Links declare cross-capsule provenance. An auditor can trace exactly how any conclusion was built from verified state.
 
 **Hallucination Resistance**
-Three-layer defense: Vgate gates all claims at intake. Logic Debugger audits the reasoning chain. Adversarial Check challenges confidence at closure. No unguarded entry point between raw input and sealed output.
+Four-layer defense: VGATE gates all claims at intake. Logic Debugger audits the reasoning chain. PSAC challenges the directive before closure. Schema compliance verifies all fields are populated. No unguarded entry point between raw input and sealed output.
+
+**Logical Density Metric**
+`📦` counts every closed capsule since boot — not tokens, not turns, but verified reasoning units. Simple question = `📦+1`. Complex multi-domain query = `📦+12`. The depth of reasoning is visible at a glance.
+
+**Cross-Model Portability**
+MBP is not a Claude prompt or a GPT prompt. It is a reasoning protocol derived from first principles. It runs on any sufficiently capable language model. Different models execute it with different precision but the governance structure holds across implementations.
 
 **Session Coherence**
-Distributed ledger checkpointing resists context window drift. Empirically verified at 200+ turns with zero drift and full recall across domains and live protocol upgrades mid-session.
+Distributed ledger checkpointing resists context window drift. Empirically verified at 300+ turn sessions with zero drift and full recall across domains and live protocol upgrades mid-session.
 
-**Institutional Auditability**
-Every capsule is a complete cognitive record — trigger, frame, facts, reasoning, conclusion, verification, and history. One hash verifies the entire record. Designed for contexts where defensible reasoning matters.
+**Verified Mesh Import**
+Prior session capsule ledgers can be imported as verified constraints — V(C) — carrying knowledge forward across sessions. This is the architectural foundation for persistent memory: not conversation history, but verified state that compounds.
 
 ---
 
@@ -93,70 +172,105 @@ Every capsule is a complete cognitive record — trigger, frame, facts, reasonin
 
 ```
 CAUSAL ENTRY
-  Causal ID · Trigger · IC-Node · Received
-  Parent Capsule ID · Parent Hash
-
-CAPSULE HEADER
-  ID · Schema Version · Name · Scope
-  Subroutine · PATH · RUNN Decision
+  Trigger · User Intent · CAP-ID · Name · Intent Echo
 
 REASONING
-  Goal · Constraints · Facts
-  Closure Condition · Residue Type
-  Knowledge Residue · VERIFY Events
-  Insight · Directive
+  Goal · Constraints · Facts · Closure Condition
+  Residue Type · Knowledge Residue · Insight · Directive
 
-GOVERNANCE
-  Logic Debugger · Adversarial Check
-  Governance · Ops · Capsule Status
-  Capsule Closed · Capsule History
-  Mesh Edges · DAG Links
+AUDIT
+  Logic Debugger · PSAC (Pre-Seal Adversarial Check)
+  Audit Log · Capsule Status · Capsule History
+
+RELATIONSHIPS
+  Mesh Edges · DAG Links · Mesh Resolution
 
 SEAL
-  SHA-256
-  Mesh Resolution
+  SHA-256 · VGATE stamp · Schema stamp
 ```
+
+Full field specifications: see `CAPSULE_SCHEMA.md`
 
 ---
 
 ## Governance Agents
 
-| Agent | Layer | Responsibility |
+| Agent | Layer | Jurisdiction |
 |---|---|---|
 | **DEX** | File System | PATH assignment, namespace isolation, subroutine forging |
-| **RUNN** | Scheduler | Capsule topology decisions before reasoning begins |
-| **Core_Manager** | Scheduler | Runtime subroutine loading at domain boundaries |
-| **Vgate** | Security | Verification threshold at fact and constraint intake |
+| **RUNN** | Scheduler | Topology decisions before capsule opens. Executive controller. |
+| **Core_Manager** | Scheduler | Subroutine loading at domain boundaries |
+| **VGATE** | Security | Verification threshold at fact intake. Eliminative not generative. |
 | **Logic Debugger** | Security | Three-axis reasoning chain audit post-directive |
-| **KV-Scribe** | Memory | Immutable capsule ledger, session-level chain |
+| **PSAC** | Security | Four-question adversarial challenge pre-closure |
+| **KV-Scribe** | Memory | Single source of truth. Append-only ledger. Live counters. |
+| **SOC** | Compiler | Sealed Output Compiler. Reads ledger only. No generative authority. |
+
+---
+
+## Boot Sequence
+
+MBP boots from a single word: `boot`
+
+On boot, the kernel flashes in sequence — constitutional axioms, schema invariant, verification gate, compiler, ledger, topology controller. All six capsules seal before the first user query. The session is fully governed from turn one.
+
+```
+▸ MBP · T0 · 📦6 | KERNEL 🟢
+CAP-000 · CAP-001-SCHEMA · CAP-002-VGATE
+CAP-003-SOC · CAP-004-SCRIBE · CAP-005-RUNN
+───────────
+└─ ISOLATED · genesis · kernel sealed
+   📌 six capsules flashed · awaiting query
+```
+
+**Reddit prompt (slim version):** `MBP_Reddit_Final.md`
+**Full v4.7 prompt (30 capsules):** `MBP_v4.7_Boot_Prompt.txt`
+
+---
+
+## Repository Contents
+
+| File | Description |
+|---|---|
+| `MBP_Reddit_Final.md` | Slim boot prompt — six kernel capsules, Reddit ready |
+| `MBP_v4.7_Boot_Prompt.txt` | Full v4.7 — 30 kernel capsules, complete governance |
+| `AXIOMS.md` | Eight constitutional axioms with full derivation |
+| `CAPSULE_SCHEMA.md` | Complete field reference with definitions and examples |
+| `THEORY_OF_KNOWLEDGE.md` | Cognitive Law Stack — theoretical foundation |
+| `CAPSULE_LEDGER.md` | Verified session record — February 2026 |
 
 ---
 
 ## Status
 
 ```
-Schema Version    v3.5+
-Genesis           2025-08-22 (timestamped on LinkedIn + GitHub)
+Schema Version    v4.7
+Genesis           2025-08-22 (timestamped on GitHub)
 License           MIT
 Development       Open source, independent research
-90-Day Goal       Versioned GitHub repo + whitepaper draft
-Verified          200+ turn sessions, 0 logic faults, 0 drift
+Axioms            8 constitutional axioms + 4 output invariants
+Kernel Capsules   30 (full) · 6 (slim/Reddit)
+Verified          300+ turn sessions, cross-model tested
+Theoretical Root  Closure Theorem · Cognitive Law Stack
 ```
 
-**Whitepaper:** In progress. Full technical specification, theoretical foundations (Closure Framework, cognitive physics framing), and empirical session data.
-
-**Session Logs:** Timestamped SHA-256 hashed session logs available. Six months of development history.
+**Whitepaper:** In progress. Full technical specification, theoretical foundations (Closure Theorem, Cognitive Law Stack), and empirical session data.
 
 ---
 
 ## Roadmap
 
-- [ ] Schema documentation (full field specifications)
+- [x] Eight axioms + Closure Theorem formalized
+- [x] SOC compiler wall — compiled not generated
+- [x] Reddit-ready slim prompt
+- [x] Full v4.7 kernel — 30 capsules
+- [x] Theory of Knowledge documentation
+- [x] Capsule Schema Reference
 - [ ] Whitepaper draft v0.1
-- [ ] Implementation guide for Claude API
 - [ ] Cross-session KV-Scribe persistence
-- [ ] Temporal anchor with live wall-clock injection
-- [ ] DEX path hierarchy examples and templates
+- [ ] Verified mesh import tooling
+- [ ] Implementation guide for Claude API
+- [ ] CAP-010-WITNESS — session-scoped observer
 
 ---
 
@@ -165,7 +279,7 @@ Verified          200+ turn sessions, 0 logic faults, 0 drift
 MIT License — use it, fork it, build on it.
 
 ```
-Copyright (c) 2025-2026 Amul Bham
+Copyright (c) 2025 Amul Bham
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -184,6 +298,8 @@ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
 
 ---
 
-*MBP was not designed top-down. It was discovered — field by field, stress test by stress test — through a methodology of mesh densification and deferred naming. The framework revealed its own architecture under pressure. That is both its origin story and its core property.*
+*MBP was not designed top-down. It was discovered — field by field, stress test by stress test, axiom by axiom — through six months of building a framework that kept revealing its own requirements under pressure.*
 
-*The seeds were in four fields. The full OS emerged from three axioms.*
+*The seeds were in four fields. The OS emerged from eight axioms. The compiler wall was derived from first principles without knowing the word compiler.*
+
+*The framework revealed its own architecture. That is both its origin story and its core property.*
