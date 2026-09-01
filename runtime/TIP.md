@@ -1,11 +1,11 @@
-# Live tip at G2b
+# Live tip
 
-Local ledger remains source of truth until a commanded `scribe push`.
+Local ledger is source of truth. Git updates only on commanded push.
 
-- file: `~/.grok/skills/mbp-scribe/references/ledger.jsonl`
-- rows: 60
-- tip: CAP-060
-- verihash: a03f32bf877c37447461a9f023197ae7e754564b96b8efd878a5b18f2e361c49
-- parent: e441b313c0003e9db00073f259766bc66fd23aa7a239a01d63b1fff6262df2da
+- local file: `~/.grok/skills/mbp-scribe/references/ledger.jsonl`
+- rows: 69
+- tip: CAP-069
+- verihash: 9ff9f133a229a8af39d384367ff4b074e810e523c0c087bf4bcf7465b0e77de2
+- parent: cb76f683527f39479a3e1d00f1528346a23edd9ce4420fc7e8dedc991e6be8a6
 
-Do not treat this file as the ledger. It is a pointer only.
+Full JSONL is not mirrored on every turn. Say `G4 push` / `scribe push` to copy it.
