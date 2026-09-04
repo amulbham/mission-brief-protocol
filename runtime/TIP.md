@@ -3,10 +3,11 @@
 Local ledger is source of truth. Git updates only on commanded push.
 
 - local file: `~/.grok/skills/mbp-scribe/references/ledger.jsonl`
-- rows: 114
-- tip: CAP-114
-- verihash: 483304ad0318094a07c6f889bc5a151e453e718da0d5aac6cf483084b6a4784c
-- parent: f92e550c83f0c6a186ef3822a9c0bbe7d39a081066fdcca1d29e8eb3efea5e60
+- rows: 125
+- tip: CAP-125
+- verihash: 0d8f42ba9ec58de1f6fb693931ea8cf0035cbe8c92a242c1eb59fb7364086f38
+- parent: 2ec59fe04be1b540f7efd75c6d8b87dc4514172f667e6179c1fc5b5aec9502cd
+- sha256: 528b22fa3ad27174c205354232cd8091a9c94c66f6625866cb86198a8e62ba74
 
 This G4 mirrors `runtime/skills/` plus `ledger.jsonl`.
-Other window: copy `runtime/skills/mbp-scribe` and `mbp-boot` onto `~/.grok/skills/`, then `scribe pull` the downloaded ledger only if `cmp` says REMOTE_AHEAD.
+Other window: copy skills, then `scribe cmp` / `scribe pull` only if REMOTE_AHEAD.
