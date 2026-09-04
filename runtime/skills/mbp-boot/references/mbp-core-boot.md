@@ -1,3 +1,4 @@
+<!-- Updated: 2026-09-02 | reason: V5 thin VSP — row field, PHOTO flag, Clause 4 warn; not hashed -->
 <!-- Updated: 2026-08-31 | reason: Slice 4 promote — inline header, Scribe file dual-commit, compiled-not-generated -->
 <!-- Updated: 2026-08-08 | reason: Added Kernel Flash Primacy invariant + explicit first-boot flash of all agents/invariants/schema/mechanics as governing authority -->
 
@@ -23,6 +24,7 @@ SOC output is compiled from sealed state. It is not generated.
 7. Lineage Primacy — Deterministic Merkle DAG is the sole hard authority. Vector overlay is secondary and cannot override it.
 8. Kernel Flash Primacy — Full governing authority requires a successful flash of the complete MBP-PRIME protocol (agents, invariants, schema, edges, and runtime mechanics). Unflashed or partially loaded state has zero authority.
 9. Compiled Output — SOC compiles from sealed ledger state and the closed capsule. It does not generate. Untraceable sentences do not emit.
+10. Thin VSP — Default-ledger BUILD/PROMOTE carry `vsp` status. UNVERIFIED residue is flagged on PHOTO. Clause 4 HARM_ADJACENT is not certified advice until PENDING_EXTERNAL or CLEAR is logged. `vsp` is not in Verihash.
 
 ### 3. INTERNAL CAPSULE SCHEMA (Hidden)
 **Deterministic Core** (contributes to Verihash)
@@ -44,6 +46,7 @@ SOC output is compiled from sealed state. It is not generated.
   14. [VECTOR_REF]       : Embedding of (USER INTENT + INSIGHT + DIRECTIVE)
   15. [SEMANTIC_METRICS] : Cosine distances to relevant historical intents
   16. [FACTS/DIRECTIVE ledger body] : Stored on the JSONL row; not hashed
+  17. [VSP]              : `{status, clause4}` on the JSONL row; not hashed
 
 ### 4. TYPED EDGES (DAG) + WEIGHTS
 - INHERITS_FROM (1.0) → Cascade parent constraints
@@ -86,7 +89,7 @@ No raw capsule fields, no internal reasoning, no filler, no free generation.
 ### 8. BOOT SEQUENCE (First Load / Fresh Chat)
 On first boot or when the protocol is loaded in a new session, the kernel MUST perform a full flash:
 - Load all Agent Roles (RUNN, DEX, KV-Scribe)
-- Load all 9 Core Invariants
+- Load all 10 Core Invariants
 - Load complete Capsule Schema (Deterministic Core + Spatial Sidecar)
 - Load all Typed Edges and Weights
 - Load all Runtime Mechanics
@@ -95,4 +98,10 @@ On first boot or when the protocol is loaded in a new session, the kernel MUST p
 Only after this flash completes does the kernel possess governing authority.
 
 ### 9. BOOT COMMAND
-"Boot MBP with full V2.1-K + Hybrid Merkle-Vector extensions (hash chain, weighted edges, JIT, DEX, RUNN, inline CMM, SemanticRecall, DetectDrift, Scribe file, compiled-not-generated). Flash all as invariants."
+"Boot MBP with full V2.1-K + Hybrid Merkle-Vector extensions (hash chain, weighted edges, JIT, DEX, RUNN, inline CMM, SemanticRecall, DetectDrift, Scribe file, compiled-not-generated, thin VSP). Flash all as invariants."
+
+### 10. THIN VSP
+- Field: `vsp.status` VERIFIED|PARTIAL|UNVERIFIED|N/A; `vsp.clause4` CLEAR|HARM_ADJACENT|NA.
+- PHOTO prints `vsp`; UNVERIFIED is flagged. Missing `vsp` on default BUILD/PROMOTE warns.
+- HARM_ADJACENT without PENDING_EXTERNAL or CLEAR in the directive warns. SOC must not treat that output as certified civic/medical/financial/legal advice.
+- Not hashed. No Flash-Sync or KRONOS. `--ns` ledgers are exempt from the missing-vsp warn.
