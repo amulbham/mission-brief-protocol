@@ -1,0 +1,2 @@
+{"id":"CAP-A","path":"/KERNEL/BOOT","ts":"t0","parent_id":"","parent_hash":"","intent":"genesis","goal":"root","edges":[],"status":"SEALED","audit":"NONE","verihash":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"}
+{"id":"CAP-B","path":"/KERNEL/BUILD","ts":"t1","parent_id":"CAP-A","parent_hash":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","intent":"child b","goal":"ahead","edges":[{"type":"INHERITS_FROM","to":"CAP-A"}],"status":"SEALED","audit":"NONE","verihash":"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"}
