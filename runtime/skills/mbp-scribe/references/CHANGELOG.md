@@ -44,3 +44,41 @@ Promote-only. Full history is `ledger.jsonl`.
 ## 2026-09-01  CAP-051
 - S6 write classes: full | stub | skip-by-policy; default still every-turn full
 - vh 8c5ce58fb35884317e36ed9b1c1688ef33b243fbd228c01c2148ce9a32aa6f8b
+
+## 2026-09-01  CAP-069
+- G3 `cmp` / `pull` (fast-forward only)
+- G4 Git remains command-only; TIP.md refreshed
+- S10 `--ns` opt-in isolated ledgers; default file not split
+- vh 9ff9f133a229a8af39d384367ff4b074e810e523c0c087bf4bcf7465b0e77de2
+
+## 2026-09-02  CAP-079
+- V1 optional `vsp` field stored, not hashed
+- vh b2e662c44dd4f8c87b5342401bb527715ca945979839834356ed77790d2e3d92
+
+## 2026-09-02  CAP-080
+- V2 photo prints vsp; UNVERIFIED flagged
+- vh 3c271ed37c4b84b3dca1dd8710494a42854e43c8f9febc9a0e2853c83c643c47
+
+## 2026-09-02  CAP-081
+- V3 default BUILD/PROMOTE missing vsp → warn
+- vh b9ef2419e4a5b1aa8c6577bedfdb36e231df7da985d07a698a7442a3130ef892
+
+## 2026-09-02  CAP-082
+- V4 HARM_ADJACENT without PENDING_EXTERNAL/CLEAR → warn
+- vh 67c815536610503d217a8ad823f784fe75e2e6861feb60304a8049f9c2a876c3
+
+## 2026-09-02  CAP-083
+- V5 promote thin VSP into mbp-core-boot.md (invariant 10, §10)
+- vh 07c8d62278fa542573ca4effbb8198567d02686849cab012fc55d0aeecd19ff1
+
+## 2026-09-04  CAP-112
+- S11 `classify_ledgers`; cmp prints EQUAL; fixtures + smoke_s11.sh
+- vh 8ec13872a2129bcc69a6fb84d3b9fff309dfc58ccb3ec85dd1bee7ecd6bd0d2f
+
+## 2026-09-04  CAP-113
+- D1 optional `load` list stored, not hashed; PHOTO prints it
+- vh f92e550c83f0c6a186ef3822a9c0bbe7d39a081066fdcca1d29e8eb3efea5e60
+
+## 2026-09-04  CAP-114
+- G4 commanded sync of runtime skills + ledger to GitHub
+- vh 483304ad0318094a07c6f889bc5a151e453e718da0d5aac6cf483084b6a4784c
