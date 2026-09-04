@@ -21,6 +21,7 @@ REQUIRED = (
     "audit",
 )
 
+# Slice 2 frozen preimage. facts/directive/audit/verihash/vsp/load are excluded.
 HASH_FIELDS = (
     "id",
     "path",
@@ -40,8 +41,13 @@ def skill_root(explicit: str | None) -> Path:
     return Path(__file__).resolve().parent.parent
 
 
-def ledger_path(root: Path) -> Path:
-    return root / "references" / "ledger.jsonl"
+def ledger_path(root: Path, ns: str | None = None) -> Path:
+    name = "ledger.jsonl"
+    if ns and str(ns).strip() and str(ns).strip().lower() not in {"default", "kernel", "main"}:
+        safe = "".join(c for c in str(ns).strip().lower() if c.isalnum() or c in "-_")
+        if safe:
+            name = f"ledger-{safe}.jsonl"
+    return root / "references" / name
 
 
 def load_rows(path: Path) -> list[dict]:
@@ -196,6 +202,44 @@ def validate_body(row: dict) -> None:
             fail("directive must be a non-empty string")
         if "\n" in directive:
             fail("directive must be one line")
+    if "vsp" in row:
+        validate_vsp(row["vsp"])
+    if "load" in row:
+        validate_load(row["load"])
+
+
+VSP_STATUS = {"VERIFIED", "PARTIAL", "UNVERIFIED", "N/A", "NA"}
+VSP_CLAUSE4 = {"CLEAR", "HARM_ADJACENT", "NA", "N/A"}
+
+
+def validate_vsp(vsp) -> None:
+    if not isinstance(vsp, dict):
+        fail("vsp must be an object")
+    extra = set(vsp.keys()) - {"status", "clause4"}
+    if extra:
+        fail(f"vsp unknown keys: {', '.join(sorted(extra))}")
+    status = str(vsp.get("status", "")).strip().upper()
+    if status not in VSP_STATUS:
+        fail("vsp.status must be VERIFIED|PARTIAL|UNVERIFIED|N/A")
+    vsp["status"] = "N/A" if status in {"NA", "N/A"} else status
+    if "clause4" in vsp:
+        c4 = str(vsp.get("clause4", "")).strip().upper()
+        if c4 not in VSP_CLAUSE4:
+            fail("vsp.clause4 must be CLEAR|HARM_ADJACENT|NA")
+        vsp["clause4"] = "NA" if c4 in {"NA", "N/A"} else c4
+
+
+def validate_load(load) -> None:
+    if not isinstance(load, list):
+        fail("load must be a list")
+    if len(load) > 4:
+        fail("load max is 4 names")
+    for item in load:
+        if not isinstance(item, str) or not item.strip():
+            fail("each load name must be a non-empty string")
+        name = item.strip()
+        if "/" in name or "\\" in name or ".." in name:
+            fail("load name must be a bare token")
 
 
 def cmd_hash(raw: str) -> None:
@@ -212,6 +256,7 @@ def cmd_append(path: Path, raw: str) -> None:
     validate_body(row)
     cls = normalize_class(row)
     row["edges"] = _canon_edges(row.get("edges"))
+
     computed = compute_verihash(row)
     supplied = row.get("verihash")
     if supplied in (None, ""):
@@ -220,11 +265,13 @@ def cmd_append(path: Path, raw: str) -> None:
         fail(f"verihash mismatch supplied={supplied} computed={computed}")
     else:
         row["verihash"] = computed
+
     path.parent.mkdir(parents=True, exist_ok=True)
     rows = load_rows(path)
     new_hash = norm_hash(row["verihash"])
     if any(norm_hash(r.get("verihash")) == new_hash for r in rows):
         fail(f"duplicate verihash {row['verihash']}")
+
     parent = norm_hash(row.get("parent_hash"))
     if rows:
         tip_hash = norm_hash(rows[-1].get("verihash"))
@@ -232,6 +279,7 @@ def cmd_append(path: Path, raw: str) -> None:
             fail(f"parent_hash {row.get('parent_hash')} != tip {rows[-1].get('verihash')}")
     elif parent:
         fail("genesis row must have empty parent_hash")
+
     with path.open("a", encoding="utf-8") as fh:
         fh.write(dump_row(row) + "\n")
     print(f"SCRIBE:OK APPEND {row['id']} {row['verihash']} rows={len(rows) + 1} class={cls}")
@@ -240,6 +288,13 @@ def cmd_append(path: Path, raw: str) -> None:
     has_supports = any(str(e.get("type")) == "SUPPORTS" for e in row.get("edges") or [])
     if needs_supports and not has_supports:
         print("SCRIBE:WARN BUILD/PROMOTE missing SUPPORTS")
+    if needs_supports and "vsp" not in row and path.name == "ledger.jsonl":
+        print("SCRIBE:WARN BUILD/PROMOTE missing vsp")
+    vsp = row.get("vsp") if isinstance(row.get("vsp"), dict) else {}
+    if str(vsp.get("clause4", "")).upper() == "HARM_ADJACENT":
+        note = str(row.get("directive", "")).upper()
+        if "PENDING_EXTERNAL" not in note and "CLEAR" not in note:
+            print("SCRIBE:WARN clause4=HARM_ADJACENT unresolved")
 
 
 def cmd_get(path: Path, query: str) -> None:
@@ -325,6 +380,16 @@ def _print_row_brief(row: dict, label: str) -> None:
     print(f"[{label}] {row.get('id')} {row.get('verihash','')[:12]} {row.get('intent')}")
     if row.get("directive"):
         print(f"  directive: {row.get('directive')}")
+    vsp = row.get("vsp")
+    if isinstance(vsp, dict) and vsp:
+        status = str(vsp.get("status", ""))
+        c4 = vsp.get("clause4")
+        extra = f" clause4={c4}" if c4 else ""
+        flag = " ⚠️" if status == "UNVERIFIED" else ""
+        print(f"  vsp: {status}{extra}{flag}")
+    load = row.get("load")
+    if isinstance(load, list) and load:
+        print(f"  load: {', '.join(str(x) for x in load)}")
     for fact in facts:
         print(f"  fact: {fact}")
 
@@ -359,6 +424,62 @@ def cmd_photo(path: Path, query: str, root: Path) -> None:
                 print(f"[SUPPORTS] {target} (unresolved)")
 
 
+def classify_ledgers(local_rows: list, remote_rows: list) -> str:
+    """Tip = last line. No multi-tip merge. EQUAL means same last verihash."""
+    a = local_rows or []
+    b = remote_rows or []
+    if not a and not b:
+        return "EQUAL"
+    if not a:
+        return "REMOTE_AHEAD"
+    if not b:
+        return "LOCAL_AHEAD"
+    ah = norm_hash(a[-1].get("verihash"))
+    bh = norm_hash(b[-1].get("verihash"))
+    a_set = {norm_hash(r.get("verihash")) for r in a}
+    b_set = {norm_hash(r.get("verihash")) for r in b}
+    if ah == bh:
+        return "EQUAL"
+    if ah in b_set:
+        return "REMOTE_AHEAD"
+    if bh in a_set:
+        return "LOCAL_AHEAD"
+    return "DIVERGE"
+
+
+def cmd_cmp(local: Path, other: Path) -> str:
+    a = load_rows(local)
+    b = load_rows(other)
+    status = classify_ledgers(a, b)
+    if status == "EQUAL" and not a and not b:
+        print("EQUAL empty")
+    elif status == "EQUAL":
+        print(f"EQUAL {a[-1].get('id')} {norm_hash(a[-1].get('verihash'))}")
+    elif status == "REMOTE_AHEAD" and not a:
+        print("REMOTE_AHEAD")
+    elif status == "LOCAL_AHEAD" and not b:
+        print("LOCAL_AHEAD")
+    elif status == "REMOTE_AHEAD":
+        print(f"REMOTE_AHEAD local={a[-1].get('id')} remote={b[-1].get('id')}")
+    elif status == "LOCAL_AHEAD":
+        print(f"LOCAL_AHEAD local={a[-1].get('id')} remote={b[-1].get('id')}")
+    else:
+        print(f"DIVERGE local={a[-1].get('id')} remote={b[-1].get('id')}")
+    return status
+
+
+def cmd_pull(local: Path, other: Path) -> None:
+    status = cmd_cmp(local, other)
+    if status in ("EQUAL", "SAME"):
+        print("PULL noop")
+        return
+    if status == "REMOTE_AHEAD":
+        local.write_text(other.read_text(encoding="utf-8"), encoding="utf-8")
+        print(f"PULL fast-forward {local}")
+        return
+    fail(f"pull aborted ({status})")
+
+
 def cmd_log(path: Path, n: int) -> None:
     rows = [r for r in load_rows(path) if is_promote_row(r)]
     if not rows:
@@ -371,24 +492,41 @@ def cmd_log(path: Path, n: int) -> None:
 def main() -> None:
     parser = argparse.ArgumentParser(prog="scribe")
     parser.add_argument("--root", default=None, help="mbp-scribe skill root")
+    parser.add_argument("--ns", default=None, help="ledger namespace (default file is ledger.jsonl)")
     sub = parser.add_subparsers(dest="cmd", required=True)
+
     p_append = sub.add_parser("append")
     p_append.add_argument("json")
+
     p_hash = sub.add_parser("hash")
     p_hash.add_argument("json")
+
     p_get = sub.add_parser("get")
     p_get.add_argument("query")
+
     sub.add_parser("tip")
+
     p_spine = sub.add_parser("spine")
     p_spine.add_argument("n", nargs="?", type=int, default=20)
+
     p_log = sub.add_parser("log")
     p_log.add_argument("n", nargs="?", type=int, default=20)
+
     p_edges = sub.add_parser("edges")
     p_edges.add_argument("query")
+
     p_photo = sub.add_parser("photo")
     p_photo.add_argument("query")
+
+    p_cmp = sub.add_parser("cmp")
+    p_cmp.add_argument("other")
+
+    p_pull = sub.add_parser("pull")
+    p_pull.add_argument("other")
+
     args = parser.parse_args()
-    path = ledger_path(skill_root(args.root))
+    path = ledger_path(skill_root(args.root), args.ns)
+
     if args.cmd == "append":
         cmd_append(path, args.json)
     elif args.cmd == "hash":
@@ -405,6 +543,10 @@ def main() -> None:
         cmd_edges(path, args.query)
     elif args.cmd == "photo":
         cmd_photo(path, args.query, skill_root(args.root))
+    elif args.cmd == "cmp":
+        cmd_cmp(path, Path(args.other))
+    elif args.cmd == "pull":
+        cmd_pull(path, Path(args.other))
 
 
 if __name__ == "__main__":
