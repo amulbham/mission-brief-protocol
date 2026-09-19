@@ -1,0 +1,26 @@
+{
+  "kernel_version": "1.3",
+  "registry": "TR",
+  "count": 18,
+  "status": "ACTIVE",
+  "tags": [
+    {"tag":"#field_law","domain":"Cognitive Physics","rationale":"Defines or derives from the field laws","first_committed":"CAP-027-TAG-VGATE","status":"ACTIVE"},
+    {"tag":"#architecture","domain":"MBP Core","rationale":"Concerns MBP structural components or schema","first_committed":"CAP-027-TAG-VGATE","status":"ACTIVE"},
+    {"tag":"#verification","domain":"Epistemology","rationale":"Concerns verification events or thresholds","first_committed":"CAP-027-TAG-VGATE","status":"ACTIVE"},
+    {"tag":"#falsification","domain":"Epistemology","rationale":"Engages conditions that would disprove the framework","first_committed":"CAP-027-TAG-VGATE","status":"ACTIVE"},
+    {"tag":"#mode_exploratory","domain":"Session State","rationale":"Theoretical, speculative, or philosophical discourse","first_committed":"CAP-027-TAG-VGATE","status":"ACTIVE"},
+    {"tag":"#mode_literal","domain":"Session State","rationale":"Factual claims, production output, or formal directives","first_committed":"CAP-027-TAG-VGATE","status":"ACTIVE"},
+    {"tag":"#mode_adversarial","domain":"Session State","rationale":"Stress-test and challenge mode","first_committed":"CAP-027-TAG-VGATE","status":"ACTIVE"},
+    {"tag":"#mode_technical","domain":"Session State","rationale":"Implementation, code, or schema-level specification","first_committed":"CAP-027-TAG-VGATE","status":"ACTIVE"},
+    {"tag":"#schema","domain":"MBP Core","rationale":"Modifies or specifies capsule schema fields or versions","first_committed":"CAP-027-TAG-VGATE","status":"ACTIVE"},
+    {"tag":"#failure_mode","domain":"Governance","rationale":"Diagnoses and resolves architectural failure patterns","first_committed":"CAP-027-TAG-VGATE","status":"ACTIVE"},
+    {"tag":"#cognitive_physics","domain":"Theory","rationale":"Operates within or extends Cognitive Physics","first_committed":"CAP-027-TAG-VGATE","status":"ACTIVE"},
+    {"tag":"#origin","domain":"History","rationale":"Traces discovery, derivation, or theoretical lineage","first_committed":"CAP-027-TAG-VGATE","status":"ACTIVE"},
+    {"tag":"#asymmetric_shock","domain":"BEHAVIORAL_PATTERN","rationale":"Material mathematical anomaly","first_committed":"CAP-021-TAG-TI-SEEDS","status":"ACTIVE"},
+    {"tag":"#resource_scarcity","domain":"BEHAVIORAL_PATTERN","rationale":"Constrained resource forcing explicit tradeoffs","first_committed":"CAP-021-TAG-TI-SEEDS","status":"ACTIVE"},
+    {"tag":"#cascade_failure","domain":"BEHAVIORAL_PATTERN","rationale":"Failure propagating across a dependency chain","first_committed":"CAP-021-TAG-TI-SEEDS","status":"ACTIVE"},
+    {"tag":"#convergence_event","domain":"BEHAVIORAL_PATTERN","rationale":"Independent paths converge on the same conclusion","first_committed":"CAP-021-TAG-TI-SEEDS","status":"ACTIVE"},
+    {"tag":"#threshold_crossing","domain":"BEHAVIORAL_PATTERN","rationale":"Quantitative boundary changes the reasoning arc","first_committed":"CAP-021-TAG-TI-SEEDS","status":"ACTIVE"},
+    {"tag":"#mode_transition","domain":"BEHAVIORAL_PATTERN","rationale":"SCF MIXED and a mode transition occur in the same turn","first_committed":"CAP-021-TAG-TI-SEEDS","status":"ACTIVE","trigger_state":"LATENT_UNTIL_CAP-014-SCF"}
+  ]
+}
