@@ -33,7 +33,7 @@ Adjacent responsibilities may exchange state but may not silently overlap.
 Kernel 1.1 makes chain continuity visible without introducing a second verifier. KRONOS and Universal Parentage remain responsible for chain validity. After closure, the mini-map projects the preceding and current full PoTs from KV-Scribe as uppercase four-character display values:
 
 ```text
-🔑 ⛓️T8N7 → 🔒U3O2
+🔑 ⛓️A8F7 → 🔒C3D2
 ```
 
 The projection is audit UI, not a replacement for the full ledger hashes.
@@ -50,3 +50,18 @@ This separates four previously adjacent responsibilities:
 | VGATE | Verification threshold or deterministic REVISIT route |
 | Logic Debugger | PASS / FAULT on three logic axes |
 | PSAC | KNOWLEDGE confirmation or ASSUMPTION downgrade |
+
+## Thematic layer
+
+Kernel 1.3 adds association without weakening structural semantics:
+
+| Layer | Meaning | Authority |
+|---|---|---|
+| PATH | Hierarchical location | DEX |
+| DAG / LCM | Causal and typed relational structure | Capsule schema and mesh governance |
+| Tags | Cross-PATH thematic identity | TAG-VGATE + TARS + TR |
+| GTIL | Session-scoped thematic lookup | KV-Scribe append-only index |
+
+DEX writes structural Slot 1. TAG-VGATE grounds minted candidates. TARS governs vocabulary and displacement. RUNN identifies Dynamic Vector candidates only. No component may infer PATH or causal edges from tags.
+
+Persistent epistemic mode is stored as verified session state. Dynamic Vector Trigger T3 remains latent until SCF supplies a verified `SESSION:MIXED` value; Kernel 1.3 does not simulate that dependency.

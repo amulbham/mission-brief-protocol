@@ -6,11 +6,11 @@ The Kernel Track begins with a faithful Kernel 1.0 baseline and advances through
 
 ## Current state
 
-- Track status: Kernel 1.2 candidate — Change 002
-- Version: `1.2`
+- Track status: Kernel 1.3 candidate — Change 003
+- Version: `1.3`
 - Canonical boot prompt: `boot/MBP_KERNEL_BOOT.md`
-- Immutable snapshot: `releases/1.2/MBP_KERNEL_BOOT.md`
-- Active delta: `changes/002-witness-flag-only.md`
+- Immutable snapshot: `releases/1.3/MBP_KERNEL_BOOT.md`
+- Active delta: `changes/003-tag-thematic-index.md`
 
 ## Build and validate
 

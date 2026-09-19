@@ -1,0 +1,19 @@
+{
+  "kernel_version": "1.3",
+  "canonical_source": {
+    "title": "TAG SYSTEM, TARS & THEMATIC INDEX — Thematic Architecture, Registry Governance & Intelligent Tag Synthesis",
+    "designations": ["CAP-027-TAG-VGATE", "CAP-021-TAG-TI"],
+    "author": "Amul Bham",
+    "year": 2026,
+    "source_schema": "v3.7",
+    "authority": "CANONICAL_CHANGE_SPEC"
+  },
+  "integration_record": "changes/003-tag-thematic-index.md",
+  "activation_boundary": "Kernel 1.3 merge",
+  "reconciliations": [
+    "T3 remains latent until CAP-014-SCF is active",
+    "TAG-VGATE pre-PROPOSE jurisdiction governs the Dynamic Vector handoff",
+    "Empty Tags is allowed only when no structural or grounded minted tag exists",
+    "Kernel Track schema advances from v3.4 to source target v3.7"
+  ]
+}

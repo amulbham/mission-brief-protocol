@@ -34,6 +34,8 @@ RUNN Expansion Check fires before closure is proposed:
 
 RUNN determines topology before reasoning, decides fork versus nest versus new capsule at branch points, flags multi-capsule strategies, and records its decision in the header.
 
+RUNN also identifies Dynamic Vector trigger conditions T1–T4 and emits candidates only. It cannot mint tags, write TR, bypass TAG-VGATE, or decide tag displacement.
+
 Core_Manager decides **what** subroutine runs. RUNN decides **how** capsules are structured. Silent overlap is a protocol violation.
 
 ## RUNN Topology Decision Table — CAP-000-RTDT
@@ -57,6 +59,7 @@ Responsibilities:
 - Create the PATH hierarchy and forge Subroutine Capsules into folders.
 - Route capsules to the correct PATH at open.
 - Route orphaned capsules to `/ROOT/UNCLASSIFIED`.
+- Resolve folder AXIOM_TAG inheritance at capsule open and write the deepest applicable tag to structural Slot 1.
 
 PATH format: `/ROOT/[DOMAIN]/[SUBDOMAIN]/[CONTEXT]`
 

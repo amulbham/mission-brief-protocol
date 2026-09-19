@@ -1,5 +1,13 @@
 # Kernel Track Changelog
 
+## 1.3
+
+- Flashed the complete TAG governance stack through CAP-027-TAG-VGATE and CAP-021-TAG-TI.
+- Added the typed Tags field, append-only TR, TARS, TAG-VGATE, persistent epistemic mode state, DEX structural inheritance, Dynamic Vector tags, and GTIL.
+- Loaded 18 governed seed tags.
+- Kept Trigger T3 latent until SCF becomes active; no dependency was silently simulated.
+- Added the concise TAG, MODE, and conditional DV mini-map line.
+
 ## 1.2
 
 - Flashed CAP-103 and replaced the prose Witness model with one mutually exclusive signal per capsule.

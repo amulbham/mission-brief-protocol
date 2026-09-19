@@ -16,4 +16,6 @@ Kernel 1.1 is the first behavioral delta: Change 001 requires explicit parent-to
 
 Kernel 1.2 applies Change 002, replacing the prose Witness with the CAP-103 flag-only model and advancing the capsule schema from v3.3 to v3.4. Earlier release snapshots remain immutable.
 
+Kernel 1.3 applies Change 003, adding the TAG governance and Thematic Index stack and advancing the capsule schema from v3.4 to v3.7. Trigger T3 remains dependency-latent until SCF is introduced.
+
 A version is active only after focused and inherited validation pass, its registry is sealed, its compiled boot matches the source modules, and its immutable release snapshot matches the compiled digest.

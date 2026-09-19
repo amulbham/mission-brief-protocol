@@ -1,0 +1,67 @@
+{
+  "kernel_version": "1.3",
+  "inherits": {
+    "kernel_version": "1.2",
+    "registry": "invariants-1.2.json",
+    "release_sha256": "40c1de600e8045a57c8e82c9acb234e833d0e02d2b2259e36a248356f146d3ab"
+  },
+  "flash_capsules": ["CAP-027-TAG-VGATE", "CAP-021-TAG-TI"],
+  "status": "FLASHED",
+  "authority": "CONSTITUTIONAL",
+  "records": [
+    {
+      "id": "CAP-027-TAG-VGATE",
+      "name": "TAG Governance Stack",
+      "status": "FLASHED",
+      "includes": ["Tags schema field", "TR", "TARS", "TAG-VGATE", "Epistemic Mode State"],
+      "schema_delta": "v3.4 → v3.7",
+      "module": "modules/45-tag-system.md"
+    },
+    {
+      "id": "CAP-021-TAG-TI",
+      "name": "Thematic Index Extension",
+      "status": "FLASHED",
+      "extends": "CAP-027-TAG-VGATE",
+      "includes": ["typed slots", "DEX structural inheritance", "Dynamic Vector tags", "18 seeds", "GTIL"],
+      "module": "modules/45-tag-system.md"
+    },
+    {
+      "id": "TR",
+      "name": "Tag Registry",
+      "status": "FLASHED",
+      "kind": "PASSIVE_APPEND_ONLY_REGISTRY",
+      "seed_registry": "tag-registry-seeds-1.3.json"
+    },
+    {
+      "id": "TARS",
+      "name": "Tag Registry System",
+      "status": "FLASHED",
+      "jurisdiction": "vocabulary lifecycle and minted-slot displacement"
+    },
+    {
+      "id": "TAG-VGATE",
+      "name": "Tag Relevance Grounding Gate",
+      "status": "FLASHED",
+      "jurisdiction": "minted-tag grounding before TARS PROPOSE"
+    },
+    {
+      "id": "EPISTEMIC-MODE",
+      "name": "Persistent Epistemic Mode State",
+      "status": "FLASHED",
+      "modes": ["#mode_exploratory", "#mode_literal", "#mode_adversarial", "#mode_technical"]
+    },
+    {
+      "id": "DV-T1-T4",
+      "name": "Dynamic Vector Monitoring",
+      "status": "FLASHED_WITH_DEPENDENCY",
+      "active": ["T1", "T2", "T4"],
+      "latent": {"trigger": "T3", "depends_on": "CAP-014-SCF"}
+    },
+    {
+      "id": "GTIL",
+      "name": "Global Thematic Index Ledger",
+      "status": "FLASHED",
+      "kind": "SESSION_SCOPED_APPEND_ONLY_INVERTED_INDEX"
+    }
+  ]
+}
