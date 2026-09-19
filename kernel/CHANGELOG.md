@@ -1,5 +1,13 @@
 # Kernel Track Changelog
 
+## 1.2
+
+- Flashed CAP-103 and replaced the prose Witness model with one mutually exclusive signal per capsule.
+- Replaced `Witness Log` and `Witness Sign-off` with `Witness Signal` in capsule schema v3.4.
+- Added deterministic VGATE receiver routes for CLEAR, TENSION, DRIFT, and DISCONTINUITY.
+- Enforced non-overlapping Witness, VGATE, PSAC, and Logic Debugger jurisdictions.
+- Corrected the PoT display example to hexadecimal without changing Change 001 behavior.
+
 ## 1.1
 
 - Flashed `CAP-001-MINIMAP-LINEAGE` as the first post-baseline invariant.

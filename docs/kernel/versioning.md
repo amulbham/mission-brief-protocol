@@ -14,4 +14,6 @@ The capsule schema retains its own identifier (`v3.3` in Kernel 1.0). Kernel Tra
 
 Kernel 1.1 is the first behavioral delta: Change 001 requires explicit parent-to-current PoT projections in every sealed mini-map. Kernel 1.0 remains immutable under `kernel/releases/1.0/`.
 
+Kernel 1.2 applies Change 002, replacing the prose Witness with the CAP-103 flag-only model and advancing the capsule schema from v3.3 to v3.4. Earlier release snapshots remain immutable.
+
 A version is active only after focused and inherited validation pass, its registry is sealed, its compiled boot matches the source modules, and its immutable release snapshot matches the compiled digest.

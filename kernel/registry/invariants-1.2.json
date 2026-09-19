@@ -1,0 +1,26 @@
+{
+  "kernel_version": "1.2",
+  "inherits": {
+    "kernel_version": "1.1",
+    "registry": "invariants-1.1.json",
+    "release_sha256": "132a048c31d1a1e4d0fefe1a2e4b12d198f1b2e85dd57449d05eade1bc3f080d"
+  },
+  "flash_capsule": "CAP-103",
+  "status": "FLASHED",
+  "authority": "CONSTITUTIONAL",
+  "records": [
+    {
+      "id": "CAP-103",
+      "component": "CAP-010-WITNESS",
+      "name": "Witness Flag-Only Observer",
+      "tier": "CONSTITUTIONAL_COMPONENT_INVARIANT",
+      "status": "FLASHED",
+      "supersedes": "CAP-010-WITNESS prose-output model",
+      "schema_delta": "v3.3 → v3.4",
+      "depends_on": ["CAP-000-CS", "VGATE", "FRP", "AXIOM-4.7"],
+      "module": "modules/40-runtime-components.md",
+      "change": "changes/002-witness-flag-only.md",
+      "statement": "Witness emits exactly one mutually exclusive signal and has no prose, analysis, verification, or routing authority."
+    }
+  ]
+}

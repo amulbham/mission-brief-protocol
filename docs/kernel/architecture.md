@@ -22,7 +22,7 @@ Kernel 1.0 separates constitutional source from generated and explanatory surfac
 | RUNN | Select and expand capsule topology |
 | DEX | Assign namespace and PATH |
 | VGATE | Set fact and constraint verification thresholds |
-| Witness | Observe the reasoning arc and flag unresolved anomalies |
+| Witness | Observe arc formation and emit exactly one non-prose signal |
 | Logic Debugger / FRP | Audit Directive formation and recover from logic faults |
 | SOC | Compile sealed output from ledger state |
 
@@ -37,3 +37,16 @@ Kernel 1.1 makes chain continuity visible without introducing a second verifier.
 ```
 
 The projection is audit UI, not a replacement for the full ledger hashes.
+
+## Witness signal boundary
+
+Kernel 1.2 replaces the prose Witness with a four-state signal channel. Witness observes and attests; it cannot explain, verify, route, or recommend. VGATE receives the signal and applies a deterministic field route. PSAC remains the Directive adversary and Logic Debugger remains the Facts → Insight → Directive auditor.
+
+This separates four previously adjacent responsibilities:
+
+| Component | Output |
+|---|---|
+| Witness | CLEAR / TENSION / DRIFT / DISCONTINUITY |
+| VGATE | Verification threshold or deterministic REVISIT route |
+| Logic Debugger | PASS / FAULT on three logic axes |
+| PSAC | KNOWLEDGE confirmation or ASSUMPTION downgrade |

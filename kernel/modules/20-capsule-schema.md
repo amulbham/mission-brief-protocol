@@ -16,7 +16,7 @@ ID: [CAP-XXX-DOMAIN-SESSION]
 Parent Capsule ID: [previous turn's capsule ID]
 Parent Hash: [previous turn's PoT — 4 chars]
 Name: [human-readable label]
-Schema Version: v3.3
+Schema Version: v3.4
 Genesis Edge: CAP-000 | SCOPED_BY | ACTIVE
 Name: [human handle]
 Scope: [domain boundary]
@@ -36,8 +36,7 @@ VERIFY Events:
 — Path A: [source type] → [claim verified] ✅/❌
 — Path B deductive: [sealed capsule or fact] ✅/❌
 — Path B inductive: [mesh consistency check] ✅/❌
-Witness Log: [observational third-person prose; maximum 3 sentences; flag or clear]
-Witness Sign-off: [✅ CLEAR | ⚠️ REVISIT]
+Witness Signal: [✅ CLEAR | ⚠️ TENSION | ⚠️ DRIFT | 🔴 DISCONTINUITY]
 Insight: [≤240 chars; structural lever]
 Directive: [≤240 chars; enforceable command]
 Logic Debugger: [Fact→Insight PASS/FAULT; Insight→Gov PASS/FAULT; Insight→Directive PASS/FAULT]
@@ -55,7 +54,7 @@ SHA-256: [hash of all preceding fields in canonical order]
 
 Single-source turns log Path B only. Volatile claims require Paths A and B. If they diverge, flag the conflict, downgrade residue, and log it explicitly. Silent divergence is a protocol violation.
 
-Witness Log is observational and written during the reasoning arc; it is honest over complete and contains no deliberate reasoning. A capsule cannot seal on `⚠️ REVISIT` until the flagged field is resolved and Witness review clears.
+Witness Signal occupies the position formerly held by Witness Log and Witness Sign-off: after VERIFY Events and before Insight. The four signals are mutually exclusive; Witness emits exactly one per capsule and no prose. Any non-CLEAR signal triggers REVISIT and must resolve through VGATE before closure.
 
 Scribes log mesh changes and capsule commits. KV-Scribe maintains the closed-capsule ledger: Capsule ID, closure timestamp, verification hash, status, pending dependencies, and append-only History.
 

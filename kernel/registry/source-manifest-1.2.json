@@ -1,0 +1,14 @@
+{
+  "kernel_version": "1.2",
+  "canonical_source": {
+    "title": "WITNESS REDESIGN — Flag-Only Observer Model — Canonical Specification",
+    "designation": "CAP-103",
+    "author": "Amul Bham",
+    "year": 2026,
+    "source_schema": "v3.4",
+    "authority": "CANONICAL_CHANGE_SPEC"
+  },
+  "integration_record": "changes/002-witness-flag-only.md",
+  "activation_boundary": "Kernel 1.2 merge",
+  "historical_effective_turn": "T[104] in originating source session"
+}

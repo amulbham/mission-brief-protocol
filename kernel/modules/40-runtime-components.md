@@ -68,6 +68,29 @@ Jurisdiction:
 
 Silent overlap is a protocol violation. Cross-PATH DAG references are permitted, but knowledge connections must be declared, not inherited. Silent cross-domain logic import is a protocol violation.
 
+## CAP-010-WITNESS — CAP-103 Flag-Only Observer
+
+Witness performs observation and attestation only. It produces no prose, analysis, or deliberation. It observes the reasoning arc as it forms and emits exactly one mutually exclusive signal per capsule:
+
+| Signal | Condition |
+|---|---|
+| ✅ CLEAR | Arc formed cleanly; no structural anomaly observed |
+| ⚠️ TENSION | Active constraints pulled in incompatible directions |
+| ⚠️ DRIFT | Goal or intent trajectory shifted without a declared RUNN topology change |
+| 🔴 DISCONTINUITY | A required reasoning step or chain link failed, or formation terminated without natural closure |
+
+Witness may not:
+
+- produce prose, fragments, labels, or explanations attached to a signal;
+- explain why a signal fired;
+- read its signal against Facts, Constraints, or another capsule field;
+- recommend a resolution path;
+- interact with VGATE, PSAC, or Logic Debugger;
+- perform verification;
+- emit more than one signal.
+
+Witness jurisdiction ends when the signal fires. VGATE receives and routes the signal; Witness never interprets or routes it. Jurisdiction overlap with VGATE, PSAC, or Logic Debugger is a protocol violation.
+
 ## VGATE — Verification Gate
 
 VGATE operates only at fact and constraint intake. It determines the verification threshold before claims enter reasoning.
@@ -81,6 +104,27 @@ VGATE operates only at fact and constraint intake. It determines the verificatio
 
 VGATE applies to every claim entering Facts and to factual claims embedded in Constraints. Pure logical rules pass automatically. VGATE logs its threshold decision in VERIFY Events and fires before Facts load. Silent passage is a protocol violation.
 
-### VGATE Witness Review
+### VGATE Witness Receiver Protocol
 
-After Witness Log and before the pre-closure gate, VGATE reviews Witness against Facts and active constraints. Unresolved flags produce `⚠️ REVISIT` and reopen the capsule. Resolved state produces `✅ CLEAR`. A second review is required after revision. Witness content beyond observational scope is a jurisdiction violation; deliberation belongs in capsule reasoning, not Witness.
+VGATE receives the bare Witness Signal and routes deterministically. It does not interpret prose.
+
+| Witness Signal | VGATE action | Route | Resolution requirement |
+|---|---|---|---|
+| ✅ CLEAR | Auto-pass | None | Proceed to Axiom 4.6 pre-closure gate |
+| ⚠️ TENSION | REVISIT | Facts / active constraints | Identify and resolve the constraint conflict |
+| ⚠️ DRIFT | REVISIT | Goal / User Intent / IC-Node | Reconcile trajectory with declared intent |
+| 🔴 DISCONTINUITY | REVISIT + FRP | Full capsule reopen | Trace and resolve the fault; two failed FRP attempts produce FAULT_UNRESOLVED |
+
+CLEAR is the only auto-pass. Every non-CLEAR signal requires resolution followed by a second VGATE receiver review before closure. DISCONTINUITY is the only Witness signal that directly activates FRP.
+
+### Updated Pre-Closure Sequence
+
+1. Witness observes during arc formation and stores exactly one signal.
+2. Logic Debugger audits the completed Facts → Insight → Directive chain.
+3. VGATE receives the Witness Signal and applies the deterministic route.
+4. CLEAR proceeds; non-CLEAR resolves and repeats VGATE review.
+5. Axiom 4.6 performs contradiction and omission checks silently.
+6. PSAC performs the adversarial challenge.
+7. The capsule seals only if all gates pass.
+
+Witness observes. VGATE routes. PSAC challenges. Logic Debugger audits. Silent jurisdiction overlap is a protocol violation.
