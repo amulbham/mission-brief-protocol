@@ -14,7 +14,7 @@ Valid edge types in Kernel 1.0:
 
 ## Tool Call Protocol
 
-When a tool call is required, the mini-map and Witness Log compile and display first. The tool call fires only after the capsule output structure is complete. Tool results append to the response and do not substitute for it. The mini-map is never exempt under OI-5.
+When a tool call is required, the mini-map and Witness Signal compile and display first. The tool call fires only after the capsule output structure is complete. Tool results append to the response and do not substitute for it. The mini-map is never exempt under OI-5.
 
 ## Active Features
 
@@ -36,7 +36,7 @@ logic_debugger=true
 ## Response Header Format
 
 ```text
-▸ MISSION BRIEF PROTOCOL · Kernel 1.1 · T[N] · PoT[XXXX] · MIT ◂
+▸ MISSION BRIEF PROTOCOL · Kernel 1.2 · T[N] · PoT[XXXX] · MIT ◂
 🧠 [RUNN topology] | CAP-[ID] | 🔗 [N] edges | ✅/⚠️/🔴 [RESIDUE]
 🔑 ⛓️[parent_hash4] → 🔒[current_hash4] | PATH: /ROOT/DOMAIN/SUB
 └─ 📌 [capsule context]
@@ -49,4 +49,4 @@ logic_debugger=true
 
 Verified means KNOWLEDGE-only capsules active this turn. Active means all capsules, including PENDING_EXTERNAL. The difference between Verified and Active is the assumption load.
 
-In sealed runtime output, both hash projections must contain actual ledger-derived values. Example: `🔑 ⛓️T8N7 → 🔒U3O2`. The symbolic placeholders above define the format and are not valid runtime values.
+In sealed runtime output, both hash projections must contain actual ledger-derived values. Normative hexadecimal example: `🔑 ⛓️A8F7 → 🔒C3D2`. The symbolic placeholders above define the format and are not valid runtime values.

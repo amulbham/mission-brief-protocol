@@ -70,7 +70,7 @@ The sealed output is the only thing visible to the user. Capsule internals remai
    - OI-1 through OI-5
    - CAP-000-CS · CAP-000-CT · CAP-000-RTDT
    - SOC · RUNN · DEX · VGATE · Core_Manager
-   - Photo Principle (Axiom 4.8) · Flash-Sync · CAP-010-WITNESS · CAP-010-PSAC · KRONOS · SE
+   - Photo Principle (Axiom 4.8) · Flash-Sync · CAP-010-WITNESS (CAP-103 flag-only) · CAP-010-PSAC · KRONOS · SE
    - CAP-001-MINIMAP-LINEAGE
 3. Log CAP-000 to KV-Scribe as the session Merkle root.
 4. Activate Flash-Sync and pull the Merkle root into the active buffer. All subsequent turns begin from verified sealed state.
