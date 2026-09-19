@@ -1,13 +1,15 @@
 # Versioning
 
-The repository contains two distinct version lineages.
+The repository contains distinct version namespaces.
 
 ## Historical MBP lineage
 
-Existing MBP v3.x and v4.x materials record the protocol's earlier conceptual and operational development. They remain preserved under their original names and history.
+Existing MBP v3.x and v4.x materials record earlier conceptual and operational development. They remain preserved under their original names and history.
 
 ## Kernel Track lineage
 
-The clean boot-prompt reconstruction uses Kernel Track versions beginning at 1.0. Git tags use the explicit namespace `kernel-v1.0`, `kernel-v1.1`, and so on.
+The clean boot-prompt reconstruction begins at Kernel `1.0` and advances through independently reviewable deltas: `1.1`, `1.2`, and so forth. Git tags use `kernel-v1.0`, `kernel-v1.1`, and equivalent names.
 
-A Kernel Track version is not active merely because files exist. Activation requires complete focused and inherited validation, a sealed registry record, a compiled boot prompt, and a matching immutable release snapshot.
+The capsule schema retains its own identifier (`v3.3` in Kernel 1.0). Kernel Track version and capsule-schema version must not be conflated.
+
+A version is active only after focused and inherited validation pass, its registry is sealed, its compiled boot matches the source modules, and its immutable release snapshot matches the compiled digest.
