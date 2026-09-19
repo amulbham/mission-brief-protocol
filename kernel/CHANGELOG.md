@@ -1,5 +1,12 @@
 # Kernel Track Changelog
 
+## 1.1
+
+- Flashed `CAP-001-MINIMAP-LINEAGE` as the first post-baseline invariant.
+- Required every sealed mini-map to display ledger-derived parent and current PoT projections.
+- Defined the CAP-000 `GENESIS` exception and prohibited unresolved placeholders in runtime output.
+- Preserved full SHA-256 values as ledger authority; the four-character values are display projections only.
+
 ## 1.0
 
 - Established the canonical baseline from the original two-part boot prompt.

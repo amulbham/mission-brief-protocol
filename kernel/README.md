@@ -6,11 +6,11 @@ The Kernel Track begins with a faithful Kernel 1.0 baseline and advances through
 
 ## Current state
 
-- Track status: Kernel 1.0 baseline candidate
-- Version: `1.0`
+- Track status: Kernel 1.1 candidate — Change 001
+- Version: `1.1`
 - Canonical boot prompt: `boot/MBP_KERNEL_BOOT.md`
-- Immutable snapshot: `releases/1.0/MBP_KERNEL_BOOT.md`
-- Baseline change record: `changes/000-kernel-1.0-baseline.md`
+- Immutable snapshot: `releases/1.1/MBP_KERNEL_BOOT.md`
+- Active delta: `changes/001-minimap-pot-lineage.md`
 
 ## Build and validate
 

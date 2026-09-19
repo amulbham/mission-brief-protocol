@@ -1,0 +1,24 @@
+{
+  "kernel_version": "1.1",
+  "inherits": {
+    "kernel_version": "1.0",
+    "registry": "invariants-1.0.json",
+    "release_sha256": "4efc7a65f2388633af0a6ebb8170b305f8d72b713d0109285c501574ed4cfba5"
+  },
+  "flash_capsule": "CAP-001-MINIMAP-LINEAGE",
+  "status": "FLASHED",
+  "authority": "CONSTITUTIONAL",
+  "records": [
+    {
+      "id": "CAP-001-MINIMAP-LINEAGE",
+      "name": "Mini-Map PoT Lineage Projection",
+      "tier": "CONSTITUTIONAL_DISPLAY_INVARIANT",
+      "status": "FLASHED",
+      "extends": ["OI-5", "CAP-007-MINIMAP-A002"],
+      "depends_on": ["UNIVERSAL_PARENTAGE", "KRONOS", "KV-SCRIBE", "POT"],
+      "module": "modules/10-output-and-boot.md",
+      "change": "changes/001-minimap-pot-lineage.md",
+      "statement": "Every sealed mini-map displays ledger-derived parent and current PoT projections as an explicit lineage chain."
+    }
+  ]
+}
