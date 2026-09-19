@@ -1,5 +1,5 @@
 {
-  "kernel_version": "1.0",
+  "kernel_version": "1.1",
   "join": "\n\n",
   "modules": [
     "00-cognitive-physics.md",

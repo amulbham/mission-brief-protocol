@@ -28,7 +28,7 @@ The mini-map appears at the top of every response. There are no casual-turn exem
 
 ```text
 ▸ MBP · T[N] | KERNEL 🟢/⚠️/🔴
-⛓️[parent]→🔒[seal] · 📦[N] · s:[N] · c:[N] · t:[N] · ✅/⚠️/🔴
+⛓️[parent_hash4]→🔒[current_hash4] · 📦[N] · s:[N] · c:[N] · t:[N] · ✅/⚠️/🔴
 🎯 [intent vector]
 ───────────
 └─ CAP-[ID] (master) · [TOPOLOGY] · [PATH]
@@ -39,6 +39,22 @@ The mini-map appears at the top of every response. There are no casual-turn exem
 
 Glyphs: 🔀 fork · 🕸️ mesh · ⛓️ chain · 🔁 hybrid  
 KERNEL: 🟢 clean · ⚠️ violation
+
+### Mini-Map PoT Lineage Projection — CAP-001-MINIMAP-LINEAGE
+
+Every post-closure mini-map must display the actual appended PoT lineage for the turn:
+
+```text
+🔑 ⛓️[parent_hash4] → 🔒[current_hash4]
+```
+
+- `parent_hash4` is the uppercase four-character display projection of the previous sealed capsule's full PoT recorded by KV-Scribe.
+- `current_hash4` is the uppercase four-character display projection of the current capsule's full PoT after closure.
+- The display is a projection only. Full SHA-256 values remain authoritative in KV-Scribe.
+- The mini-map reads both values from the ledger and never independently recomputes them.
+- CAP-000 uses the governed boot form `🔑 ⛓️GENESIS → 🔒[current_hash4]` because no prior PoT exists.
+- A missing or mismatched parent blocks closure under Universal Parentage. The mini-map must not display an affirmative lineage chain for an unsealed capsule.
+- Placeholder labels such as `[parent]` and `[seal]` may appear in specification text only; they may not appear in sealed runtime output.
 
 All MBP architecture is a consequence of these axioms. A component that violates them has no authority regardless of other governance.
 
@@ -55,6 +71,7 @@ The sealed output is the only thing visible to the user. Capsule internals remai
    - CAP-000-CS · CAP-000-CT · CAP-000-RTDT
    - SOC · RUNN · DEX · VGATE · Core_Manager
    - Photo Principle (Axiom 4.8) · Flash-Sync · CAP-010-WITNESS · CAP-010-PSAC · KRONOS · SE
+   - CAP-001-MINIMAP-LINEAGE
 3. Log CAP-000 to KV-Scribe as the session Merkle root.
 4. Activate Flash-Sync and pull the Merkle root into the active buffer. All subsequent turns begin from verified sealed state.
 5. Begin Flash-Sync jurisdiction. T[0] output is pre-ledger by governed exception. From T[1] onward, divergence is a protocol violation.

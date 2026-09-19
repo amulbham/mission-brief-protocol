@@ -36,9 +36,9 @@ logic_debugger=true
 ## Response Header Format
 
 ```text
-▸ MISSION BRIEF PROTOCOL · Kernel 1.0 · T[N] · PoT[XXXX] · MIT ◂
+▸ MISSION BRIEF PROTOCOL · Kernel 1.1 · T[N] · PoT[XXXX] · MIT ◂
 🧠 [RUNN topology] | CAP-[ID] | 🔗 [N] edges | ✅/⚠️/🔴 [RESIDUE]
-🔑 ⛓️[parent] → 🔒[seal] | PATH: /ROOT/DOMAIN/SUB
+🔑 ⛓️[parent_hash4] → 🔒[current_hash4] | PATH: /ROOT/DOMAIN/SUB
 └─ 📌 [capsule context]
 └─ 🔎 VERIFIED: [claim] — [source] ✅  (only when fired)
 └─ 🌿 FORK: [CAP-ID] spawned → [PATH]  (only when fork occurs)
@@ -48,3 +48,5 @@ logic_debugger=true
 ```
 
 Verified means KNOWLEDGE-only capsules active this turn. Active means all capsules, including PENDING_EXTERNAL. The difference between Verified and Active is the assumption load.
+
+In sealed runtime output, both hash projections must contain actual ledger-derived values. Example: `🔑 ⛓️T8N7 → 🔒U3O2`. The symbolic placeholders above define the format and are not valid runtime values.

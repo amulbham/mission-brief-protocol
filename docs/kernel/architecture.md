@@ -27,3 +27,13 @@ Kernel 1.0 separates constitutional source from generated and explanatory surfac
 | SOC | Compile sealed output from ledger state |
 
 Adjacent responsibilities may exchange state but may not silently overlap.
+
+## Mini-map lineage projection
+
+Kernel 1.1 makes chain continuity visible without introducing a second verifier. KRONOS and Universal Parentage remain responsible for chain validity. After closure, the mini-map projects the preceding and current full PoTs from KV-Scribe as uppercase four-character display values:
+
+```text
+🔑 ⛓️T8N7 → 🔒U3O2
+```
+
+The projection is audit UI, not a replacement for the full ledger hashes.
