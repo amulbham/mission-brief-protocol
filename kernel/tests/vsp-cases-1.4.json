@@ -1,0 +1,11 @@
+[
+  {"id":"no-facts","required":0,"verified":0,"non_vsp":0,"expected":"N/A"},
+  {"id":"trivial-only","required":0,"verified":0,"non_vsp":2,"expected":"N/A"},
+  {"id":"volatile-complete","required":2,"verified":2,"non_vsp":0,"expected":"VERIFIED"},
+  {"id":"expert-path-a-plus-b","required":1,"verified":1,"non_vsp":0,"expected":"VERIFIED"},
+  {"id":"mixed-complete","required":1,"verified":1,"non_vsp":2,"expected":"PARTIAL"},
+  {"id":"missing-path","required":1,"verified":0,"non_vsp":0,"expected":"UNVERIFIED"},
+  {"id":"hallucinated-stat-single-path","required":1,"verified":0,"non_vsp":1,"expected":"UNVERIFIED"},
+  {"id":"local-knowledge-missing-external","required":2,"verified":1,"non_vsp":0,"expected":"UNVERIFIED"},
+  {"id":"mixed-missing-path","required":2,"verified":1,"non_vsp":3,"expected":"UNVERIFIED"}
+]

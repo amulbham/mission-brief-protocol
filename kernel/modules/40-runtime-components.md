@@ -4,7 +4,7 @@ The active subroutine loads before facts are analyzed. Crossing a domain require
 
 ## Logic Debugger and Fault Recovery Protocol
 
-Logic Debugger activates after the Directive forms and audits three axes:
+Logic Debugger activates after the Directive forms and the VSP Clause 4 consequence check clears or resolves. It audits three axes:
 
 1. Fact→Insight: Does Insight rely on facts absent from the Facts field?
 2. Insight→Gov: Does the logic path violate declared constraints?
@@ -123,11 +123,13 @@ CLEAR is the only auto-pass. Every non-CLEAR signal requires resolution followed
 ### Updated Pre-Closure Sequence
 
 1. Witness observes during arc formation and stores exactly one signal.
-2. Logic Debugger audits the completed Facts → Insight → Directive chain.
-3. VGATE receives the Witness Signal and applies the deterministic route.
-4. CLEAR proceeds; non-CLEAR resolves and repeats VGATE review.
-5. Axiom 4.6 performs contradiction and omission checks silently.
-6. PSAC performs the adversarial challenge.
-7. The capsule seals only if all gates pass.
+2. Directive forms; VSP Clause 4 returns `CLEAR` or `HARM_ADJACENT` and logs the outcome.
+3. `HARM_ADJACENT` rechecks contributing facts as an aggregate; insufficient verification becomes `PENDING_EXTERNAL` and blocks SOC.
+4. Logic Debugger audits the completed Facts → Insight → Directive chain.
+5. VGATE receives the Witness Signal and applies the deterministic route.
+6. CLEAR proceeds; non-CLEAR resolves and repeats VGATE review.
+7. Axiom 4.6 performs contradiction and omission checks silently.
+8. PSAC performs the adversarial challenge.
+9. KV-Scribe writes `VSP_Status`; the capsule seals only if every required gate passes.
 
 Witness observes. VGATE routes. PSAC challenges. Logic Debugger audits. Silent jurisdiction overlap is a protocol violation.

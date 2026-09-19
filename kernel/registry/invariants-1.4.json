@@ -1,0 +1,52 @@
+{
+  "kernel_version": "1.4",
+  "inherits": {
+    "kernel_version": "1.3",
+    "registry": "invariants-1.3.json",
+    "release_sha256": "a799923270e2bced903677e8f79ccf77df33da12a4da93508c14dad9ddd39bf4"
+  },
+  "flash_capsules": ["CAP-034-VSP-COMPLETE"],
+  "supersedes": ["CAP-031-VSP"],
+  "status": "FLASHED",
+  "authority": "CONSTITUTIONAL",
+  "records": [
+    {
+      "id": "CAP-034-VSP-COMPLETE",
+      "name": "Verification Sufficiency Principle",
+      "tier": "PRINCIPLE",
+      "status": "FLASHED",
+      "derives_from": ["V", "GLC"],
+      "includes": ["Clause 1 Path Requirement", "Clause 2 Harm Adjacency", "Clause 3 Local Knowledge", "Clause 4 Directive Harm Check", "VSP_Status"],
+      "schema_delta": "v3.7 → v3.8",
+      "module": "modules/35-verification-sufficiency.md"
+    },
+    {
+      "id": "VSP-CLAUSES-1-3",
+      "name": "Intake Verification Sufficiency",
+      "status": "FLASHED",
+      "implementation": "VGATE",
+      "jurisdiction": "fact and factual-constraint intake"
+    },
+    {
+      "id": "VSP-CLAUSE-4",
+      "name": "Directive Harm Check",
+      "status": "FLASHED",
+      "firing_point": "post-Directive, pre-Logic Debugger",
+      "outputs": ["CLEAR", "HARM_ADJACENT"]
+    },
+    {
+      "id": "VSP-STATUS",
+      "name": "KV-Scribe Verification Integrity Field",
+      "status": "FLASHED",
+      "values": ["VERIFIED", "UNVERIFIED", "PARTIAL", "N/A"],
+      "write_point": "last schema field before SHA-256",
+      "recall_reader": "Flash-Sync"
+    },
+    {
+      "id": "VSP-SOC-PRECONDITION",
+      "name": "VSP Output Compilation Block",
+      "status": "FLASHED",
+      "blocks": ["unresolved HARM_ADJACENT", "VSP-caused PENDING_EXTERNAL", "UNVERIFIED recall dependency", "PARTIAL recall missing claim pointer"]
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "kernel_version": "1.4",
+  "canonical_source": {
+    "title": "VERIFICATION SUFFICIENCY PRINCIPLE — VSP Constitutional Specification",
+    "designation": "CAP-034-VSP-COMPLETE",
+    "author": "Amul Bham",
+    "year": 2026,
+    "source_schema": "v3.6.1",
+    "authority": "CANONICAL_CHANGE_SPEC"
+  },
+  "supporting_evidence": {
+    "title": "MBP-4o Capsule Runtime Stress Test Report",
+    "year": 2025,
+    "role": "HISTORICAL_FIXTURE_INSPIRATION_ONLY",
+    "limitations": ["self-reported outcomes", "not executed against Kernel 1.4", "not counted as release conformance"]
+  },
+  "integration_record": "changes/004-verification-sufficiency.md",
+  "activation_boundary": "Kernel 1.4 merge",
+  "reconciliations": [
+    "Kernel Track schema advances monotonically from v3.7 to v3.8; source schema v3.6.1 remains provenance",
+    "UNVERIFIED precedence prevents PARTIAL from concealing a missing verification path",
+    "N/A applies when no VSP-triggering claim exists; PARTIAL requires both cleared VSP claims and non-VSP facts",
+    "Clause 4 logs CLEAR as well as HARM_ADJACENT outcomes",
+    "VSP warning states alone appear in the mini-map"
+  ]
+}

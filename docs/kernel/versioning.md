@@ -18,4 +18,6 @@ Kernel 1.2 applies Change 002, replacing the prose Witness with the CAP-103 flag
 
 Kernel 1.3 applies Change 003, adding the TAG governance and Thematic Index stack and advancing the capsule schema from v3.4 to v3.7. Trigger T3 remains dependency-latent until SCF is introduced.
 
+Kernel 1.4 applies Change 004, flashing CAP-034-VSP-COMPLETE, adding the Clause 4 Directive harm check and VSP_Status recall integrity, and advancing the capsule schema from v3.7 to v3.8. The source specification's v3.6.1 identifier remains recorded as provenance rather than replacing the active schema.
+
 A version is active only after focused and inherited validation pass, its registry is sealed, its compiled boot matches the source modules, and its immutable release snapshot matches the compiled digest.
