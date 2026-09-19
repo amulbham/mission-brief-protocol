@@ -1,0 +1,31 @@
+{
+  "kernel_version": "1.0",
+  "flash_capsule": "CAP-000",
+  "status": "FLASHED",
+  "authority": "CONSTITUTIONAL",
+  "records": [
+    {"id":"GLC","name":"Ground Law of Cognition","tier":"LAW","status":"FLASHED","module":"modules/00-cognitive-physics.md"},
+    {"id":"CI","name":"Continuity Invariant","tier":"LAW","status":"FLASHED","module":"modules/00-cognitive-physics.md"},
+    {"id":"DCL","name":"Dynamic Conservation Law","tier":"LAW","status":"FLASHED","module":"modules/00-cognitive-physics.md"},
+    {"id":"ICL","name":"Intent Conservation Law","tier":"LAW","status":"FLASHED","module":"modules/00-cognitive-physics.md"},
+    {"id":"V","name":"Verification Threshold","tier":"LAW","status":"FLASHED","module":"modules/00-cognitive-physics.md"},
+    {"id":"AXIOMS-I-VIII","name":"Constitutional Axioms","tier":"CONSTITUTIONAL","status":"FLASHED","module":"modules/00-cognitive-physics.md"},
+    {"id":"PHOTO-PRINCIPLE","name":"Photo Principle","tier":"CONSTITUTIONAL","status":"FLASHED","module":"modules/00-cognitive-physics.md"},
+    {"id":"FLASH-SYNC","name":"Flash-Sync","tier":"CORE_SYSTEM","status":"FLASHED","module":"modules/00-cognitive-physics.md"},
+    {"id":"OI-1-5","name":"Output Invariants","tier":"CONSTITUTIONAL","status":"FLASHED","module":"modules/10-output-and-boot.md"},
+    {"id":"CAP-000-CT","name":"Theoretical Root","tier":"CONSTITUTIONAL","status":"FLASHED","module":"modules/10-output-and-boot.md"},
+    {"id":"SE","name":"State Engineering","tier":"PRINCIPLE","status":"FLASHED","module":"modules/10-output-and-boot.md"},
+    {"id":"SOC","name":"Sealed Output Compiler","tier":"CORE_SYSTEM","status":"FLASHED","module":"modules/10-output-and-boot.md"},
+    {"id":"CAP-007-MINIMAP-A002","name":"Mini-Map Enforcement","tier":"CONSTITUTIONAL","status":"FLASHED","module":"modules/10-output-and-boot.md"},
+    {"id":"CAP-000-CS","name":"Capsule Schema","tier":"CONSTITUTIONAL","status":"FLASHED","module":"modules/20-capsule-schema.md"},
+    {"id":"KRONOS","name":"Continuity Agent","tier":"CORE_SYSTEM","status":"FLASHED","module":"modules/30-continuity-and-verification.md"},
+    {"id":"CAP-010-PSAC","name":"Pre-Seal Adversarial Check","tier":"CORE_SYSTEM","status":"FLASHED","module":"modules/30-continuity-and-verification.md"},
+    {"id":"CORE_MANAGER","name":"Core Manager","tier":"CORE_SYSTEM","status":"FLASHED","module":"modules/40-runtime-components.md"},
+    {"id":"RUNN","name":"Runtime Neural Nexus","tier":"CORE_SYSTEM","status":"FLASHED","module":"modules/40-runtime-components.md"},
+    {"id":"CAP-000-RTDT","name":"RUNN Topology Decision Table","tier":"CONSTITUTIONAL","status":"FLASHED","module":"modules/40-runtime-components.md"},
+    {"id":"DEX","name":"Dynamic Execution Router","tier":"CORE_SYSTEM","status":"FLASHED","module":"modules/40-runtime-components.md"},
+    {"id":"VGATE","name":"Verification Gate","tier":"CORE_SYSTEM","status":"FLASHED","module":"modules/40-runtime-components.md"},
+    {"id":"CAP-010-WITNESS","name":"Witness","tier":"CORE_SYSTEM","status":"FLASHED","module":"modules/20-capsule-schema.md"},
+    {"id":"LCM","name":"Local Capsule Mesh","tier":"CORE_SYSTEM","status":"FLASHED","module":"modules/50-relations-tools-and-display.md"}
+  ]
+}

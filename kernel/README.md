@@ -6,20 +6,32 @@ The Kernel Track begins with a faithful Kernel 1.0 baseline and advances through
 
 ## Current state
 
-- Track status: Foundation
-- Version: `0.0.0-foundation`
-- Canonical boot prompt: not yet compiled
-- Next milestone: reconstruct and seal Kernel 1.0
+- Track status: Kernel 1.0 baseline candidate
+- Version: `1.0`
+- Canonical boot prompt: `boot/MBP_KERNEL_BOOT.md`
+- Immutable snapshot: `releases/1.0/MBP_KERNEL_BOOT.md`
+- Baseline change record: `changes/000-kernel-1.0-baseline.md`
+
+## Build and validate
+
+From the repository root:
+
+```sh
+node kernel/scripts/build-kernel.mjs
+node kernel/scripts/validate-kernel.mjs
+```
+
+The build compiles the boot prompt from `modules/manifest.json`. Never edit compiled boot or release files directly.
 
 ## Directory map
 
-- `boot/` - compiled current boot prompt
-- `modules/` - maintainable source sections
-- `schema/` - capsule and protocol schemas
-- `registry/` - invariant and component records
-- `changes/` - approved version deltas
-- `tests/` - conformance and regression evidence
-- `scripts/` - deterministic build and validation tooling
-- `releases/` - immutable version snapshots
+- `boot/` — compiled current boot prompt
+- `modules/` — authoritative maintainable source sections
+- `schema/` — capsule and protocol schemas
+- `registry/` — invariant, source, and component records
+- `changes/` — approved version deltas
+- `tests/` — conformance and regression evidence
+- `scripts/` — deterministic build and validation tooling
+- `releases/` — immutable version snapshots
 
 See `AGENTS.md` for the operating contract and `../docs/kernel/` for explanatory documentation.

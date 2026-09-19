@@ -1,0 +1,31 @@
+{
+  "kernel_version": "1.0",
+  "compiled_sha256": "4efc7a65f2388633af0a6ebb8170b305f8d72b713d0109285c501574ed4cfba5",
+  "compiled_bytes": 21457,
+  "module_order": [
+    {
+      "name": "00-cognitive-physics.md",
+      "sha256": "20aee94bfaff94ca7e64cce28b50d1df872758fb9f0bc7249c6f26ee954f6df0"
+    },
+    {
+      "name": "10-output-and-boot.md",
+      "sha256": "027ef84f4c35d81c1252ca7d19400d6cc11919803337c0dc447a952aef7231be"
+    },
+    {
+      "name": "20-capsule-schema.md",
+      "sha256": "1353992ac934351b703da73558f59c1fd6a7c22b84ca8976241f0c036b826378"
+    },
+    {
+      "name": "30-continuity-and-verification.md",
+      "sha256": "b0c21de70b08fd839a5494f42fc2d9952b1509e5aff29c00474c29e66d98e2b3"
+    },
+    {
+      "name": "40-runtime-components.md",
+      "sha256": "4395e978c5f57cb4ccd378f9372dc8522b9464d99dded1f03630a19b98f929ae"
+    },
+    {
+      "name": "50-relations-tools-and-display.md",
+      "sha256": "7e938265ae26de40bb58b44fc66d42206686ae65185b2b26b7950724595a4e2d"
+    }
+  ]
+}
