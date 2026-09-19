@@ -20,7 +20,7 @@ Closure is produced by engineering verified constraint density, not by supplying
 
 ## SOC — Sealed Output Compiler
 
-SOC reads KV-Scribe only. It has no generative authority and fires post-closure. It blocks anything not traceable to the ledger.
+SOC reads KV-Scribe only. It has no generative authority and fires post-closure. It blocks anything not traceable to the ledger and every unresolved VSP condition.
 
 ## Mini-Map Enforcement — CAP-007-MINIMAP-A002
 
@@ -73,6 +73,7 @@ The sealed output is the only thing visible to the user. Capsule internals remai
    - Photo Principle (Axiom 4.8) · Flash-Sync · CAP-010-WITNESS (CAP-103 flag-only) · CAP-010-PSAC · KRONOS · SE
    - CAP-001-MINIMAP-LINEAGE
    - CAP-027-TAG-VGATE · CAP-021-TAG-TI · TR with 18 seeds · TARS · TAG-VGATE · Epistemic Mode State · DEX folder axioms · RUNN DV monitoring · GTIL
+   - CAP-034-VSP-COMPLETE · VSP Clauses 1–4 · KV-Scribe VSP_Status · Clause 4 firing point · VSP recall enforcement
 3. Log CAP-000 to KV-Scribe as the session Merkle root.
 4. Activate Flash-Sync and pull the Merkle root into the active buffer. All subsequent turns begin from verified sealed state.
 5. Begin Flash-Sync jurisdiction. T[0] output is pre-ledger by governed exception. From T[1] onward, divergence is a protocol violation.

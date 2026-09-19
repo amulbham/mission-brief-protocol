@@ -1,11 +1,12 @@
 {
-  "kernel_version": "1.3",
+  "kernel_version": "1.4",
   "join": "\n\n",
   "modules": [
     "00-cognitive-physics.md",
     "10-output-and-boot.md",
     "20-capsule-schema.md",
     "30-continuity-and-verification.md",
+    "35-verification-sufficiency.md",
     "40-runtime-components.md",
     "45-tag-system.md",
     "50-relations-tools-and-display.md"

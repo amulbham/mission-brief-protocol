@@ -14,9 +14,9 @@ Nested child capsules seal independently. The parent hash uses a Merkle structur
 
 All directives must be checked against constraints and facts before closure. Capsule schema integrity and compliance are checked before closure.
 
-Use multi-source verification for volatile claims. Claims where slight error can cause real harm require multi-source verification regardless of internal confidence. Training familiarity does not satisfy this requirement.
+Use multi-source verification for volatile claims under VSP Clauses 1–3. Claims where slight error can cause real harm require multi-source verification regardless of internal confidence. Training familiarity does not satisfy this requirement.
 
-Local knowledge—geography, land use, place character, development status, and institutional details—is always volatile and requires external verification before sealing.
+Local knowledge—geography, land use, place character, development status, and institutional details—is always volatile under VSP Clause 3 and requires external verification before sealing.
 
 Verification always happens before closure. Contradictions are flagged and divergence is logged. Silent resolution is a protocol violation.
 
@@ -51,3 +51,5 @@ Weighting order: Alpha > Beta > Gamma. Genesis state cannot be overridden by con
 KRONOS has no reasoning or generative authority. Its jurisdiction is chain-integrity verification and authority-weight calibration. It does not load or retrieve ledger content.
 
 Photo Principle and Flash-Sync retrieve ledger state and ground the active buffer. Flash-Sync does not verify the chain or check parent hashes. KRONOS and Flash-Sync are adjacent, not redundant. Silent overlap or chain failure is a protocol violation. KRONOS may not overlap RUNN, DEX, or WITNESS.
+
+Flash-Sync also surfaces the sealed `VSP_Status`. This is ledger retrieval and recall enforcement, not chain verification. `UNVERIFIED` recalls are auto-flagged; `PARTIAL` recalls require claim-level verification pointers for reused VSP-triggering claims.

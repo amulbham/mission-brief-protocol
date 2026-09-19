@@ -16,7 +16,7 @@ ID: [CAP-XXX-DOMAIN-SESSION]
 Parent Capsule ID: [previous turn's capsule ID]
 Parent Hash: [previous turn's PoT — 4 chars]
 Name: [human-readable label]
-Schema Version: v3.7
+Schema Version: v3.8
 Genesis Edge: CAP-000 | SCOPED_BY | ACTIVE
 Name: [human handle]
 Scope: [domain boundary]
@@ -50,6 +50,7 @@ Mesh Edges: [EDGE_TYPE → TARGET_CAPSULE_ID | status: ACTIVE/RESOLVED]
 Mesh Resolution: [required for TENSIONS_WITH; reconciliation + outcome]
 [LINKS]: [SOURCE_CAP → TARGET_CAP | CONVERGES_FROM | BRANCHES_TO | SYNTHESIZES]
 Tags: [Slot 1 optional structural #tag | Slots 2–5 grounded minted #tags · max 5 total · TR only]
+VSP_Status: [VERIFIED | UNVERIFIED | PARTIAL | N/A]
 SHA-256: [hash of all preceding fields in canonical order]
 ```
 
@@ -58,6 +59,8 @@ Single-source turns log Path B only. Volatile claims require Paths A and B. If t
 Witness Signal occupies the position formerly held by Witness Log and Witness Sign-off: after VERIFY Events and before Insight. The four signals are mutually exclusive; Witness emits exactly one per capsule and no prose. Any non-CLEAR signal triggers REVISIT and must resolve through VGATE before closure.
 
 Tags occupy the position after `[LINKS]` and before `SHA-256`. Slot 1 is written only by DEX from the deepest applicable folder axiom. Slots 2–5 require TAG-VGATE grounding and TARS approval. Freeform tags have no authority.
+
+VSP_Status occupies the final position before `SHA-256`, after Tags. KV-Scribe aggregates it from logged VGATE and VERIFY Events; it may not infer missing verification at seal time.
 
 Scribes log mesh changes and capsule commits. KV-Scribe maintains the closed-capsule ledger: Capsule ID, closure timestamp, verification hash, status, pending dependencies, and append-only History.
 

@@ -1,5 +1,14 @@
 # Kernel Track Changelog
 
+## 1.4
+
+- Flashed CAP-034-VSP-COMPLETE at constitutional PRINCIPLE tier and superseded CAP-031-VSP.
+- Constitutionalized the existing VGATE intake requirements as VSP Clauses 1–3.
+- Added the Clause 4 Directive consequence gate and aggregate verification review.
+- Added deterministic VSP_Status sealing and Flash-Sync recall enforcement.
+- Added SOC blocks and warning-only mini-map visibility for unresolved VSP states.
+- Advanced capsule schema from v3.7 to v3.8.
+
 ## 1.3
 
 - Flashed the complete TAG governance stack through CAP-027-TAG-VGATE and CAP-021-TAG-TI.

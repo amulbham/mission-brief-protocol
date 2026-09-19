@@ -65,3 +65,17 @@ Kernel 1.3 adds association without weakening structural semantics:
 DEX writes structural Slot 1. TAG-VGATE grounds minted candidates. TARS governs vocabulary and displacement. RUNN identifies Dynamic Vector candidates only. No component may infer PATH or causal edges from tags.
 
 Persistent epistemic mode is stored as verified session state. Dynamic Vector Trigger T3 remains latent until SCF supplies a verified `SESSION:MIXED` value; Kernel 1.3 does not simulate that dependency.
+
+## Verification sufficiency across time
+
+Kernel 1.4 promotes verification sufficiency from an intake implementation rule to a constitutional principle spanning the full capsule lifecycle:
+
+| Execution point | VSP mechanism | Authority boundary |
+|---|---|---|
+| Intake | Clauses 1–3 through VGATE | Claim thresholds and required paths |
+| Directive | Clause 4 consequence check | Aggregate civic, medical, financial, and legal harm potential |
+| Seal | VSP_Status | Deterministic aggregation immediately before SHA-256 |
+| Recall | Flash-Sync enforcement | Surface prior verification integrity without re-reasoning |
+| Output | SOC precondition | Block unresolved VSP dependencies |
+
+Clause 4 precedes Logic Debugger: consequence safety and reasoning integrity remain separate checks. KRONOS verifies lineage but does not load or interpret VSP_Status.

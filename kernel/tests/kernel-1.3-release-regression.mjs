@@ -1,0 +1,29 @@
+import assert from 'node:assert/strict';
+import { createHash } from 'node:crypto';
+import { readFileSync } from 'node:fs';
+import { dirname, join, resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+const testDir = dirname(fileURLToPath(import.meta.url));
+const kernelRoot = resolve(testDir, '..');
+const read = path => readFileSync(join(kernelRoot, path), 'utf8');
+const boot = read('releases/1.3/MBP_KERNEL_BOOT.md');
+const manifest = JSON.parse(read('releases/1.3/manifest.json'));
+const digest = value => createHash('sha256').update(value).digest('hex');
+
+let passed = 0;
+const check = (condition, message) => {
+  assert.ok(condition, message);
+  passed += 1;
+};
+
+check(manifest.kernel_version === '1.3', 'Kernel 1.3 release version changed');
+check(manifest.compiled_sha256 === 'a799923270e2bced903677e8f79ccf77df33da12a4da93508c14dad9ddd39bf4', 'Kernel 1.3 manifest digest changed');
+check(digest(boot) === manifest.compiled_sha256, 'Kernel 1.3 release bytes changed');
+check(boot.includes('TAG System, TARS, TAG-VGATE, and Thematic Index'), 'TAG stack missing from Kernel 1.3 release');
+check(boot.includes('Schema Version: v3.7'), 'Kernel 1.3 schema version changed');
+check(boot.includes('Tags: [Slot 1 optional structural'), 'Tags field missing from Kernel 1.3');
+check(!boot.includes('VSP_Status:'), 'VSP_Status leaked backward into Kernel 1.3');
+check(!boot.includes('CAP-034-VSP-COMPLETE'), 'VSP flash leaked backward into Kernel 1.3');
+
+process.stdout.write(`Kernel 1.3 inherited regression: ${passed}/${passed} PASS\n`);

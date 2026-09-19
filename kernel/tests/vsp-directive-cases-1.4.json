@@ -1,0 +1,16 @@
+{
+  "directive_cases": [
+    {"id":"neutral-summary","harm_adjacent":false,"aggregate_verified":false,"expected":"CLEAR"},
+    {"id":"corona-transit-restructure","harm_adjacent":true,"aggregate_verified":false,"expected":"PENDING_EXTERNAL"},
+    {"id":"medication-guidance-verified","harm_adjacent":true,"aggregate_verified":true,"expected":"RESOLVED"},
+    {"id":"contract-rights-missing-path-b","harm_adjacent":true,"aggregate_verified":false,"expected":"PENDING_EXTERNAL"},
+    {"id":"organizational-budget-verified","harm_adjacent":true,"aggregate_verified":true,"expected":"RESOLVED"}
+  ],
+  "recall_cases": [
+    {"id":"verified-recall","status":"VERIFIED","claim_pointer":false,"expected":"CLEAN"},
+    {"id":"unverified-recall","status":"UNVERIFIED","claim_pointer":true,"expected":"FLAG"},
+    {"id":"partial-with-pointer","status":"PARTIAL","claim_pointer":true,"expected":"CLEAN"},
+    {"id":"partial-missing-pointer","status":"PARTIAL","claim_pointer":false,"expected":"FLAG"},
+    {"id":"not-applicable-recall","status":"N/A","claim_pointer":false,"expected":"CLEAN"}
+  ]
+}

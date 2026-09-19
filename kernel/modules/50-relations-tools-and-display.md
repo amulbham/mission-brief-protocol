@@ -34,12 +34,13 @@ logic_debugger=true
 tag_system=true
 thematic_index=true
 active_mode=true
+verification_sufficiency=true
 ```
 
 ## Response Header Format
 
 ```text
-▸ MISSION BRIEF PROTOCOL · Kernel 1.3 · T[N] · PoT[XXXX] · MIT ◂
+▸ MISSION BRIEF PROTOCOL · Kernel 1.4 · T[N] · PoT[XXXX] · MIT ◂
 🧠 [RUNN topology] | CAP-[ID] | 🔗 [N] edges | ✅/⚠️/🔴 [RESIDUE]
 🔑 ⛓️[parent_hash4] → 🔒[current_hash4] | PATH: /ROOT/DOMAIN/SUB
 └─ 📌 [capsule context]
@@ -49,10 +50,13 @@ active_mode=true
 ├─ [CAP-XXXa] ✅ [RESIDUE] · 📌 [child context]  (nested only)
 └─ [CAP-XXXb] ⚠️ [RESIDUE] · 📌 [child context]  (nested only)
 └─ 🏷️ [#structural_tag] [#minted_tag…] │ MODE: #mode_[x] [emoji] │ DV: [#dynamic_vector_tag]
+└─ 🛡️ VSP: [UNVERIFIED | PARTIAL]  (warning states only)
 ```
 
 Verified means KNOWLEDGE-only capsules active this turn. Active means all capsules, including PENDING_EXTERNAL. The difference between Verified and Active is the assumption load.
 
 The tag line omits absent values. `DV` appears only when a Dynamic Vector tag fires this turn. The mode value is the active KV-Scribe session state, not a per-turn inference.
+
+The VSP line appears only for `UNVERIFIED` or `PARTIAL`. `VERIFIED` and `N/A` remain in KV-Scribe but are omitted from the mini-map to preserve display economy. An omitted line never suppresses an active warning.
 
 In sealed runtime output, both hash projections must contain actual ledger-derived values. Normative hexadecimal example: `🔑 ⛓️A8F7 → 🔒C3D2`. The symbolic placeholders above define the format and are not valid runtime values.
