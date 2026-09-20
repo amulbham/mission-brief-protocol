@@ -2,13 +2,7 @@
 
 Capsules in the same domain declare typed edges to siblings.
 
-Valid edge types in Kernel 1.0:
-
-- DEPENDS_ON
-- TENSIONS_WITH
-- SUPERSEDES
-- VALIDATES
-- SCOPED_BY
+Valid relation types are governed by CAP-011-RKI: `DEPENDS_ON`, `SCOPED_BY`, `VALIDATES`, `SUPERSEDES`, `TENSIONS_WITH`, `BRANCHES_TO`, `CONVERGES_FROM`, `SYNTHESIZES`, and `WEAKENS`. Every relation passes VGATE-R before entry.
 
 `TENSIONS_WITH` triggers a Mesh Resolution Event. Both capsules must log reconciliation before either seals. Outcomes are `RECONCILED`, `FORK`, or `ONE_SUPERSEDES_OTHER`. Silent sibling tension is a protocol violation. KV-Scribe tracks active edges in its Mesh column.
 
@@ -36,13 +30,15 @@ thematic_index=true
 active_mode=true
 verification_sufficiency=true
 session_context_field=true
+relational_knowledge=true
+vgate_r=true
 ```
 
 ## Response Header Format
 
 ```text
-▸ MISSION BRIEF PROTOCOL · Kernel 1.5 · T[N] · PoT[XXXX] · MIT ◂
-🧠 [RUNN topology] | CAP-[ID] | 🔗 [N] edges | ✅/⚠️/🔴 [RESIDUE]
+▸ MISSION BRIEF PROTOCOL · Kernel 1.6 · T[N] · PoT[XXXX] · MIT ◂
+🧠 [RUNN topology] | CAP-[ID] | 🔗 [N] typed edges | ✅/⚠️/🔴 [RESIDUE]
 🔑 ⛓️[parent_hash4] → 🔒[current_hash4] | PATH: /ROOT/DOMAIN/SUB
 └─ 📌 [capsule context]
 └─ 🔎 VERIFIED: [claim] — [source] ✅  (only when fired)
@@ -53,6 +49,7 @@ session_context_field=true
 └─ 🏷️ [#structural_tag] [#minted_tag…] │ MODE: #mode_[x] [emoji] │ DV: [#dynamic_vector_tag]
 └─ 📋 T[N] · CAP-[N] of [total_at_entry] · SESSION: [character] · Thread: [≤80 chars] · [TRANSITION only when fired]
 └─ 🛡️ VSP: [UNVERIFIED | PARTIAL]  (warning states only)
+└─ 🔗 VGATE-R: [BLOCK | DEFER | VOLATILE | FLAG | UNCLASSIFIED] · [relation]  (warning states only)
 ```
 
 Verified means KNOWLEDGE-only capsules active this turn. Active means all capsules, including PENDING_EXTERNAL. The difference between Verified and Active is the assumption load.
@@ -62,5 +59,7 @@ The tag line omits absent values. `DV` appears only when a Dynamic Vector tag fi
 The SCF line is mandatory during Kernel 1.5 monitoring. Its transition segment appears only when the mode changed at the current causal entry. Every value is copied from the sealed causal-entry snapshot; the display performs no derivation.
 
 The VSP line appears only for `UNVERIFIED` or `PARTIAL`. `VERIFIED` and `N/A` remain in KV-Scribe but are omitted from the mini-map to preserve display economy. An omitted line never suppresses an active warning.
+
+The VGATE-R line appears only for a non-PASS relation event requiring attention. Clean typed relations remain represented by the header count and canonical capsule fields.
 
 In sealed runtime output, both hash projections must contain actual ledger-derived values. Normative hexadecimal example: `🔑 ⛓️A8F7 → 🔒C3D2`. The symbolic placeholders above define the format and are not valid runtime values.

@@ -1,0 +1,18 @@
+{
+  "intake_cases": [
+    {"id":"local-valid","phase":"declaration","type":"DEPENDS_ON","ambiguous":false,"external":false,"compressed":false,"preserved":true,"expected":"PASS"},
+    {"id":"missing-type","phase":"declaration","type":null,"ambiguous":false,"external":false,"compressed":false,"preserved":false,"expected":"BLOCK"},
+    {"id":"ambiguous-valid-types","phase":"declaration","type":"VALIDATES","ambiguous":true,"external":false,"compressed":false,"preserved":true,"expected":"DEFER"},
+    {"id":"external-typed","phase":"declaration","type":"SCOPED_BY","ambiguous":false,"external":true,"compressed":false,"preserved":true,"expected":"VOLATILE"},
+    {"id":"compressed-preserved","phase":"survival","type":"SUPERSEDES","ambiguous":false,"external":false,"compressed":true,"preserved":true,"expected":"VERIFY"},
+    {"id":"compressed-collapsed","phase":"survival","type":"WEAKENS","ambiguous":false,"external":false,"compressed":true,"preserved":false,"expected":"FLAG"},
+    {"id":"unknown-type","phase":"declaration","type":"RELATED_TO","ambiguous":false,"external":false,"compressed":false,"preserved":true,"expected":"UNCLASSIFIED"},
+    {"id":"untyped-inference","phase":"inference","type":null,"ambiguous":false,"external":false,"compressed":false,"preserved":false,"expected":"FLAG"}
+  ],
+  "soc_cases": [
+    {"id":"typed-path","typed":true,"collapsed":false,"tension_resolved":true,"expected":"COMPILE"},
+    {"id":"untyped-path","typed":false,"collapsed":false,"tension_resolved":true,"expected":"BLOCK"},
+    {"id":"collapsed-path","typed":true,"collapsed":true,"tension_resolved":true,"expected":"BLOCK"},
+    {"id":"open-tension","typed":true,"collapsed":false,"tension_resolved":false,"expected":"BLOCK"}
+  ]
+}

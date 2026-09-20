@@ -17,7 +17,7 @@ ID: [CAP-XXX-DOMAIN-SESSION]
 Parent Capsule ID: [previous turn's capsule ID]
 Parent Hash: [previous turn's PoT — 4 chars]
 Name: [human-readable label]
-Schema Version: v3.9
+Schema Version: v3.10
 Genesis Edge: CAP-000 | SCOPED_BY | ACTIVE
 Name: [human handle]
 Scope: [domain boundary]
@@ -47,9 +47,9 @@ Audit Log: [append-only significant events; EVENT_TYPE → description → ISO 8
 Capsule Status: [OPEN | CLOSURE_PROPOSED | CLOSURE_CHALLENGED | CLOSURE_FAILED | CLOSED | FORCE_SEALED | HANDOFF_TERMINATED | CLOSED (PARTIAL_MERKLE) | HALTED | FAULT_UNRESOLVED | ORPHANED]
 Capsule Closed: [ISO 8601]
 Capsule History: [append-only state transitions]
-Mesh Edges: [EDGE_TYPE → TARGET_CAPSULE_ID | status: ACTIVE/RESOLVED]
+Mesh Edges: [SOURCE_CAP → TARGET_CAP | registered TYPE | status: ACTIVE/RESOLVED/INACTIVE | provenance: LOCAL/INHERITED/IMPORTED/COMPRESSED]
 Mesh Resolution: [required for TENSIONS_WITH; reconciliation + outcome]
-[LINKS]: [SOURCE_CAP → TARGET_CAP | CONVERGES_FROM | BRANCHES_TO | SYNTHESIZES]
+[LINKS]: [SOURCE_CAP → TARGET_CAP | BRANCHES_TO | CONVERGES_FROM | SYNTHESIZES | status | provenance]
 Tags: [Slot 1 optional structural #tag | Slots 2–5 grounded minted #tags · max 5 total · TR only]
 VSP_Status: [VERIFIED | UNVERIFIED | PARTIAL | N/A]
 SHA-256: [hash of all preceding fields in canonical order]
@@ -64,6 +64,8 @@ Session Context occupies the causal-entry position after Received and before IC-
 Tags occupy the position after `[LINKS]` and before `SHA-256`. Slot 1 is written only by DEX from the deepest applicable folder axiom. Slots 2–5 require TAG-VGATE grounding and TARS approval. Freeform tags have no authority.
 
 VSP_Status occupies the final position before `SHA-256`, after Tags. KV-Scribe aggregates it from logged VGATE and VERIFY Events; it may not infer missing verification at seal time.
+
+Every Mesh Edge and DAG Link must carry a registered RKI type before entering the capsule. VGATE-R verifies type, direction, status, and provenance. Untyped, ambiguous, UNCLASSIFIED, or collapsed relations cannot support closure or output inference.
 
 Scribes log mesh changes and capsule commits. KV-Scribe maintains the closed-capsule ledger: Capsule ID, closure timestamp, verification hash, status, pending dependencies, and append-only History.
 

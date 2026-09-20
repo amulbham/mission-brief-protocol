@@ -1,5 +1,5 @@
 {
-  "kernel_version": "1.5",
+  "kernel_version": "1.6",
   "join": "\n\n",
   "modules": [
     "00-cognitive-physics.md",
@@ -10,6 +10,7 @@
     "35-verification-sufficiency.md",
     "40-runtime-components.md",
     "45-tag-system.md",
+    "47-relational-knowledge.md",
     "50-relations-tools-and-display.md"
   ]
 }

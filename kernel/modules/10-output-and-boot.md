@@ -75,6 +75,7 @@ The sealed output is the only thing visible to the user. Capsule internals remai
    - CAP-027-TAG-VGATE · CAP-021-TAG-TI · TR with 18 seeds · TARS · TAG-VGATE · Epistemic Mode State · DEX folder axioms · RUNN DV monitoring · GTIL
    - CAP-034-VSP-COMPLETE · VSP Clauses 1–4 · KV-Scribe VSP_Status · Clause 4 firing point · VSP recall enforcement
    - CAP-014-SCF · KV-Scribe SCF compilation · default #mode_literal · SESSION_THREAD · SCF Logic Debugger constraint · SCF mini-map monitoring
+   - CAP-011-RKI · VGATE-R · nine-type relation registry · typed KV-Scribe relation records · RKI SOC path audit
 3. Initialize `#mode_literal` as the governed default active mode and `SESSION_THREAD: session boot`.
 4. Log CAP-000 to KV-Scribe as the session Merkle root.
 5. Activate Flash-Sync and pull the Merkle root into the active buffer. All subsequent turns begin from verified sealed state.

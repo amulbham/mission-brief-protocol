@@ -96,3 +96,21 @@ Flash-Sync → SCF → KRONOS → IC-Node
 | IC-Node | Current causal entry | Resolved intent | Treat SCF as evidence |
 
 SCF is immutable within the capsule once compiled. Its count is an entry snapshot, and its thread is copied from verified ledger metadata rather than generated from conversation prose. CAP-014-SCF also satisfies the dependency that activates TAG Dynamic Vector Trigger T3.
+
+## Relational semantics
+
+Kernel 1.6 treats relationship type as part of knowledge state:
+
+```text
+Ω(K,E) ≠ Ω(K,E') when E' degrades relation types while K remains fixed
+```
+
+| Layer | Responsibility |
+|---|---|
+| RKI | Constitutional law requiring relational semantic preservation |
+| VGATE-R | Intake and survival checks for every declared, inherited, imported, or compressed relation |
+| Relation registry | Nine valid types with stable semantics |
+| KV-Scribe | Canonical direction, type, status, provenance, and append-only history |
+| SOC | Blocks output inference over untyped, collapsed, or unresolved relations |
+
+Mesh Edges and DAG Links remain distinct containers. `CONVERGES_FROM` preserves independent arrival paths; `SYNTHESIZES` records explicit integration into a composite. Future JIT pruning must preserve type, direction, status, and provenance, but Kernel 1.6 does not yet activate JIT.

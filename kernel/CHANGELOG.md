@@ -1,5 +1,14 @@
 # Kernel Track Changelog
 
+## 1.6
+
+- Flashed CAP-011-RKI as an irreducible relational LAW and added VGATE-R.
+- Added a nine-type semantic registry with direction, status, and provenance preservation.
+- Retained SYNTHESIZES from the active DAG schema and distinguished it from CONVERGES_FROM.
+- Added SOC relational path blocking and compression-survival verification.
+- Defined the RKI contract future JIT pruning must obey without activating JIT.
+- Advanced capsule schema from v3.9 to v3.10.
+
 ## 1.5
 
 - Flashed CAP-014-SCF and added the KV-Scribe-only Session Context field before IC-Node.
