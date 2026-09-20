@@ -161,12 +161,16 @@ Kernel 1.9 candidate work separates boot delivery from kernel semantics:
 | FULL | Complete registered Kernel 1.9 source set | Direct CAP-000 closure and `KERNEL_READY` |
 | SLIM | Constitution, loader, and Stage B verification algorithm | `BOOTSTRAP_READY` only |
 | GUIDE | No standalone authority; operational source supplement | Enters active state only after SLIM verifies its bound digest and coverage |
+| PROJECT | Character-bounded complete enforcement surface for persistent Project Instructions | Direct CAP-000 closure and `KERNEL_READY` |
+| PROJECT_REFERENCE | Optional generated elaboration of already-flashed PROJECT systems | No activation authority |
 
-The profile registry controls membership and order. The builder compiles GUIDE first, binds its SHA-256 into SLIM, compiles FULL, and then writes the candidate manifest. The manifest proves 47 source atoms across the equivalence boundary:
+The profile registry controls membership and order. The builder compiles GUIDE first, binds its SHA-256 into SLIM, compiles FULL, and then writes the candidate manifest. The manifest currently proves 48 source atoms across the equivalence boundary:
 
 ```text
 COVERAGE(SLIM ∪ GUIDE) = COVERAGE(FULL)
 ```
+
+PROJECT uses a second, explicit proof surface: its compiled prompt must remain below 8,000 characters and contain every registered core component. Unlike SLIM, PROJECT is not a bootstrap fragment and does not depend on its reference file for readiness. PROJECT_REFERENCE is generated from authoritative modules and may clarify those components, but it cannot flash new authority or replace a compact core rule.
 
 Candidate artifacts remain outside the current release boundary. Kernel 1.8 stays active until the Kernel 1.9 release gate promotes validated artifacts and flashes CAP-142-BPC.
 

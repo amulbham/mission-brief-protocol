@@ -7,6 +7,12 @@
     "baseline_commit": "a55fe162c38ad4f46da7763e7b565a9ad9af18aa",
     "approved_at": "2026-09-20"
   },
+  "approved_supplement": {
+    "title": "Character-Bounded Project Profile",
+    "integration_record": "changes/012-project-profile.md",
+    "authority": "APPROVED_PROJECT_DELIVERY_DELTA",
+    "approved_at": "2026-09-20"
+  },
   "profile_registry": "registry/boot-profiles-1.9.json",
   "activation_boundary": "Kernel 1.9 validated release merge",
   "reconciliations": [
@@ -15,6 +21,9 @@
     "SLIM can emit BOOTSTRAP_READY but cannot emit KERNEL_READY before GUIDE verification",
     "GUIDE is normative compiled output but has no standalone boot authority",
     "Candidate artifacts live under boot/candidates/1.9 until release promotion",
-    "Prompt format 1.0 removes historical source H1 presentation while retaining semantic prose and recording source plus compiled fragment digests"
+    "Prompt format 1.1 removes historical source H1 presentation while retaining semantic prose and recording source plus compiled fragment digests",
+    "PROJECT is a character-bounded direct-activation profile sourced from modules/13-project-kernel.md",
+    "PROJECT_REFERENCE is optional elaboration and has no standalone or boot authority",
+    "FULL and SLIM plus GUIDE retain their existing activation and coverage contracts"
   ]
 }

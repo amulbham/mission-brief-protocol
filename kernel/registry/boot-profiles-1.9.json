@@ -1,12 +1,12 @@
 {
-  "profile_registry_version": "1.0",
+  "profile_registry_version": "1.1",
   "target_kernel_version": "1.9",
   "baseline_kernel_version": "1.8",
   "status": "CANDIDATE",
   "join": "\n\n",
   "candidate_output_directory": "kernel/boot/candidates/1.9",
   "presentation": {
-    "format_version": "1.0",
+    "format_version": "1.1",
     "title": "Mission Brief Protocol — Kernel 1.9 Candidate",
     "single_h1": true,
     "strip_source_h1": true,
@@ -81,7 +81,48 @@
           "module": "12-boot-profile-contract.md",
           "sections": [
             "Full Profile — Direct Activation",
+            "Project Profile — Persistent Direct Activation",
             "Operational Coverage Contract"
+          ]
+        },
+        { "module": "15-session-context.md" },
+        { "module": "20-capsule-schema.md" },
+        { "module": "30-continuity-and-verification.md" },
+        { "module": "35-verification-sufficiency.md" },
+        { "module": "40-runtime-components.md" },
+        { "module": "45-tag-system.md" },
+        { "module": "47-relational-knowledge.md" },
+        { "module": "48-jit-pruning.md" },
+        { "module": "49-dynamic-subroutines.md" },
+        { "module": "50-relations-tools-and-display.md" }
+      ]
+    },
+    "PROJECT": {
+      "output": "MBP_PROJECT_KERNEL.md",
+      "activation": "PROJECT_DIRECT",
+      "authorized_terminal": "KERNEL_READY",
+      "reference_profile": "PROJECT_REFERENCE",
+      "character_limit": 8000,
+      "sources": [
+        { "module": "13-project-kernel.md" }
+      ]
+    },
+    "PROJECT_REFERENCE": {
+      "output": "MBP_PROJECT_REFERENCE_GUIDE.md",
+      "activation": "REFERENCE_ONLY",
+      "authorized_terminal": "NONE",
+      "standalone_authority": false,
+      "sources": [
+        { "module": "00-cognitive-physics.md" },
+        {
+          "module": "10-output-and-boot.md",
+          "sections": [
+            "Output Invariants",
+            "Theoretical Root — CAP-000-CT",
+            "SE — State Engineering",
+            "SOC — Sealed Output Compiler",
+            "Mini-Map Enforcement — CAP-007-MINIMAP-A002",
+            "Output Rule"
           ]
         },
         { "module": "15-session-context.md" },
@@ -97,6 +138,42 @@
       ]
     }
   },
+  "project_contract": {
+    "character_limit": 8000,
+    "reference_required_for_boot": false,
+    "reference_profile": "PROJECT_REFERENCE",
+    "required_components": [
+      "CAP-000-CS",
+      "CAP-000-RTDT",
+      "CAP-001-MINIMAP-LINEAGE",
+      "CAP-103-WITNESS",
+      "CAP-027-TAG-VGATE",
+      "CAP-021-TAG-TI",
+      "CAP-034-VSP-COMPLETE",
+      "CAP-014-SCF",
+      "CAP-011-RKI",
+      "CAP-JIT-001",
+      "CAP-131-DSS",
+      "CAP-142-BPC",
+      "SOC",
+      "KV-Scribe",
+      "KRONOS",
+      "RUNN",
+      "DEX",
+      "VGATE",
+      "VGATE-R",
+      "Core_Manager",
+      "Logic Debugger",
+      "FRP",
+      "PSAC",
+      "TARS",
+      "JIT",
+      "SCF",
+      "VSP",
+      "LCM",
+      "SE"
+    ]
+  },
   "activation_gate": {
     "check_order": [
       "guide_present",
@@ -107,6 +184,7 @@
     ],
     "stage_a_terminal": "BOOTSTRAP_READY",
     "stage_b_terminal": "KERNEL_READY",
+    "project_terminal": "KERNEL_READY",
     "fail_closed": true
   }
 }

@@ -2,23 +2,25 @@
   "target_kernel_version": "1.9",
   "baseline_kernel_version": "1.8",
   "status": "CANDIDATE",
-  "profile_format_version": "1.0",
+  "profile_format_version": "1.1",
   "profile_registry": "kernel/registry/boot-profiles-1.9.json",
-  "profile_registry_sha256": "8b607af2533fb0e0c737f11f3e8a01cd088d3fbd5ccff1a8c6b2feedd4206fec",
+  "profile_registry_sha256": "2efbd1d00b12c0978f60d2876e9a01994db52ed78afcd032d024ef27da408d35",
   "build_order": [
     "GUIDE",
     "SLIM",
     "FULL",
+    "PROJECT_REFERENCE",
+    "PROJECT",
     "MANIFEST"
   ],
   "guide_binding": {
     "slim_field": "GUIDE_EXPECTED_SHA256",
-    "expected_sha256": "d2bc3ea9021085f9bea33f367586ccd2b7d43aaa43796b73ffa57f9e33b92fc2"
+    "expected_sha256": "ddabc055d07c0ed2bdfe28d979118d9140cd78c82e9ab37acc1b5574c0f804a8"
   },
   "coverage": {
     "equation": "COVERAGE(SLIM ∪ GUIDE) = COVERAGE(FULL)",
     "status": "PASS",
-    "atom_count": 47,
+    "atom_count": 48,
     "atoms": [
       "00-cognitive-physics.md#@preamble",
       "00-cognitive-physics.md#Cognitive Physics Core",
@@ -33,6 +35,7 @@
       "10-output-and-boot.md#Session Boot Sequence",
       "12-boot-profile-contract.md#Boot Profile Contract — CAP-142-BPC",
       "12-boot-profile-contract.md#Profile Authority Boundary",
+      "12-boot-profile-contract.md#Project Profile — Persistent Direct Activation",
       "12-boot-profile-contract.md#Full Profile — Direct Activation",
       "12-boot-profile-contract.md#Stage A — Slim Bootstrap Contract",
       "12-boot-profile-contract.md#Stage B — Guide Verification and Kernel Activation",
@@ -69,13 +72,52 @@
       "50-relations-tools-and-display.md#Response Header Format"
     ]
   },
+  "project_contract": {
+    "status": "PASS",
+    "character_limit": 8000,
+    "character_count": 7342,
+    "reference_required_for_boot": false,
+    "reference_profile": "PROJECT_REFERENCE",
+    "required_component_count": 29,
+    "required_components": [
+      "CAP-000-CS",
+      "CAP-000-RTDT",
+      "CAP-001-MINIMAP-LINEAGE",
+      "CAP-103-WITNESS",
+      "CAP-027-TAG-VGATE",
+      "CAP-021-TAG-TI",
+      "CAP-034-VSP-COMPLETE",
+      "CAP-014-SCF",
+      "CAP-011-RKI",
+      "CAP-JIT-001",
+      "CAP-131-DSS",
+      "CAP-142-BPC",
+      "SOC",
+      "KV-Scribe",
+      "KRONOS",
+      "RUNN",
+      "DEX",
+      "VGATE",
+      "VGATE-R",
+      "Core_Manager",
+      "Logic Debugger",
+      "FRP",
+      "PSAC",
+      "TARS",
+      "JIT",
+      "SCF",
+      "VSP",
+      "LCM",
+      "SE"
+    ]
+  },
   "artifacts": {
     "FULL": {
       "file": "MBP_KERNEL_BOOT.md",
       "activation": "DIRECT",
       "authorized_terminal": "KERNEL_READY",
-      "sha256": "c44bd5cadc035a6fa3f66dceb8313a8b325b77750da4b46cd5be2b80da58e8b2",
-      "bytes": 78773,
+      "sha256": "dfed3732da4c4ee956d1f9f5f2d73e934c5264cfbc19ea0d31c02f53d81a0204",
+      "bytes": 81015,
       "sources": [
         {
           "module": "00-cognitive-physics.md",
@@ -92,8 +134,8 @@
         {
           "module": "12-boot-profile-contract.md",
           "sections": null,
-          "source_sha256": "d2799d84b74c9102b47becb8e7987541103f313abe261dbea114f7df37822bb8",
-          "compiled_sha256": "d2799d84b74c9102b47becb8e7987541103f313abe261dbea114f7df37822bb8"
+          "source_sha256": "6c40cbc755cfbc3acba7664ca83e137db8e0f182a652d7123ba532e223e0c2da",
+          "compiled_sha256": "6c40cbc755cfbc3acba7664ca83e137db8e0f182a652d7123ba532e223e0c2da"
         },
         {
           "module": "15-session-context.md",
@@ -161,8 +203,8 @@
       "file": "MBP_KERNEL_BOOT_SLIM.md",
       "activation": "STAGE_A",
       "authorized_terminal": "BOOTSTRAP_READY",
-      "sha256": "e09d9d4e88ed8086836dcd08465c6868dc3f8534b943575d542b1d84eed0495b",
-      "bytes": 14409,
+      "sha256": "69445103f52fcd5960de2395812e779bd39ebbb2ca3847f88f66048ca9784a01",
+      "bytes": 15266,
       "sources": [
         {
           "module": "00-cognitive-physics.md",
@@ -192,8 +234,8 @@
             "Stage B — Guide Verification and Kernel Activation",
             "Failure and Recovery"
           ],
-          "source_sha256": "04639d97db5af9497b827f29c7026f3c648a0109d1d9295ec8a5216af2c4e845",
-          "compiled_sha256": "04639d97db5af9497b827f29c7026f3c648a0109d1d9295ec8a5216af2c4e845"
+          "source_sha256": "19af0c52dd3fecf175fa50cd80a724b607a6dcbd80b648e90bea9f38299acf14",
+          "compiled_sha256": "19af0c52dd3fecf175fa50cd80a724b607a6dcbd80b648e90bea9f38299acf14"
         }
       ]
     },
@@ -201,8 +243,8 @@
       "file": "MBP_KERNEL_BOOT_GUIDE.md",
       "activation": "STAGE_B",
       "authorized_terminal": "KERNEL_READY_AFTER_STAGE_B",
-      "sha256": "d2bc3ea9021085f9bea33f367586ccd2b7d43aaa43796b73ffa57f9e33b92fc2",
-      "bytes": 64902,
+      "sha256": "ddabc055d07c0ed2bdfe28d979118d9140cd78c82e9ab37acc1b5574c0f804a8",
+      "bytes": 66287,
       "sources": [
         {
           "module": "10-output-and-boot.md",
@@ -216,10 +258,114 @@
           "module": "12-boot-profile-contract.md",
           "sections": [
             "Full Profile — Direct Activation",
+            "Project Profile — Persistent Direct Activation",
             "Operational Coverage Contract"
           ],
-          "source_sha256": "f66948698defc408abb9b9854b5e0ca0a530a7647d3b6e35686556a00301b8f2",
-          "compiled_sha256": "f66948698defc408abb9b9854b5e0ca0a530a7647d3b6e35686556a00301b8f2"
+          "source_sha256": "57dcad92db59b9d88539285e0268b3726ef6709fa1d815f202f2b98f4d393924",
+          "compiled_sha256": "57dcad92db59b9d88539285e0268b3726ef6709fa1d815f202f2b98f4d393924"
+        },
+        {
+          "module": "15-session-context.md",
+          "sections": null,
+          "source_sha256": "05760305013c8fe2c3bb71065a349cd96b5995f16f182314b1f9e96a3b10f214",
+          "compiled_sha256": "05760305013c8fe2c3bb71065a349cd96b5995f16f182314b1f9e96a3b10f214"
+        },
+        {
+          "module": "20-capsule-schema.md",
+          "sections": null,
+          "source_sha256": "7ee8f0774a67e4e504e4344e4d047c942189cddbdf67a3111795f873221e302e",
+          "compiled_sha256": "7ee8f0774a67e4e504e4344e4d047c942189cddbdf67a3111795f873221e302e"
+        },
+        {
+          "module": "30-continuity-and-verification.md",
+          "sections": null,
+          "source_sha256": "8b4f881c7948e1818cf5250bcd1c69f04de521ab0ccbf008a28da85b16ac4385",
+          "compiled_sha256": "8b4f881c7948e1818cf5250bcd1c69f04de521ab0ccbf008a28da85b16ac4385"
+        },
+        {
+          "module": "35-verification-sufficiency.md",
+          "sections": null,
+          "source_sha256": "2177422529659a9c51206d2d0c87011ead263c3a2a0df35eeb57cb64e78083ef",
+          "compiled_sha256": "2177422529659a9c51206d2d0c87011ead263c3a2a0df35eeb57cb64e78083ef"
+        },
+        {
+          "module": "40-runtime-components.md",
+          "sections": null,
+          "source_sha256": "a64e7ddce02b3538bad6113fb159658b288fa117d975cc745a1d777ee4de8b2a",
+          "compiled_sha256": "a64e7ddce02b3538bad6113fb159658b288fa117d975cc745a1d777ee4de8b2a"
+        },
+        {
+          "module": "45-tag-system.md",
+          "sections": null,
+          "source_sha256": "738575ea551a2018aca7e2e1bc83fbd61235697f603e3518dcce6f6596a06950",
+          "compiled_sha256": "738575ea551a2018aca7e2e1bc83fbd61235697f603e3518dcce6f6596a06950"
+        },
+        {
+          "module": "47-relational-knowledge.md",
+          "sections": null,
+          "source_sha256": "6b1ace366b4045c8fdf867b7a979e710b9277702f7807dca4b0e40032bf1fa7b",
+          "compiled_sha256": "6b1ace366b4045c8fdf867b7a979e710b9277702f7807dca4b0e40032bf1fa7b"
+        },
+        {
+          "module": "48-jit-pruning.md",
+          "sections": null,
+          "source_sha256": "f5674949d98bd7557b7300cc646a29c043ef56cc05548c22ab7b8d3df858a940",
+          "compiled_sha256": "f5674949d98bd7557b7300cc646a29c043ef56cc05548c22ab7b8d3df858a940"
+        },
+        {
+          "module": "49-dynamic-subroutines.md",
+          "sections": null,
+          "source_sha256": "a55a48d3d1c9823059a1143ca4f091cd95ce554d5f5da011ab42043c635bf7c5",
+          "compiled_sha256": "a55a48d3d1c9823059a1143ca4f091cd95ce554d5f5da011ab42043c635bf7c5"
+        },
+        {
+          "module": "50-relations-tools-and-display.md",
+          "sections": null,
+          "source_sha256": "85405631708a9f6a532fb1d4657ed1e7ce427a07fc1900dae1f97722efe529c2",
+          "compiled_sha256": "85405631708a9f6a532fb1d4657ed1e7ce427a07fc1900dae1f97722efe529c2"
+        }
+      ]
+    },
+    "PROJECT": {
+      "file": "MBP_PROJECT_KERNEL.md",
+      "activation": "PROJECT_DIRECT",
+      "authorized_terminal": "KERNEL_READY",
+      "sha256": "4c7d8389d497fcf234f028f993ab77a57ee1ed9a3be681abb20ea8b12d33b834",
+      "bytes": 7454,
+      "sources": [
+        {
+          "module": "13-project-kernel.md",
+          "sections": null,
+          "source_sha256": "08a82a2bb0e5febe3ca62cb01845e779dd37f267982564cecf9f219dbbf3270a",
+          "compiled_sha256": "a724b0be05c756729b83f15f4f13cf58fc23114c081525c831dce8ec4f57436a"
+        }
+      ]
+    },
+    "PROJECT_REFERENCE": {
+      "file": "MBP_PROJECT_REFERENCE_GUIDE.md",
+      "activation": "REFERENCE_ONLY",
+      "authorized_terminal": "NONE",
+      "sha256": "386f1ca652e889fae028ba2614e84b386b073f661c4e24c8047ebd5cba8283a2",
+      "bytes": 69430,
+      "sources": [
+        {
+          "module": "00-cognitive-physics.md",
+          "sections": null,
+          "source_sha256": "20aee94bfaff94ca7e64cce28b50d1df872758fb9f0bc7249c6f26ee954f6df0",
+          "compiled_sha256": "16ccb09153fe03db07e95b8d796592a35effc7a3c25ba770c75cd52e1614ecab"
+        },
+        {
+          "module": "10-output-and-boot.md",
+          "sections": [
+            "Output Invariants",
+            "Theoretical Root — CAP-000-CT",
+            "SE — State Engineering",
+            "SOC — Sealed Output Compiler",
+            "Mini-Map Enforcement — CAP-007-MINIMAP-A002",
+            "Output Rule"
+          ],
+          "source_sha256": "cba189cb530b307acf33a338710fb1d6bd099b240efd7321a7b6230fe537bbcd",
+          "compiled_sha256": "81382fc1ad6b214a19e814891452dfd1385b71cdf39939271bbd285cc99ac672"
         },
         {
           "module": "15-session-context.md",

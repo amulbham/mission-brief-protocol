@@ -6,11 +6,12 @@ The Kernel Track begins with a faithful Kernel 1.0 baseline and advances through
 
 ## Current state
 
-- Track status: Kernel 1.8 candidate — Change 008
-- Version: `1.8`
+- Active release: Kernel `1.8`
+- Development candidate: Kernel `1.9` through Change 012
 - Canonical boot prompt: `boot/MBP_KERNEL_BOOT.md`
 - Immutable snapshot: `releases/1.8/MBP_KERNEL_BOOT.md`
-- Active delta: `changes/008-dss-state-strip.md`
+- Candidate profiles: `boot/candidates/1.9/`
+- Latest candidate delta: `changes/012-project-profile.md`
 
 ## Build and validate
 
@@ -18,10 +19,11 @@ From the repository root:
 
 ```sh
 node kernel/scripts/build-kernel.mjs
+node kernel/scripts/build-boot-profiles.mjs
 node kernel/scripts/validate-kernel.mjs
 ```
 
-The build compiles the boot prompt from `modules/manifest.json`. Never edit compiled boot or release files directly.
+The active build compiles the boot prompt from `modules/manifest.json`; the 1.9 profile build compiles registered candidate artifacts. Never edit compiled boot or release files directly.
 
 ## Directory map
 
