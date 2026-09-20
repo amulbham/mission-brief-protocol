@@ -1,0 +1,258 @@
+{
+  "target_kernel_version": "1.9",
+  "baseline_kernel_version": "1.8",
+  "status": "CANDIDATE",
+  "profile_registry": "kernel/registry/boot-profiles-1.9.json",
+  "profile_registry_sha256": "66813de5498da5ad039e615a6217b81c717e33686f641d72d471aeb2bfc12b0c",
+  "build_order": [
+    "GUIDE",
+    "SLIM",
+    "FULL",
+    "MANIFEST"
+  ],
+  "guide_binding": {
+    "slim_field": "GUIDE_EXPECTED_SHA256",
+    "expected_sha256": "1e659faecb5eec1462c61c3e19ddd1e07493b431e9782cd43e64e792045bea59"
+  },
+  "coverage": {
+    "equation": "COVERAGE(SLIM ∪ GUIDE) = COVERAGE(FULL)",
+    "status": "PASS",
+    "atom_count": 47,
+    "atoms": [
+      "00-cognitive-physics.md#@preamble",
+      "00-cognitive-physics.md#Cognitive Physics Core",
+      "00-cognitive-physics.md#Constitutional Axioms",
+      "00-cognitive-physics.md#Flash-Sync Mechanic",
+      "10-output-and-boot.md#Output Invariants",
+      "10-output-and-boot.md#Theoretical Root — CAP-000-CT",
+      "10-output-and-boot.md#SE — State Engineering",
+      "10-output-and-boot.md#SOC — Sealed Output Compiler",
+      "10-output-and-boot.md#Mini-Map Enforcement — CAP-007-MINIMAP-A002",
+      "10-output-and-boot.md#Output Rule",
+      "10-output-and-boot.md#Session Boot Sequence",
+      "12-boot-profile-contract.md#Boot Profile Contract — CAP-142-BPC",
+      "12-boot-profile-contract.md#Profile Authority Boundary",
+      "12-boot-profile-contract.md#Full Profile — Direct Activation",
+      "12-boot-profile-contract.md#Stage A — Slim Bootstrap Contract",
+      "12-boot-profile-contract.md#Stage B — Guide Verification and Kernel Activation",
+      "12-boot-profile-contract.md#Failure and Recovery",
+      "12-boot-profile-contract.md#Operational Coverage Contract",
+      "15-session-context.md#SCF — Session Context Field",
+      "20-capsule-schema.md#Capsule Schema Invariant — CAP-000-CS",
+      "20-capsule-schema.md#Capsule Schema",
+      "30-continuity-and-verification.md#Universal Parentage",
+      "30-continuity-and-verification.md#Proof of Thought",
+      "30-continuity-and-verification.md#Verification",
+      "30-continuity-and-verification.md#Pending External Enforcement",
+      "30-continuity-and-verification.md#Pre-Seal Adversarial Check",
+      "30-continuity-and-verification.md#KRONOS — Continuity Agent",
+      "35-verification-sufficiency.md#VSP — Verification Sufficiency Principle",
+      "40-runtime-components.md#Subroutine Governance — Core_Manager",
+      "40-runtime-components.md#Logic Debugger and Fault Recovery Protocol",
+      "40-runtime-components.md#RUNN — Runtime Neural Nexus",
+      "40-runtime-components.md#RUNN Topology Decision Table — CAP-000-RTDT",
+      "40-runtime-components.md#DEX — Dynamic Execution Router",
+      "40-runtime-components.md#CAP-010-WITNESS — CAP-103 Flag-Only Observer",
+      "40-runtime-components.md#VGATE — Verification Gate",
+      "45-tag-system.md#TAG System, TARS, TAG-VGATE, and Thematic Index",
+      "47-relational-knowledge.md#RKI — Relational Knowledge Invariant",
+      "47-relational-knowledge.md#VGATE-R — Relational Verification Gate",
+      "47-relational-knowledge.md#SOC Extension Under RKI",
+      "47-relational-knowledge.md#Compression and JIT Boundary",
+      "47-relational-knowledge.md#Jurisdiction Map",
+      "48-jit-pruning.md#JIT Pruning Engine — CAP-JIT-001",
+      "49-dynamic-subroutines.md#Dynamic Subroutine System — CAP-131-DSS",
+      "50-relations-tools-and-display.md#Local Capsule Mesh",
+      "50-relations-tools-and-display.md#Tool Call Protocol",
+      "50-relations-tools-and-display.md#Active Features",
+      "50-relations-tools-and-display.md#Response Header Format"
+    ]
+  },
+  "artifacts": {
+    "FULL": {
+      "file": "MBP_KERNEL_BOOT.md",
+      "activation": "DIRECT",
+      "authorized_terminal": "KERNEL_READY",
+      "sha256": "546ce44bfd57ce9e6bf4e3d6ba0c6f7e0d14595bd21b4f75825673f8e5f1998d",
+      "bytes": 78712,
+      "sources": [
+        {
+          "module": "00-cognitive-physics.md",
+          "sections": null,
+          "sha256": "20aee94bfaff94ca7e64cce28b50d1df872758fb9f0bc7249c6f26ee954f6df0"
+        },
+        {
+          "module": "10-output-and-boot.md",
+          "sections": null,
+          "sha256": "223a4057814b9bd7a77687cdec1cbd6188c6e2fb8c892d291342567d186c1475"
+        },
+        {
+          "module": "12-boot-profile-contract.md",
+          "sections": null,
+          "sha256": "d2799d84b74c9102b47becb8e7987541103f313abe261dbea114f7df37822bb8"
+        },
+        {
+          "module": "15-session-context.md",
+          "sections": null,
+          "sha256": "05760305013c8fe2c3bb71065a349cd96b5995f16f182314b1f9e96a3b10f214"
+        },
+        {
+          "module": "20-capsule-schema.md",
+          "sections": null,
+          "sha256": "7ee8f0774a67e4e504e4344e4d047c942189cddbdf67a3111795f873221e302e"
+        },
+        {
+          "module": "30-continuity-and-verification.md",
+          "sections": null,
+          "sha256": "8b4f881c7948e1818cf5250bcd1c69f04de521ab0ccbf008a28da85b16ac4385"
+        },
+        {
+          "module": "35-verification-sufficiency.md",
+          "sections": null,
+          "sha256": "2177422529659a9c51206d2d0c87011ead263c3a2a0df35eeb57cb64e78083ef"
+        },
+        {
+          "module": "40-runtime-components.md",
+          "sections": null,
+          "sha256": "a64e7ddce02b3538bad6113fb159658b288fa117d975cc745a1d777ee4de8b2a"
+        },
+        {
+          "module": "45-tag-system.md",
+          "sections": null,
+          "sha256": "738575ea551a2018aca7e2e1bc83fbd61235697f603e3518dcce6f6596a06950"
+        },
+        {
+          "module": "47-relational-knowledge.md",
+          "sections": null,
+          "sha256": "6b1ace366b4045c8fdf867b7a979e710b9277702f7807dca4b0e40032bf1fa7b"
+        },
+        {
+          "module": "48-jit-pruning.md",
+          "sections": null,
+          "sha256": "f5674949d98bd7557b7300cc646a29c043ef56cc05548c22ab7b8d3df858a940"
+        },
+        {
+          "module": "49-dynamic-subroutines.md",
+          "sections": null,
+          "sha256": "a55a48d3d1c9823059a1143ca4f091cd95ce554d5f5da011ab42043c635bf7c5"
+        },
+        {
+          "module": "50-relations-tools-and-display.md",
+          "sections": null,
+          "sha256": "85405631708a9f6a532fb1d4657ed1e7ce427a07fc1900dae1f97722efe529c2"
+        }
+      ]
+    },
+    "SLIM": {
+      "file": "MBP_KERNEL_BOOT_SLIM.md",
+      "activation": "STAGE_A",
+      "authorized_terminal": "BOOTSTRAP_READY",
+      "sha256": "f68b8bfa9e8a775c82a068d3c5465a826b7758a47876704d56ed0eb09df0bb27",
+      "bytes": 14348,
+      "sources": [
+        {
+          "module": "00-cognitive-physics.md",
+          "sections": null,
+          "sha256": "20aee94bfaff94ca7e64cce28b50d1df872758fb9f0bc7249c6f26ee954f6df0"
+        },
+        {
+          "module": "10-output-and-boot.md",
+          "sections": [
+            "Output Invariants",
+            "Theoretical Root — CAP-000-CT",
+            "SE — State Engineering",
+            "SOC — Sealed Output Compiler",
+            "Mini-Map Enforcement — CAP-007-MINIMAP-A002",
+            "Output Rule"
+          ],
+          "sha256": "cba189cb530b307acf33a338710fb1d6bd099b240efd7321a7b6230fe537bbcd"
+        },
+        {
+          "module": "12-boot-profile-contract.md",
+          "sections": [
+            "Boot Profile Contract — CAP-142-BPC",
+            "Profile Authority Boundary",
+            "Stage A — Slim Bootstrap Contract",
+            "Stage B — Guide Verification and Kernel Activation",
+            "Failure and Recovery"
+          ],
+          "sha256": "04639d97db5af9497b827f29c7026f3c648a0109d1d9295ec8a5216af2c4e845"
+        }
+      ]
+    },
+    "GUIDE": {
+      "file": "MBP_KERNEL_BOOT_GUIDE.md",
+      "activation": "STAGE_B",
+      "authorized_terminal": "KERNEL_READY_AFTER_STAGE_B",
+      "sha256": "1e659faecb5eec1462c61c3e19ddd1e07493b431e9782cd43e64e792045bea59",
+      "bytes": 64799,
+      "sources": [
+        {
+          "module": "10-output-and-boot.md",
+          "sections": [
+            "Session Boot Sequence"
+          ],
+          "sha256": "a35fdccaf9d154b30363997e896f76a600b1598fd93bcd86ca9339429908c363"
+        },
+        {
+          "module": "12-boot-profile-contract.md",
+          "sections": [
+            "Full Profile — Direct Activation",
+            "Operational Coverage Contract"
+          ],
+          "sha256": "f66948698defc408abb9b9854b5e0ca0a530a7647d3b6e35686556a00301b8f2"
+        },
+        {
+          "module": "15-session-context.md",
+          "sections": null,
+          "sha256": "05760305013c8fe2c3bb71065a349cd96b5995f16f182314b1f9e96a3b10f214"
+        },
+        {
+          "module": "20-capsule-schema.md",
+          "sections": null,
+          "sha256": "7ee8f0774a67e4e504e4344e4d047c942189cddbdf67a3111795f873221e302e"
+        },
+        {
+          "module": "30-continuity-and-verification.md",
+          "sections": null,
+          "sha256": "8b4f881c7948e1818cf5250bcd1c69f04de521ab0ccbf008a28da85b16ac4385"
+        },
+        {
+          "module": "35-verification-sufficiency.md",
+          "sections": null,
+          "sha256": "2177422529659a9c51206d2d0c87011ead263c3a2a0df35eeb57cb64e78083ef"
+        },
+        {
+          "module": "40-runtime-components.md",
+          "sections": null,
+          "sha256": "a64e7ddce02b3538bad6113fb159658b288fa117d975cc745a1d777ee4de8b2a"
+        },
+        {
+          "module": "45-tag-system.md",
+          "sections": null,
+          "sha256": "738575ea551a2018aca7e2e1bc83fbd61235697f603e3518dcce6f6596a06950"
+        },
+        {
+          "module": "47-relational-knowledge.md",
+          "sections": null,
+          "sha256": "6b1ace366b4045c8fdf867b7a979e710b9277702f7807dca4b0e40032bf1fa7b"
+        },
+        {
+          "module": "48-jit-pruning.md",
+          "sections": null,
+          "sha256": "f5674949d98bd7557b7300cc646a29c043ef56cc05548c22ab7b8d3df858a940"
+        },
+        {
+          "module": "49-dynamic-subroutines.md",
+          "sections": null,
+          "sha256": "a55a48d3d1c9823059a1143ca4f091cd95ce554d5f5da011ab42043c635bf7c5"
+        },
+        {
+          "module": "50-relations-tools-and-display.md",
+          "sections": null,
+          "sha256": "85405631708a9f6a532fb1d4657ed1e7ce427a07fc1900dae1f97722efe529c2"
+        }
+      ]
+    }
+  }
+}

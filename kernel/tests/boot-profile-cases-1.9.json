@@ -1,0 +1,47 @@
+[
+  {
+    "name": "full profile direct activation",
+    "input": { "mode": "FULL" },
+    "expected": "KERNEL_READY"
+  },
+  {
+    "name": "slim stage A stops at bootstrap readiness",
+    "input": { "mode": "SLIM", "attempt_stage_b": false },
+    "expected": "BOOTSTRAP_READY"
+  },
+  {
+    "name": "stage B rejects missing guide",
+    "input": { "mode": "SLIM", "attempt_stage_b": true, "guide": "missing" },
+    "expected": "BLOCKED · MISSING_GUIDE"
+  },
+  {
+    "name": "stage B rejects wrong guide version",
+    "input": { "mode": "SLIM", "attempt_stage_b": true, "guide": "exact", "guide_version": "1.8" },
+    "expected": "BLOCKED · VERSION_MISMATCH"
+  },
+  {
+    "name": "stage B rejects wrong profile identity",
+    "input": { "mode": "SLIM", "attempt_stage_b": true, "guide": "exact", "guide_profile": "FULL" },
+    "expected": "BLOCKED · PROFILE_MISMATCH"
+  },
+  {
+    "name": "stage B rejects wrong registry identity",
+    "input": { "mode": "SLIM", "attempt_stage_b": true, "guide": "exact", "registry_sha256": "invalid" },
+    "expected": "BLOCKED · PROFILE_MISMATCH"
+  },
+  {
+    "name": "stage B rejects wrong guide digest",
+    "input": { "mode": "SLIM", "attempt_stage_b": true, "guide": "tampered" },
+    "expected": "BLOCKED · DIGEST_MISMATCH"
+  },
+  {
+    "name": "stage B rejects incomplete source coverage",
+    "input": { "mode": "SLIM", "attempt_stage_b": true, "guide": "exact", "coverage": false },
+    "expected": "BLOCKED · COVERAGE_MISMATCH"
+  },
+  {
+    "name": "matching slim and guide complete activation",
+    "input": { "mode": "SLIM", "attempt_stage_b": true, "guide": "exact" },
+    "expected": "KERNEL_READY"
+  }
+]

@@ -1,0 +1,103 @@
+{
+  "profile_registry_version": "1.0",
+  "target_kernel_version": "1.9",
+  "baseline_kernel_version": "1.8",
+  "status": "CANDIDATE",
+  "join": "\n\n",
+  "candidate_output_directory": "kernel/boot/candidates/1.9",
+  "profiles": {
+    "FULL": {
+      "output": "MBP_KERNEL_BOOT.md",
+      "activation": "DIRECT",
+      "authorized_terminal": "KERNEL_READY",
+      "sources": [
+        { "module": "00-cognitive-physics.md" },
+        { "module": "10-output-and-boot.md" },
+        { "module": "12-boot-profile-contract.md" },
+        { "module": "15-session-context.md" },
+        { "module": "20-capsule-schema.md" },
+        { "module": "30-continuity-and-verification.md" },
+        { "module": "35-verification-sufficiency.md" },
+        { "module": "40-runtime-components.md" },
+        { "module": "45-tag-system.md" },
+        { "module": "47-relational-knowledge.md" },
+        { "module": "48-jit-pruning.md" },
+        { "module": "49-dynamic-subroutines.md" },
+        { "module": "50-relations-tools-and-display.md" }
+      ]
+    },
+    "SLIM": {
+      "output": "MBP_KERNEL_BOOT_SLIM.md",
+      "activation": "STAGE_A",
+      "authorized_terminal": "BOOTSTRAP_READY",
+      "requires_profile": "GUIDE",
+      "sources": [
+        { "module": "00-cognitive-physics.md" },
+        {
+          "module": "10-output-and-boot.md",
+          "sections": [
+            "Output Invariants",
+            "Theoretical Root — CAP-000-CT",
+            "SE — State Engineering",
+            "SOC — Sealed Output Compiler",
+            "Mini-Map Enforcement — CAP-007-MINIMAP-A002",
+            "Output Rule"
+          ]
+        },
+        {
+          "module": "12-boot-profile-contract.md",
+          "sections": [
+            "Boot Profile Contract — CAP-142-BPC",
+            "Profile Authority Boundary",
+            "Stage A — Slim Bootstrap Contract",
+            "Stage B — Guide Verification and Kernel Activation",
+            "Failure and Recovery"
+          ]
+        }
+      ]
+    },
+    "GUIDE": {
+      "output": "MBP_KERNEL_BOOT_GUIDE.md",
+      "activation": "STAGE_B",
+      "authorized_terminal": "KERNEL_READY_AFTER_STAGE_B",
+      "standalone_authority": false,
+      "sources": [
+        {
+          "module": "10-output-and-boot.md",
+          "sections": [
+            "Session Boot Sequence"
+          ]
+        },
+        {
+          "module": "12-boot-profile-contract.md",
+          "sections": [
+            "Full Profile — Direct Activation",
+            "Operational Coverage Contract"
+          ]
+        },
+        { "module": "15-session-context.md" },
+        { "module": "20-capsule-schema.md" },
+        { "module": "30-continuity-and-verification.md" },
+        { "module": "35-verification-sufficiency.md" },
+        { "module": "40-runtime-components.md" },
+        { "module": "45-tag-system.md" },
+        { "module": "47-relational-knowledge.md" },
+        { "module": "48-jit-pruning.md" },
+        { "module": "49-dynamic-subroutines.md" },
+        { "module": "50-relations-tools-and-display.md" }
+      ]
+    }
+  },
+  "activation_gate": {
+    "check_order": [
+      "guide_present",
+      "kernel_version",
+      "profile_identity",
+      "guide_sha256",
+      "source_coverage"
+    ],
+    "stage_a_terminal": "BOOTSTRAP_READY",
+    "stage_b_terminal": "KERNEL_READY",
+    "fail_closed": true
+  }
+}

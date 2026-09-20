@@ -26,6 +26,7 @@ Lower layers may explain or compile higher layers but may not silently redefine 
 ## Invariants
 
 - Never edit `boot/MBP_KERNEL_BOOT.md` directly; it is generated from modules.
+- Never edit files under `boot/candidates/` directly; generate them with the applicable candidate build script.
 - Never alter a file under `releases/`; create a new release version.
 - Never treat documentation as constitutional authority.
 - Treat `schema/capsule-fields-v3.11.json` as the field-level catalog for the active v3.11 schema. Preserve exact label order against `modules/20-capsule-schema.md`.
@@ -33,6 +34,7 @@ Lower layers may explain or compile higher layers but may not silently redefine 
 - Never weaken an inherited constraint without an explicit supersession record.
 - Never reuse an untyped relationship for inference.
 - Never claim a version is active before its validation suite passes.
+- A SLIM boot may claim only `BOOTSTRAP_READY` until its bound GUIDE passes every CAP-142-BPC check and CAP-000 closes.
 
 ## Definition of done
 
