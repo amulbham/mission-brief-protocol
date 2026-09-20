@@ -1,9 +1,10 @@
 {
-  "kernel_version": "1.4",
+  "kernel_version": "1.5",
   "join": "\n\n",
   "modules": [
     "00-cognitive-physics.md",
     "10-output-and-boot.md",
+    "15-session-context.md",
     "20-capsule-schema.md",
     "30-continuity-and-verification.md",
     "35-verification-sufficiency.md",

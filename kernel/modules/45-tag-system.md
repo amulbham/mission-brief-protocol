@@ -89,11 +89,11 @@ DEX resolves ancestors at capsule open and writes the deepest applicable AXIOM_T
 
 Dynamic Vector tags describe reasoning-event patterns rather than topics.
 
-| Trigger | Condition | Seed outputs | Kernel 1.3 state |
+| Trigger | Condition | Seed outputs | Kernel 1.5 state |
 |---|---|---|---|
 | T1 Mathematical Anomaly | Fact crosses a declared material threshold | `#asymmetric_shock`, `#threshold_crossing` | ACTIVE |
 | T2 Systemic Disruption | Pattern-breaking event across previously stable same-PATH residue | `#cascade_failure`, `#resource_scarcity` | ACTIVE |
-| T3 Mode Transition | SCF SESSION:MIXED and a mode change recorded this turn | `#mode_transition` | LATENT until CAP-014-SCF |
+| T3 Mode Transition | SCF SESSION:MIXED and a mode change recorded this turn | `#mode_transition` | ACTIVE · dependency satisfied by CAP-014-SCF |
 | T4 Cross-Domain Match | Current pattern matches an existing DV tag from another PATH | reuse matching DV tag | ACTIVE when a verified GTIL match exists |
 
 Handoff order:
@@ -106,7 +106,7 @@ Handoff order:
 4. TARS applies the displacement rule if the minted budget is full.
 5. KV-Scribe writes the tag and `DYNAMIC_VECTOR_TAG` value at seal.
 
-Trigger T3 cannot fire in Kernel 1.3 because SCF is not active. A single mode change or a hypothetical MIXED state is insufficient.
+Trigger T3 is active in Kernel 1.5 because CAP-014-SCF is flashed. A mode change without `SESSION: MIXED`, or MIXED without a transition at the current causal entry, is insufficient.
 
 ### GTIL — Global Thematic Index Ledger
 

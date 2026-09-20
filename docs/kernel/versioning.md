@@ -20,4 +20,15 @@ Kernel 1.3 applies Change 003, adding the TAG governance and Thematic Index stac
 
 Kernel 1.4 applies Change 004, flashing CAP-034-VSP-COMPLETE, adding the Clause 4 Directive harm check and VSP_Status recall integrity, and advancing the capsule schema from v3.7 to v3.8. The source specification's v3.6.1 identifier remains recorded as provenance rather than replacing the active schema.
 
+Kernel 1.5 applies Change 005, flashing CAP-014-SCF, adding KV-Scribe-derived ambient session context before IC-Node, activating Dynamic Vector Trigger T3, and advancing the capsule schema from v3.8 to v3.9. The source specification's v3.5 identifier remains provenance.
+
 A version is active only after focused and inherited validation pass, its registry is sealed, its compiled boot matches the source modules, and its immutable release snapshot matches the compiled digest.
+
+## Post-1.8 stabilization review — queued
+
+After Kernel 1.8 merges, pause feature integration for a documentation and structure review:
+
+1. Publish a formal capsule-schema specification with field-by-field semantics, authority, source, timing, cardinality, and failure behavior.
+2. Perform a boot-prompt formatting and consistency pass without silently changing constitutional behavior.
+3. Inventory the repository and explain the purpose, authority, and lifecycle of every top-level and Kernel Track folder.
+4. Identify duplicated, transitional, or over-granular files and propose a simplification plan that preserves immutable releases and provenance.

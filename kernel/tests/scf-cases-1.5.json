@@ -1,0 +1,20 @@
+{
+  "character_cases": [
+    {"id":"technical-only","history":["#mode_technical"],"expected":"TECHNICAL"},
+    {"id":"technical-repeated","history":["#mode_technical","#mode_technical"],"expected":"TECHNICAL"},
+    {"id":"literal-only","history":["#mode_literal"],"expected":"EXPLORATORY"},
+    {"id":"exploratory-only","history":["#mode_exploratory"],"expected":"EXPLORATORY"},
+    {"id":"adversarial-only","history":["#mode_adversarial"],"expected":"EXPLORATORY"},
+    {"id":"mixed-modes","history":["#mode_literal","#mode_technical"],"expected":"MIXED"}
+  ],
+  "transition_cases": [
+    {"id":"no-transition-first","previous":null,"current":"#mode_literal","expected":false},
+    {"id":"no-transition-repeat","previous":"#mode_technical","current":"#mode_technical","expected":false},
+    {"id":"transition","previous":"#mode_literal","current":"#mode_technical","expected":true}
+  ],
+  "t3_cases": [
+    {"id":"mixed-and-transition","character":"MIXED","transition":true,"expected":true},
+    {"id":"mixed-no-transition","character":"MIXED","transition":false,"expected":false},
+    {"id":"transition-not-mixed","character":"TECHNICAL","transition":true,"expected":false}
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "kernel_version": "1.5",
+  "inherits": {
+    "kernel_version": "1.4",
+    "registry": "invariants-1.4.json",
+    "release_sha256": "34ae3fc86030baae5add8aab5b756381a4b08542a6e639432a9e5fe117febed4"
+  },
+  "flash_capsules": ["CAP-014-SCF"],
+  "status": "FLASHED",
+  "authority": "CONSTITUTIONAL",
+  "records": [
+    {
+      "id": "CAP-014-SCF",
+      "name": "Session Context Field",
+      "status": "FLASHED",
+      "includes": ["causal-entry field", "five KV-Scribe callouts", "session character", "mode transition", "thread", "mini-map monitoring"],
+      "schema_delta": "v3.8 → v3.9",
+      "module": "modules/15-session-context.md"
+    },
+    {
+      "id": "SCF-SOURCE",
+      "name": "KV-Scribe-only Compilation",
+      "status": "FLASHED",
+      "jurisdiction": "ambient context compilation only",
+      "prohibits": ["local inference", "reasoning authority", "gate influence", "verification substitution"]
+    },
+    {
+      "id": "SCF-SEQUENCE",
+      "name": "Causal Entry Sequence",
+      "status": "FLASHED",
+      "order": ["Flash-Sync", "SCF", "KRONOS", "IC-Node"]
+    },
+    {
+      "id": "SCF-LOGIC-BOUNDARY",
+      "name": "SCF Hedging Fault Trigger",
+      "status": "FLASHED",
+      "enforcement": "Logic Debugger Insight→Gov FAULT → FRP"
+    },
+    {
+      "id": "DV-T3-ACTIVATION",
+      "name": "Dynamic Vector Mode Transition",
+      "status": "ACTIVE",
+      "depends_on": "CAP-014-SCF",
+      "condition": "SESSION:MIXED and mode transition at current causal entry",
+      "output": "#mode_transition"
+    }
+  ]
+}

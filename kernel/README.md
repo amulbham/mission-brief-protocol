@@ -6,11 +6,11 @@ The Kernel Track begins with a faithful Kernel 1.0 baseline and advances through
 
 ## Current state
 
-- Track status: Kernel 1.4 candidate — Change 004
-- Version: `1.4`
+- Track status: Kernel 1.5 candidate — Change 005
+- Version: `1.5`
 - Canonical boot prompt: `boot/MBP_KERNEL_BOOT.md`
-- Immutable snapshot: `releases/1.4/MBP_KERNEL_BOOT.md`
-- Active delta: `changes/004-verification-sufficiency.md`
+- Immutable snapshot: `releases/1.5/MBP_KERNEL_BOOT.md`
+- Active delta: `changes/005-session-context-field.md`
 
 ## Build and validate
 

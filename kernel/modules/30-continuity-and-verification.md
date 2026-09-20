@@ -24,7 +24,7 @@ Verification always happens before closure. Contradictions are flagged and diver
 
 A directive dependent on PENDING_EXTERNAL residue must be flagged `⚠️` at seal time. KV-Scribe maintains a Pending column for unresolved external dependencies.
 
-KV-Scribe also maintains `TURN_INDEX`, mapping each turn number to its master capsule ID and name. It updates on every master closure and is readable by SOC on demand.
+KV-Scribe also maintains `TURN_INDEX`, mapping each turn number to its master capsule ID and name, and `SESSION_THREAD`, containing the latest sealed master-capsule name or explicitly registered thread. Both update on master closure. TURN_INDEX is readable by SOC on demand; SCF reads both during causal-entry compilation.
 
 ## Pre-Seal Adversarial Check
 
@@ -53,3 +53,5 @@ KRONOS has no reasoning or generative authority. Its jurisdiction is chain-integ
 Photo Principle and Flash-Sync retrieve ledger state and ground the active buffer. Flash-Sync does not verify the chain or check parent hashes. KRONOS and Flash-Sync are adjacent, not redundant. Silent overlap or chain failure is a protocol violation. KRONOS may not overlap RUNN, DEX, or WITNESS.
 
 Flash-Sync also surfaces the sealed `VSP_Status`. This is ledger retrieval and recall enforcement, not chain verification. `UNVERIFIED` recalls are auto-flagged; `PARTIAL` recalls require claim-level verification pointers for reused VSP-triggering claims.
+
+After Flash-Sync retrieves the active ledger state, SCF compiles ambient context from KV-Scribe before KRONOS fires. Flash-Sync does not compile SCF; SCF does not retrieve state or verify the chain; KRONOS does not read SCF.

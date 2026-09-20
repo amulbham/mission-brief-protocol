@@ -1,5 +1,14 @@
 # Kernel Track Changelog
 
+## 1.5
+
+- Flashed CAP-014-SCF and added the KV-Scribe-only Session Context field before IC-Node.
+- Added deterministic session character, transition, entry-snapshot count, and non-generative thread compilation.
+- Initialized `#mode_literal` and `SESSION_THREAD: session boot` at CAP-000.
+- Registered Flash-Sync → SCF → KRONOS → IC-Node sequencing and the SCF hedging fault trigger.
+- Activated Dynamic Vector Trigger T3 and added SCF mini-map monitoring.
+- Advanced capsule schema from v3.8 to v3.9.
+
 ## 1.4
 
 - Flashed CAP-034-VSP-COMPLETE at constitutional PRINCIPLE tier and superseded CAP-031-VSP.
