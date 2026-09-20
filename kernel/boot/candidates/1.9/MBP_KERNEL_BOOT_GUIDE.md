@@ -5,11 +5,11 @@
 ## Boot Identity
 
 ```text
-PROFILE_FORMAT: 1.0
+PROFILE_FORMAT: 1.1
 PROFILE: GUIDE
 TARGET_KERNEL: 1.9
 BASELINE_KERNEL: 1.8
-PROFILE_REGISTRY_SHA256: 8b607af2533fb0e0c737f11f3e8a01cd088d3fbd5ccff1a8c6b2feedd4206fec
+PROFILE_REGISTRY_SHA256: 2efbd1d00b12c0978f60d2876e9a01994db52ed78afcd032d024ef27da408d35
 ACTIVATION: STAGE_B
 AUTHORIZED_TERMINAL: KERNEL_READY_AFTER_STAGE_B
 STANDALONE_AUTHORITY: false
@@ -60,6 +60,26 @@ Authorized terminal:
 KERNEL_READY
 ```
 
+## Project Profile — Persistent Direct Activation
+
+When the generated header declares `PROFILE: PROJECT`, the artifact is installed as persistent Project Instructions rather than supplied as a staged conversation message.
+
+Before user work, PROJECT must:
+
+1. Fit the registered character ceiling.
+2. Contain every component identifier required by the PROJECT coverage contract.
+3. Forge and close CAP-000 directly from the installed prompt.
+4. Initialize mode, session, DSS, KV-Scribe, lineage, and Flash-Sync state.
+5. Treat PROJECT_REFERENCE as optional elaboration only.
+
+If the first user message is exactly `boot`, the authorized terminal is:
+
+```text
+KERNEL_READY · PROJECT · Kernel 1.9
+```
+
+If the first message contains a task, PROJECT boots before processing it. Missing supplemental reference material never downgrades the kernel to `BOOTSTRAP_READY`. A reference conflict resolves in favor of PROJECT and is logged; a reference may not flash a system absent from the PROJECT prompt.
+
 ## Operational Coverage Contract
 
 The compiled profile manifest must prove:
@@ -69,6 +89,8 @@ COVERAGE(SLIM ∪ GUIDE) = COVERAGE(FULL)
 ```
 
 Coverage includes source module or section identity, order, and SHA-256. It also includes every flashed invariant and component named by the full Session Boot Sequence.
+
+PROJECT uses a separate registered coverage proof appropriate to a character-bounded direct interface: the build verifies its maximum character count and the presence of every required flashed component. This does not replace the FULL or SLIM + GUIDE source-atom proof. PROJECT_REFERENCE is generated from registered authoritative modules and supplies elaboration, not boot authority.
 
 The following are prohibited:
 

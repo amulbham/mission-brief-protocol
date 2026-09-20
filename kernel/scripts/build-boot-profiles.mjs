@@ -103,9 +103,12 @@ const registrySha256 = digest(registryText);
 const header = (profile, binding = {}) => {
   const lines = [
     `# ${registry.presentation.title}`,
-    '',
-    '> Generated candidate artifact. Edit authoritative modules or the profile registry, then rebuild.',
-    '',
+    ''
+  ];
+  if (profile.id !== 'PROJECT') {
+    lines.push('> Generated candidate artifact. Edit authoritative modules or the profile registry, then rebuild.', '');
+  }
+  lines.push(
     '## Boot Identity',
     '',
     '```text',
@@ -116,8 +119,10 @@ const header = (profile, binding = {}) => {
     `PROFILE_REGISTRY_SHA256: ${registrySha256}`,
     `ACTIVATION: ${profile.config.activation}`,
     `AUTHORIZED_TERMINAL: ${profile.config.authorized_terminal}`
-  ];
-  if (profile.id === 'GUIDE') lines.push('STANDALONE_AUTHORITY: false');
+  );
+  if (profile.config.standalone_authority === false) lines.push('STANDALONE_AUTHORITY: false');
+  if (profile.config.character_limit) lines.push(`CHARACTER_LIMIT: ${profile.config.character_limit}`);
+  if (profile.config.reference_profile) lines.push(`REFERENCE_PROFILE: ${profile.config.reference_profile}`);
   if (binding.guideSha256) lines.push(`GUIDE_EXPECTED_SHA256: ${binding.guideSha256}`);
   lines.push('```', '', '---', '', '');
   return lines.join('\n');
@@ -127,12 +132,24 @@ const guide = `${header(profiles.GUIDE)}${profiles.GUIDE.body}\n`;
 const guideSha256 = digest(guide);
 const slim = `${header(profiles.SLIM, { guideSha256 })}${profiles.SLIM.body}\n`;
 const full = `${header(profiles.FULL)}${profiles.FULL.body}\n`;
+const project = `${header(profiles.PROJECT)}${profiles.PROJECT.body}\n`;
+const projectReference = `${header(profiles.PROJECT_REFERENCE)}${profiles.PROJECT_REFERENCE.body}\n`;
 
 const artifacts = {
   FULL: { content: full, profile: profiles.FULL },
   SLIM: { content: slim, profile: profiles.SLIM },
-  GUIDE: { content: guide, profile: profiles.GUIDE }
+  GUIDE: { content: guide, profile: profiles.GUIDE },
+  PROJECT: { content: project, profile: profiles.PROJECT },
+  PROJECT_REFERENCE: { content: projectReference, profile: profiles.PROJECT_REFERENCE }
 };
+
+const missingProjectComponents = registry.project_contract.required_components.filter(token => !project.includes(token));
+if (missingProjectComponents.length) {
+  throw new Error(`PROJECT profile missing required components: ${missingProjectComponents.join(', ')}`);
+}
+if (project.length > registry.project_contract.character_limit) {
+  throw new Error(`PROJECT profile exceeds ${registry.project_contract.character_limit} characters: ${project.length}`);
+}
 
 const compiledManifest = {
   target_kernel_version: registry.target_kernel_version,
@@ -141,7 +158,7 @@ const compiledManifest = {
   profile_format_version: registry.presentation.format_version,
   profile_registry: 'kernel/registry/boot-profiles-1.9.json',
   profile_registry_sha256: registrySha256,
-  build_order: ['GUIDE', 'SLIM', 'FULL', 'MANIFEST'],
+  build_order: ['GUIDE', 'SLIM', 'FULL', 'PROJECT_REFERENCE', 'PROJECT', 'MANIFEST'],
   guide_binding: {
     slim_field: 'GUIDE_EXPECTED_SHA256',
     expected_sha256: guideSha256
@@ -151,6 +168,15 @@ const compiledManifest = {
     status: 'PASS',
     atom_count: fullAtoms.size,
     atoms: [...fullAtoms]
+  },
+  project_contract: {
+    status: 'PASS',
+    character_limit: registry.project_contract.character_limit,
+    character_count: project.length,
+    reference_required_for_boot: registry.project_contract.reference_required_for_boot,
+    reference_profile: registry.project_contract.reference_profile,
+    required_component_count: registry.project_contract.required_components.length,
+    required_components: registry.project_contract.required_components
   },
   artifacts: Object.fromEntries(Object.entries(artifacts).map(([id, artifact]) => [id, {
     file: artifact.profile.config.output,

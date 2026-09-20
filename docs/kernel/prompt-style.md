@@ -1,16 +1,16 @@
 # Kernel Prompt Presentation Standard
 
 Status: `KERNEL 1.9 CANDIDATE`  
-Profile format: `1.0`
+Profile format: `1.1`
 
 This standard governs generated boot-prompt presentation. It does not redefine semantic modules or create kernel authority.
 
 ## Artifact structure
 
-Every generated FULL, SLIM, and GUIDE artifact uses this order:
+Every generated FULL, SLIM, GUIDE, PROJECT, and PROJECT_REFERENCE artifact uses this order:
 
 1. One current H1 naming the target kernel candidate.
-2. One generated-artifact notice.
+2. One generated-artifact notice, omitted from PROJECT to conserve the Project Instructions character budget.
 3. One `Boot Identity` section containing a fenced machine-readable block.
 4. One horizontal boundary.
 5. The registered semantic source fragments in profile order.
@@ -25,8 +25,10 @@ BASELINE_KERNEL
 PROFILE_REGISTRY_SHA256
 ACTIVATION
 AUTHORIZED_TERMINAL
-STANDALONE_AUTHORITY          GUIDE only
+STANDALONE_AUTHORITY          GUIDE and PROJECT_REFERENCE
 GUIDE_EXPECTED_SHA256         SLIM only
+CHARACTER_LIMIT               PROJECT only
+REFERENCE_PROFILE             PROJECT only
 ```
 
 ## Heading rules
@@ -53,6 +55,8 @@ The compiled profile manifest records two hashes for every source selection:
 - `compiled_sha256` — the fragment after the registered presentation transform.
 
 Artifact SHA-256 values bind the complete formatted output. For the two-stage path, the formatted GUIDE artifact digest is embedded in formatted SLIM.
+
+PROJECT additionally records its exact runtime character count in `profiles.json`. The builder blocks output above 8,000 characters or missing a required registered component. PROJECT_REFERENCE remains a normal generated artifact and is not included in the Project Instructions character count.
 
 ## Editing rule
 

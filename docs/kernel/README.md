@@ -10,9 +10,9 @@ This section explains the current Kernel Track for humans and agents. It is deli
 - `governance.md` - change and review policy
 - `versioning.md` - separation between historical MBP and Kernel Track versions
 - `capsule-schema.md` - generated field-by-field guide for capsule schema v3.11
-- `booting.md` - full and two-stage boot usage, verification, and recovery
+- `booting.md` - full, two-stage, and ChatGPT Project boot usage, verification, and recovery
 - `prompt-style.md` - generated prompt structure, formatting, and traceability rules
 - `repository-authority-map.md` - active authority chain, historical boundaries, and verified drift inventory
-- `kernel-1.9-implementation-plan.md` - planned boot, schema, formatting, and repository work after Kernel 1.8
+- `kernel-1.9-implementation-plan.md` - planned boot, schema, formatting, Project-profile, and repository work after Kernel 1.8
 
 Documentation must remain traceable to authoritative files. If documentation and the kernel conflict, the kernel governs and the discrepancy is a tracked defect.

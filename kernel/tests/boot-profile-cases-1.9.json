@@ -5,6 +5,16 @@
     "expected": "KERNEL_READY"
   },
   {
+    "name": "project profile direct activation",
+    "input": { "mode": "PROJECT" },
+    "expected": "KERNEL_READY"
+  },
+  {
+    "name": "project reference has no standalone activation authority",
+    "input": { "mode": "PROJECT_REFERENCE" },
+    "expected": "BLOCKED · REFERENCE_ONLY"
+  },
+  {
     "name": "slim stage A stops at bootstrap readiness",
     "input": { "mode": "SLIM", "attempt_stage_b": false },
     "expected": "BOOTSTRAP_READY"

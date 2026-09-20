@@ -20,7 +20,9 @@ for (const [id, record] of Object.entries(manifest.artifacts)) {
   assert.match(content, /^## Boot Identity$/mu, `${id} lacks the generated identity section`);
   assert.match(content, new RegExp(`PROFILE_FORMAT: ${registry.presentation.format_version}`, 'u'));
   assert.match(content, new RegExp(`PROFILE: ${id}`, 'u'));
-  assert.ok(content.indexOf('## Boot Identity') < content.indexOf('## Cognitive Physics Core') || id === 'GUIDE', `${id} identity must precede semantic content`);
+  const identityIndex = content.indexOf('## Boot Identity');
+  const semanticHeadingIndex = content.indexOf('\n## ', identityIndex + '## Boot Identity'.length);
+  assert.ok(semanticHeadingIndex > identityIndex, `${id} identity must precede semantic content`);
   assert.doesNotMatch(content, /\r/u, `${id} must use LF newlines`);
   assert.doesNotMatch(content, /[ \t]+$/mu, `${id} contains trailing whitespace`);
   assert.ok(content.endsWith('\n'), `${id} must end with one newline`);

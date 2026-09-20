@@ -16,8 +16,11 @@
       "status": "PENDING_ACTIVATION",
       "module": "modules/12-boot-profile-contract.md",
       "profile_registry": "registry/boot-profiles-1.9.json",
-      "profiles": ["FULL", "SLIM", "GUIDE"],
+      "profiles": ["FULL", "SLIM", "GUIDE", "PROJECT", "PROJECT_REFERENCE"],
       "two_stage_terminal": ["BOOTSTRAP_READY", "KERNEL_READY"],
+      "project_terminal": "KERNEL_READY",
+      "project_character_limit": 8000,
+      "project_reference_required": false,
       "fail_closed": true
     }
   ],

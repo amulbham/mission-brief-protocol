@@ -49,7 +49,7 @@ The following items do not invalidate Kernel 1.8. They are presentation and auth
 | D-04 | `runtime/` | Its boot material describes a different active component set and retired relation vocabulary | Runtime ambiguity and illegal cross-track import | Classify the whole subtree as historical unless a future change explicitly revives it |
 | D-05 | `prompt/` | Earlier prompt files are not visibly separated from current boot artifacts at repository entry points | Distribution ambiguity | Add historical navigation without rewriting source artifacts |
 | D-06 | `kernel/schema/` | Version files record schema lineage but do not define every field in a maintainable field catalog | Documentation cannot be checked field by field | Add a machine-readable field catalog and a generated or validated human guide |
-| D-07 | `kernel/boot/MBP_KERNEL_BOOT.md` | Complete and logically ordered, but approximately 10,000 words combine boot, reference, runtime, schema, and display concerns | High boot cost and poor operational ergonomics | Retain full output and add governed slim-plus-guide profiles |
+| D-07 | `kernel/boot/MBP_KERNEL_BOOT.md` | Complete and logically ordered, but approximately 10,000 words combine boot, reference, runtime, schema, and display concerns | High boot cost and poor operational ergonomics | Retain full output and add governed SLIM+GUIDE and character-bounded PROJECT profiles |
 
 ## Boundary decisions
 
@@ -60,13 +60,14 @@ The following items do not invalidate Kernel 1.8. They are presentation and auth
 5. The supplemental machine guide is normative compiled output, not explanatory documentation.
 6. Human boot and schema guides remain explanatory and cannot independently flash an invariant.
 7. Capsule field documentation will be checked against one structured field catalog.
+8. PROJECT is a direct-activation compact interface; PROJECT_REFERENCE is optional elaboration and cannot independently flash authority.
 
 ## Remediation sequence
 
 1. Formalize the capsule field catalog and its parity checks.
 2. Define boot profiles, stage boundaries, and digest binding.
 3. Refactor source boundaries only where deterministic profile compilation requires it.
-4. Generate and validate full, slim, and guide artifacts.
+4. Generate and validate FULL, SLIM, GUIDE, PROJECT, and PROJECT_REFERENCE artifacts.
 5. Update repository navigation and add historical-status routing.
 6. Freeze Kernel `1.9` release artifacts only after inherited and new validation gates pass.
 

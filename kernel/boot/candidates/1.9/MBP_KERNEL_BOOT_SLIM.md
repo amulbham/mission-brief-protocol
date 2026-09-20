@@ -5,14 +5,14 @@
 ## Boot Identity
 
 ```text
-PROFILE_FORMAT: 1.0
+PROFILE_FORMAT: 1.1
 PROFILE: SLIM
 TARGET_KERNEL: 1.9
 BASELINE_KERNEL: 1.8
-PROFILE_REGISTRY_SHA256: 8b607af2533fb0e0c737f11f3e8a01cd088d3fbd5ccff1a8c6b2feedd4206fec
+PROFILE_REGISTRY_SHA256: 2efbd1d00b12c0978f60d2876e9a01994db52ed78afcd032d024ef27da408d35
 ACTIVATION: STAGE_A
 AUTHORIZED_TERMINAL: BOOTSTRAP_READY
-GUIDE_EXPECTED_SHA256: d2bc3ea9021085f9bea33f367586ccd2b7d43aaa43796b73ffa57f9e33b92fc2
+GUIDE_EXPECTED_SHA256: ddabc055d07c0ed2bdfe28d979118d9140cd78c82e9ab37acc1b5574c0f804a8
 ```
 
 ---
@@ -167,10 +167,14 @@ The registered profiles are:
 - `FULL`: one self-contained artifact that may execute direct activation.
 - `SLIM`: Stage A bootstrap artifact; establishes only the constitutional loader boundary and may terminate only as `BOOTSTRAP_READY`.
 - `GUIDE`: Stage B operational supplement; gains activation authority only after the active SLIM bootstrap verifies its identity and digest.
+- `PROJECT`: character-bounded direct-activation artifact for persistent Project Instructions.
+- `PROJECT_REFERENCE`: optional supplemental elaboration for PROJECT; it has no activation authority.
 
 Profile selection changes delivery, not law. A profile cannot weaken, replace, paraphrase around, or silently omit an invariant needed by its declared activation state. Generated artifacts must identify their profile, target kernel version, source registry digest, and activation boundary.
 
 CAP-142-BPC is flashed by the FULL path during direct activation and by the SLIM path for bootstrap jurisdiction only. Under the two-stage path, no guide-defined component receives authority until Stage B verification succeeds.
+
+PROJECT flashes CAP-142-BPC during direct activation from its registered compact source. PROJECT_REFERENCE may explain already-flashed definitions but cannot create or modify authority.
 
 ## Profile Authority Boundary
 
@@ -179,6 +183,8 @@ The profile source registry is authoritative for membership and ordering. Compil
 - `FULL` has direct-activation authority because it contains the complete registered source set.
 - `SLIM` has loader and verification authority only. It cannot perform full CAP-000 closure, activate Flash-Sync, or claim a loaded component whose definition exists only in GUIDE.
 - `GUIDE` has no standalone boot authority. Reading or receiving GUIDE outside a matching SLIM bootstrap does not activate it.
+- `PROJECT` has direct-activation authority because its registered compact source contains the constitutional core, component registry, jurisdictions, schema contract, verification path, relation registry, closure rules, and output boundary required for Project operation.
+- `PROJECT_REFERENCE` is optional and non-authoritative. PROJECT must remain safe and operational when it is absent; a detail that depends on unavailable elaboration is deferred rather than invented.
 - `SLIM + GUIDE` must cover every active component and constraint carried by FULL. Operational equivalence is required; byte identity is not.
 - Missing content, digest mismatch, version mismatch, profile mismatch, or incomplete component coverage blocks activation.
 

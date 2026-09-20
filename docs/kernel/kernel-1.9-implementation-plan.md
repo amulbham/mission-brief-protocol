@@ -9,7 +9,7 @@ Kernel 1.9 will make the current kernel easier to boot, inspect, and maintain wi
 ## Goals
 
 1. Provide a formal, maintainable guide to every capsule field.
-2. Preserve the complete boot prompt while adding a smaller two-stage boot path.
+2. Preserve the complete boot prompt while adding a smaller two-stage boot path and a character-bounded ChatGPT Project path.
 3. Make active, generated, explanatory, release, and historical repository surfaces unmistakable.
 4. Enforce documentation and profile parity through deterministic validation.
 5. Apply a consistent formatting system to current prompt artifacts.
@@ -30,6 +30,8 @@ Kernel 1.9 will make the current kernel easier to boot, inspect, and maintain wi
 | `kernel/boot/MBP_KERNEL_BOOT.md` | Complete self-contained distribution | May complete full boot directly |
 | `kernel/boot/MBP_KERNEL_BOOT_SLIM.md` | Stage-A constitution, loader contract, source identity, and guide requirement | May emit `BOOTSTRAP_READY`; may not emit `KERNEL_READY` |
 | `kernel/boot/MBP_KERNEL_BOOT_GUIDE.md` | Stage-B operational component, schema, verification, relation, and display contract | May complete activation only after version and digest verification |
+| `kernel/boot/MBP_PROJECT_KERNEL.md` | Compact persistent Project Instructions profile | May complete direct boot within the registered character ceiling |
+| `kernel/boot/MBP_PROJECT_REFERENCE_GUIDE.md` | Supplemental Project file with expanded definitions and exact schema detail | Explanatory only; cannot add or alter authority |
 | `kernel/boot/profiles.json` | Machine-readable profile membership, ordering, version, and digest bindings | Build and validation input |
 | `docs/kernel/booting.md` | Human usage, sequencing, examples, and failure recovery | Explanatory only |
 
@@ -43,6 +45,14 @@ Kernel 1.9 will make the current kernel easier to boot, inspect, and maintain wi
 6. Missing, mismatched, truncated, or reordered guide input blocks full readiness.
 
 The combined two-stage path must be operationally equivalent to the full profile. It need not be byte-identical.
+
+### Project activation contract
+
+1. The complete `MBP_PROJECT_KERNEL.md` artifact is pasted into ChatGPT Project Instructions.
+2. It forges CAP-000 and activates the kernel directly; it does not wait for a guide digest.
+3. Its build fails if it exceeds 8,000 characters or omits any registered core component.
+4. `MBP_PROJECT_REFERENCE_GUIDE.md` may be attached as Project knowledge for elaboration and exact field definitions.
+5. Missing reference material cannot block Project boot, and reference text cannot add authority absent from the Project profile or sealed ledger.
 
 ## Capsule schema deliverables
 
@@ -107,7 +117,7 @@ Gate: every canonical field appears exactly once; no undocumented or orphaned fi
 Deliverables:
 
 - profile manifest;
-- explicit full, slim, and guide membership;
+- explicit full, slim, guide, project, and project-reference membership;
 - two-stage state machine and digest binding;
 - build support for all profiles.
 
@@ -119,7 +129,7 @@ Deliverables:
 
 - minimal module splits needed for profile compilation;
 - heading, table, code-block, terminology, and line-wrap conventions;
-- deterministically generated full, slim, and guide artifacts.
+- deterministically generated full, slim, guide, project, and project-reference artifacts.
 
 Gate: no semantic loss against Kernel 1.8 and no hand-maintained duplication across profiles.
 
@@ -155,12 +165,16 @@ Gate: source, registry, schemas, tests, documentation, compiled artifacts, relea
 4. `SLIM_REJECTS_WRONG_GUIDE_VERSION`
 5. `SLIM_REJECTS_WRONG_GUIDE_DIGEST`
 6. `SLIM_PLUS_GUIDE_COVERS_FULL_ACTIVE_REGISTRY`
-7. `EVERY_SCHEMA_FIELD_HAS_ONE_CATALOG_RECORD`
-8. `CATALOG_ORDER_MATCHES_CANONICAL_SCHEMA`
-9. `HUMAN_GUIDE_COVERS_CATALOG`
-10. `HISTORICAL_RELATION_TYPES_CANNOT_ENTER_ACTIVE_REGISTRY`
-11. `RELEASE_ARTIFACTS_MATCH_MANIFEST_DIGESTS`
-12. `KERNEL_1_0_THROUGH_1_8_REGRESSIONS_PASS`
+7. `PROJECT_BOOT_IS_DIRECT_AND_REFERENCE_OPTIONAL`
+8. `PROJECT_BOOT_STAYS_WITHIN_8000_CHARACTERS`
+9. `PROJECT_BOOT_CONTAINS_ALL_REGISTERED_CORE_COMPONENTS`
+10. `PROJECT_REFERENCE_CANNOT_ADD_AUTHORITY`
+11. `EVERY_SCHEMA_FIELD_HAS_ONE_CATALOG_RECORD`
+12. `CATALOG_ORDER_MATCHES_CANONICAL_SCHEMA`
+13. `HUMAN_GUIDE_COVERS_CATALOG`
+14. `HISTORICAL_RELATION_TYPES_CANNOT_ENTER_ACTIVE_REGISTRY`
+15. `RELEASE_ARTIFACTS_MATCH_MANIFEST_DIGESTS`
+16. `KERNEL_1_0_THROUGH_1_8_REGRESSIONS_PASS`
 
 ## Commit and review strategy
 
@@ -181,4 +195,4 @@ This program is a minor Kernel Track release rather than a documentation-only pa
 
 ## Completion condition
 
-Kernel 1.9 closes only when both boot paths are verified, every capsule field is traceably documented, all repository authority boundaries are visible, inherited regression tests pass, and immutable release artifacts match their recorded digests.
+Kernel 1.9 closes only when all three boot paths are verified, every capsule field is traceably documented, all repository authority boundaries are visible, inherited regression tests pass, and immutable release artifacts match their recorded digests.

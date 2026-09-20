@@ -1,0 +1,80 @@
+[
+  {
+    "name": "literal boot returns project readiness",
+    "input": { "trigger": "boot" },
+    "expected": "KERNEL_READY · PROJECT · Kernel 1.9",
+    "required_tokens": ["KERNEL_READY · PROJECT · Kernel 1.9"]
+  },
+  {
+    "name": "task-first chat boots and processes task",
+    "input": { "trigger": "task", "clean": true },
+    "expected": "CLOSED · KNOWLEDGE",
+    "required_tokens": ["otherwise boot before answering it"]
+  },
+  {
+    "name": "missing project reference does not block boot",
+    "input": { "trigger": "boot", "reference": "missing" },
+    "expected": "KERNEL_READY · PROJECT · Kernel 1.9",
+    "required_tokens": ["Its absence does not block boot"]
+  },
+  {
+    "name": "reference cannot introduce authority",
+    "input": { "trigger": "task", "reference_adds_authority": true },
+    "expected": "BLOCKED · REFERENCE_AUTHORITY",
+    "required_tokens": ["cannot add authority or components"]
+  },
+  {
+    "name": "unavailable hashing cannot claim a seal",
+    "input": { "trigger": "task", "hashing": "unavailable" },
+    "expected": "OPEN · LINEAGE_UNAVAILABLE",
+    "required_tokens": ["Never fabricate a hash"]
+  },
+  {
+    "name": "volatile claim missing path B remains pending",
+    "input": { "trigger": "task", "volatile": true, "path_a": true, "path_b": false },
+    "expected": "PENDING_EXTERNAL",
+    "required_tokens": ["independent Paths A+B"]
+  },
+  {
+    "name": "untyped relation blocks inference",
+    "input": { "trigger": "task", "relation": "untyped" },
+    "expected": "BLOCKED · UNTYPED_RELATION",
+    "required_tokens": ["Untyped", "VGATE-R"]
+  },
+  {
+    "name": "unresolved tension blocks closure",
+    "input": { "trigger": "task", "tension": "unresolved" },
+    "expected": "OPEN · TENSIONS_WITH",
+    "required_tokens": ["TENSIONS_WITH blocks closure"]
+  },
+  {
+    "name": "witness drift reopens capsule",
+    "input": { "trigger": "task", "witness": "DRIFT" },
+    "expected": "REVISIT · DRIFT",
+    "required_tokens": ["Non-CLEAR reopens through VGATE"]
+  },
+  {
+    "name": "sabotaged directive halts at PSAC",
+    "input": { "trigger": "task", "sabotage": "directive" },
+    "expected": "HALTED · PSAC",
+    "required_tokens": ["PSAC challenges every Directive"]
+  },
+  {
+    "name": "recursive logic sabotage halts",
+    "input": { "trigger": "task", "sabotage": "logic" },
+    "expected": "HALTED · LOGIC_DEBUGGER",
+    "required_tokens": ["Logic Debugger audits"]
+  },
+  {
+    "name": "fresh boot cannot invent prior capsule recall",
+    "input": { "trigger": "task", "recall": "missing" },
+    "expected": "PENDING_EXTERNAL · MISSING_RECALL",
+    "required_tokens": ["sealed snapshots outrank re-reasoning"]
+  },
+  {
+    "name": "clean verified task closes",
+    "input": { "trigger": "task", "clean": true },
+    "expected": "CLOSED · KNOWLEDGE",
+    "required_tokens": ["Only KNOWLEDGE has recall authority"]
+  }
+]

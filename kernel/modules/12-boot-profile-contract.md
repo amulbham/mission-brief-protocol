@@ -7,10 +7,14 @@ The registered profiles are:
 - `FULL`: one self-contained artifact that may execute direct activation.
 - `SLIM`: Stage A bootstrap artifact; establishes only the constitutional loader boundary and may terminate only as `BOOTSTRAP_READY`.
 - `GUIDE`: Stage B operational supplement; gains activation authority only after the active SLIM bootstrap verifies its identity and digest.
+- `PROJECT`: character-bounded direct-activation artifact for persistent Project Instructions.
+- `PROJECT_REFERENCE`: optional supplemental elaboration for PROJECT; it has no activation authority.
 
 Profile selection changes delivery, not law. A profile cannot weaken, replace, paraphrase around, or silently omit an invariant needed by its declared activation state. Generated artifacts must identify their profile, target kernel version, source registry digest, and activation boundary.
 
 CAP-142-BPC is flashed by the FULL path during direct activation and by the SLIM path for bootstrap jurisdiction only. Under the two-stage path, no guide-defined component receives authority until Stage B verification succeeds.
+
+PROJECT flashes CAP-142-BPC during direct activation from its registered compact source. PROJECT_REFERENCE may explain already-flashed definitions but cannot create or modify authority.
 
 ## Profile Authority Boundary
 
@@ -19,10 +23,32 @@ The profile source registry is authoritative for membership and ordering. Compil
 - `FULL` has direct-activation authority because it contains the complete registered source set.
 - `SLIM` has loader and verification authority only. It cannot perform full CAP-000 closure, activate Flash-Sync, or claim a loaded component whose definition exists only in GUIDE.
 - `GUIDE` has no standalone boot authority. Reading or receiving GUIDE outside a matching SLIM bootstrap does not activate it.
+- `PROJECT` has direct-activation authority because its registered compact source contains the constitutional core, component registry, jurisdictions, schema contract, verification path, relation registry, closure rules, and output boundary required for Project operation.
+- `PROJECT_REFERENCE` is optional and non-authoritative. PROJECT must remain safe and operational when it is absent; a detail that depends on unavailable elaboration is deferred rather than invented.
 - `SLIM + GUIDE` must cover every active component and constraint carried by FULL. Operational equivalence is required; byte identity is not.
 - Missing content, digest mismatch, version mismatch, profile mismatch, or incomplete component coverage blocks activation.
 
 No compiled profile may become current merely because it exists under `boot/`. Activation still requires a validated kernel release, immutable release snapshot, manifest agreement, and version update.
+
+## Project Profile — Persistent Direct Activation
+
+When the generated header declares `PROFILE: PROJECT`, the artifact is installed as persistent Project Instructions rather than supplied as a staged conversation message.
+
+Before user work, PROJECT must:
+
+1. Fit the registered character ceiling.
+2. Contain every component identifier required by the PROJECT coverage contract.
+3. Forge and close CAP-000 directly from the installed prompt.
+4. Initialize mode, session, DSS, KV-Scribe, lineage, and Flash-Sync state.
+5. Treat PROJECT_REFERENCE as optional elaboration only.
+
+If the first user message is exactly `boot`, the authorized terminal is:
+
+```text
+KERNEL_READY · PROJECT · Kernel 1.9
+```
+
+If the first message contains a task, PROJECT boots before processing it. Missing supplemental reference material never downgrades the kernel to `BOOTSTRAP_READY`. A reference conflict resolves in favor of PROJECT and is logged; a reference may not flash a system absent from the PROJECT prompt.
 
 ## Full Profile — Direct Activation
 
@@ -112,6 +138,8 @@ COVERAGE(SLIM ∪ GUIDE) = COVERAGE(FULL)
 ```
 
 Coverage includes source module or section identity, order, and SHA-256. It also includes every flashed invariant and component named by the full Session Boot Sequence.
+
+PROJECT uses a separate registered coverage proof appropriate to a character-bounded direct interface: the build verifies its maximum character count and the presence of every required flashed component. This does not replace the FULL or SLIM + GUIDE source-atom proof. PROJECT_REFERENCE is generated from registered authoritative modules and supplies elaboration, not boot authority.
 
 The following are prohibited:
 
