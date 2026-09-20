@@ -26,6 +26,8 @@ Kernel 1.6 applies Change 006, flashing CAP-011-RKI and VGATE-R, governing nine 
 
 Kernel 1.7 applies Change 007, flashing the five CAP-JIT-001 components, adding RKI-governed SOC-surface pruning and the runtime-configured Integrity Watchdog. Capsule schema remains v3.10 because JIT executes after seal and adds no capsule field.
 
+Kernel 1.8 applies Change 008, flashing CAP-131-DSS, adding capsule-precise Tier 1 synthesis, immutable Tier 2 precision tools, a session synthesis cache, TRANSIENT relation status, and the approved DSS state strip. The capsule schema advances from v3.10 to v3.11.
+
 A version is active only after focused and inherited validation pass, its registry is sealed, its compiled boot matches the source modules, and its immutable release snapshot matches the compiled digest.
 
 ## Post-1.8 stabilization review — queued

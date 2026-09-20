@@ -1,0 +1,35 @@
+{
+  "kernel_version": "1.8",
+  "component": "CAP-131-DSS",
+  "mode_1": {
+    "required": true,
+    "default": "KERNEL_INTERFACE@1.0",
+    "state": "ACTIVE",
+    "owner": "Core_Manager",
+    "trigger": "PATH"
+  },
+  "tier_1": {
+    "syntax": "LOAD: [DOMAIN_TYPE]",
+    "sources": ["IC-Node", "PATH", "Constraints", "Goal"],
+    "gate": ["IC-Node fully resolved", "Goal concrete", "at least one Constraint"],
+    "cache_path": "/ROOT/SYSTEM/SYNTHESIS_CACHE/[DOMAIN_TYPE]/",
+    "enrichment": ["KNOWLEDGE residue", "Logic Debugger PASS", "PSAC PASS"],
+    "excluded_residues": ["ASSUMPTION", "PENDING_EXTERNAL", "SUPERSEDED", "RETRACTED"],
+    "fault_fallback": "last compatible CLEAN version"
+  },
+  "tier_2": {
+    "syntax": "LOAD: REG:[TOOL_ID]",
+    "registry_path": "/ROOT/SYSTEM/REGISTRY/[TOOL_ID]/",
+    "conditions": ["precision required", "stable logic", "frequent reuse"],
+    "mutable": false,
+    "update_relation": "SUPERSEDES",
+    "nested_load": "BLOCKED_ICL"
+  },
+  "state_strip": {
+    "placement": "below lineage/PATH and before context",
+    "max_characters": 180,
+    "states": ["NONE", "REQUESTED", "ACTIVE", "FORK_REQUIRED", "BLOCKED", "RESOLVED"],
+    "cache_states": ["HIT", "MISS"],
+    "tier_2_default": "resolved/total"
+  }
+}

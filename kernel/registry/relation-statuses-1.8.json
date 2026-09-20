@@ -1,0 +1,13 @@
+{
+  "kernel_version": "1.8",
+  "registry": "RKI-RELATION-STATUS-REGISTRY",
+  "statuses": [
+    {"status":"ACTIVE","meaning":"relation currently participates in authorized inference"},
+    {"status":"RESOLVED","meaning":"relation lifecycle completed; audit record persists"},
+    {"status":"INACTIVE","meaning":"relation remains historical but does not participate in current inference"},
+    {"status":"TRANSIENT","meaning":"Tier 2 DSS invocation relation active only during the calling capsule; must resolve at PoT generation"}
+  ],
+  "transient_allowed_types": ["VALIDATES", "SCOPED_BY"],
+  "transient_owner": "CAP-131-DSS-TRANSIENT",
+  "transition": "TRANSIENT → RESOLVED at PoT generation"
+}

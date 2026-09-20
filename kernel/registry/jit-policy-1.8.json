@@ -1,0 +1,15 @@
+{
+  "kernel_version": "1.8",
+  "inherits": "jit-policy-1.7.json",
+  "relation_type_registry": "relation-types-1.6.json",
+  "relation_status_registry": "relation-statuses-1.8.json",
+  "dss_transient_handling": {
+    "type_count_unchanged": 9,
+    "status": "TRANSIENT",
+    "allowed_types": ["VALIDATES", "SCOPED_BY"],
+    "active_until": "PoT generation",
+    "post_pot_state": "RESOLVED",
+    "soc_surface": "FLUSH_ACTIVE_PROJECTION",
+    "ledger": "PRESERVE_FIRE_AND_RESOLVE_EVENTS"
+  }
+}

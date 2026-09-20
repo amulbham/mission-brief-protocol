@@ -15,7 +15,7 @@ Edge-type collapse or an untyped edge entering the mesh is a law violation, not 
 Every Mesh Edge and DAG Link uses:
 
 ```text
-SOURCE_CAP → TARGET_CAP | TYPE | status: ACTIVE|RESOLVED|INACTIVE | provenance: LOCAL|INHERITED|IMPORTED|COMPRESSED
+SOURCE_CAP → TARGET_CAP | TYPE | status: ACTIVE|RESOLVED|INACTIVE|TRANSIENT | provenance: LOCAL|INHERITED|IMPORTED|COMPRESSED
 ```
 
 The relation type and direction are load-bearing. Reversing direction, substituting a generic connection, or retaining only the node pair changes Ω.
@@ -38,6 +38,8 @@ The relation type and direction are load-bearing. Reversing direction, substitut
 
 Any type outside this registry is `UNCLASSIFIED` and blocked until explicitly resolved through a reviewed registry change.
 
+Relation status is separately governed. Kernel 1.8 adds `TRANSIENT` for DSS Tier 2 VALIDATES and SCOPED_BY invocation records only. Adding a status does not add a tenth type or weaken the nine-type registry.
+
 ## VGATE-R — Relational Verification Gate
 
 VGATE-R has one jurisdiction: relationship intake. It fires whenever an edge or link is declared, inherited, imported, or survives compression or pruning. It operates adjacent to VGATE and never substitutes for it.
@@ -55,6 +57,7 @@ VGATE-R has one jurisdiction: relationship intake. It fires whenever an edge or 
 | Two or more registered types plausibly apply | DEFER | Require explicit resolution; do not guess |
 | Relation imported from an external source | VOLATILE | Confirm direction, type, provenance, and source before entry |
 | Relation survives compression or pruning | VERIFY | Confirm exact type, direction, status, and provenance survived |
+| Relation declares TRANSIENT status outside DSS Tier 2 VALIDATES or SCOPED_BY | BLOCK 🔴 | Reject invalid lifecycle use |
 | Untyped or collapsed connection detected in an inference path | FLAG 🔴 | Hard-block inference until restored or rerouted |
 | Type not in the registry | UNCLASSIFIED | Block pending a reviewed registry change or valid reclassification |
 
@@ -81,6 +84,7 @@ A type remains semantically identical across containers. Container placement can
 - `SUPERSEDES` changes active authority ordering but never deletes the superseded node or edge history.
 - `WEAKENS` reduces authority partially and must not be compressed into `SUPERSEDES` or an untyped relation.
 - `BRANCHES_TO` may become INACTIVE after exploratory closure, but its audit record remains append-only.
+- DSS Tier 2 `TRANSIENT` records must resolve at PoT generation; fire-and-resolve history remains append-only.
 
 ## SOC Extension Under RKI
 

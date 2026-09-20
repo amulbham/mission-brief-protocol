@@ -1,0 +1,34 @@
+{
+  "synthesis_gate_cases": [
+    {"id":"complete","ic_resolved":true,"goal_concrete":true,"constraint_count":1,"expected":"ACTIVE"},
+    {"id":"missing-ic","ic_resolved":false,"goal_concrete":true,"constraint_count":1,"expected":"BLOCKED"},
+    {"id":"vague-goal","ic_resolved":true,"goal_concrete":false,"constraint_count":1,"expected":"BLOCKED"},
+    {"id":"no-constraint","ic_resolved":true,"goal_concrete":true,"constraint_count":0,"expected":"BLOCKED"}
+  ],
+  "enrichment_cases": [
+    {"id":"clean-knowledge","residue":"KNOWLEDGE","logic":"PASS","psac":"PASS","expected":true},
+    {"id":"assumption","residue":"ASSUMPTION","logic":"PASS","psac":"PASS","expected":false},
+    {"id":"pending","residue":"PENDING_EXTERNAL","logic":"PASS","psac":"PASS","expected":false},
+    {"id":"logic-fault","residue":"KNOWLEDGE","logic":"FAULT","psac":"PASS","expected":false},
+    {"id":"psac-fault","residue":"KNOWLEDGE","logic":"PASS","psac":"FAULT","expected":false}
+  ],
+  "tier_2_cases": [
+    {"id":"eligible","precision":true,"stable":true,"frequent":true,"registered":true,"volatile_logic":false,"nested":false,"expected":"ACTIVE"},
+    {"id":"not-registered","precision":true,"stable":true,"frequent":true,"registered":false,"volatile_logic":false,"nested":false,"expected":"TOOL_NOT_FOUND"},
+    {"id":"volatile-core","precision":true,"stable":true,"frequent":true,"registered":true,"volatile_logic":true,"nested":false,"expected":"TOOL_SCHEMA_BLOCK"},
+    {"id":"nested-load","precision":true,"stable":true,"frequent":true,"registered":true,"volatile_logic":false,"nested":true,"expected":"BLOCKED_ICL"},
+    {"id":"tier-one-default","precision":false,"stable":true,"frequent":true,"registered":true,"volatile_logic":false,"nested":false,"expected":"USE_TIER_1"}
+  ],
+  "transient_cases": [
+    {"id":"validates","type":"VALIDATES","status":"TRANSIENT","pot":false,"expected":"TRANSIENT"},
+    {"id":"scoped","type":"SCOPED_BY","status":"TRANSIENT","pot":false,"expected":"TRANSIENT"},
+    {"id":"resolved-at-pot","type":"VALIDATES","status":"TRANSIENT","pot":true,"expected":"RESOLVED"},
+    {"id":"invalid-type","type":"DEPENDS_ON","status":"TRANSIENT","pot":false,"expected":"BLOCKED"}
+  ],
+  "strip_cases": [
+    {"id":"none","value":"⚙️ DSS · M1:KERNEL_INTERFACE@1.0 🟢 ACTIVE · M2:NONE · T2:NONE","expected_valid":true},
+    {"id":"active","value":"⚙️ DSS · M1:KERNEL_INTERFACE@1.0 🟢 ACTIVE · M2:RISK@1.0 🟢 ACTIVE · CACHE:🔵 HIT · T2:2/2 ✅ RESOLVED","expected_valid":true},
+    {"id":"blocked-tool","value":"⚙️ DSS · M1:KERNEL_INTERFACE@1.0 🟢 ACTIVE · M2:NONE · T2:1/2 ⚠️ DECIMAL_SUM@1.0 BLOCKED","expected_valid":true},
+    {"id":"missing-mode-one","value":"⚙️ DSS · M2:RISK@1.0 🟢 ACTIVE · CACHE:MISS · T2:NONE","expected_valid":false}
+  ]
+}

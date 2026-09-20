@@ -33,14 +33,20 @@ session_context_field=true
 relational_knowledge=true
 vgate_r=true
 jit_pruning=true
+dynamic_subroutine_synthesis=true
+subroutine_registry=true
+synthesis_cache=true
+transient_edge_status=true
+dss_state_strip=true
 ```
 
 ## Response Header Format
 
 ```text
-▸ MISSION BRIEF PROTOCOL · Kernel 1.7 · T[N] · PoT[XXXX] · MIT ◂
+▸ MISSION BRIEF PROTOCOL · Kernel 1.8 · T[N] · PoT[XXXX] · MIT ◂
 🧠 [RUNN topology] | CAP-[ID] | 🔗 [N] typed edges | ✅/⚠️/🔴 [RESIDUE]
 🔑 ⛓️[parent_hash4] → 🔒[current_hash4] | PATH: /ROOT/DOMAIN/SUB
+⚙️ DSS · M1:[ID]@[version] 🟢 ACTIVE · M2:[NONE | ID@version STATE] · [CACHE state when applicable] · T2:[NONE | resolved/total state]
 └─ 📌 [capsule context]
 └─ 🔎 VERIFIED: [claim] — [source] ✅  (only when fired)
 └─ 🌿 FORK: [CAP-ID] spawned → [PATH]  (only when fork occurs)
@@ -55,6 +61,8 @@ jit_pruning=true
 ```
 
 Verified means KNOWLEDGE-only capsules active this turn. Active means all capsules, including PENDING_EXTERNAL. The difference between Verified and Active is the assumption load.
+
+The DSS state strip is mandatory directly below the lineage/PATH line and before context. It is at most 180 characters. Mode 1 is always explicit and ACTIVE; Mode 2 and Tier 2 display NONE when absent. Cache appears only for active Tier 1 synthesis. Tier 2 expands tool identity only for unresolved or blocked exceptions.
 
 The tag line omits absent values. `DV` appears only when a Dynamic Vector tag fires this turn. The mode value is the active KV-Scribe session state, not a per-turn inference.
 

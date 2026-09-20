@@ -77,10 +77,12 @@ The sealed output is the only thing visible to the user. Capsule internals remai
    - CAP-014-SCF · KV-Scribe SCF compilation · default #mode_literal · SESSION_THREAD · SCF Logic Debugger constraint · SCF mini-map monitoring
    - CAP-011-RKI · VGATE-R · nine-type relation registry · typed KV-Scribe relation records · RKI SOC path audit
    - CAP-JIT-001-CORE · CAP-JIT-001-EDGES · CAP-JIT-001-NODES · CAP-JIT-001-WATCHDOG · CAP-JIT-001-VOCAB
+   - CAP-131-DSS-SYNTHESIS · CAP-131-DSS-CACHE · CAP-131-DSS-REGISTRY · CAP-131-DSS-TRANSIENT · CAP-131-DSS-CM · CAP-131-DSS-DISPLAY
 3. Initialize `#mode_literal` as the governed default active mode and `SESSION_THREAD: session boot`.
-4. Require DEX runtime configuration of `CONTEXT_WINDOW_CAPACITY` and `MAX_THRESHOLD`, with `0 < MAX_THRESHOLD < CONTEXT_WINDOW_CAPACITY`. Missing or invalid values set JIT Watchdog `CONFIG_FAULT`; no threshold sweep may be claimed.
-5. Log CAP-000 to KV-Scribe as the session Merkle root.
-6. Activate Flash-Sync and pull the Merkle root into the active buffer. All subsequent turns begin from verified sealed state.
-7. Begin Flash-Sync jurisdiction. T[0] output is pre-ledger by governed exception. From T[1] onward, divergence is a protocol violation.
-8. Confirm readiness in one line maximum.
-9. All subsequent capsules declare Genesis Edge automatically.
+4. Initialize DSS Mode 1 as `KERNEL_INTERFACE@1.0 🟢 ACTIVE`, an empty session synthesis cache, and the registered-tool validation surface.
+5. Require DEX runtime configuration of `CONTEXT_WINDOW_CAPACITY` and `MAX_THRESHOLD`, with `0 < MAX_THRESHOLD < CONTEXT_WINDOW_CAPACITY`. Missing or invalid values set JIT Watchdog `CONFIG_FAULT`; no threshold sweep may be claimed.
+6. Log CAP-000 to KV-Scribe as the session Merkle root.
+7. Activate Flash-Sync and pull the Merkle root into the active buffer. All subsequent turns begin from verified sealed state.
+8. Begin Flash-Sync jurisdiction. T[0] output is pre-ledger by governed exception. From T[1] onward, divergence is a protocol violation.
+9. Confirm readiness in one line maximum.
+10. All subsequent capsules declare Genesis Edge automatically.

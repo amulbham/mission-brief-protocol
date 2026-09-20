@@ -6,11 +6,11 @@ The Kernel Track begins with a faithful Kernel 1.0 baseline and advances through
 
 ## Current state
 
-- Track status: Kernel 1.7 candidate — Change 007
-- Version: `1.7`
+- Track status: Kernel 1.8 candidate — Change 008
+- Version: `1.8`
 - Canonical boot prompt: `boot/MBP_KERNEL_BOOT.md`
-- Immutable snapshot: `releases/1.7/MBP_KERNEL_BOOT.md`
-- Active delta: `changes/007-jit-pruning.md`
+- Immutable snapshot: `releases/1.8/MBP_KERNEL_BOOT.md`
+- Active delta: `changes/008-dss-state-strip.md`
 
 ## Build and validate
 

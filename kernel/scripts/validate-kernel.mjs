@@ -13,10 +13,11 @@ for (const script of [
   resolve(kernelRoot, 'tests/kernel-1.4-release-regression.mjs'),
   resolve(kernelRoot, 'tests/kernel-1.5-release-regression.mjs'),
   resolve(kernelRoot, 'tests/kernel-1.6-release-regression.mjs'),
-  resolve(kernelRoot, 'tests/kernel-1.7-conformance.mjs'),
+  resolve(kernelRoot, 'tests/kernel-1.7-release-regression.mjs'),
+  resolve(kernelRoot, 'tests/kernel-1.8-conformance.mjs'),
   resolve(kernelRoot, 'scripts/check-doc-drift.mjs')
 ]) {
   process.stdout.write(execFileSync(process.execPath, [script], { encoding: 'utf8' }));
 }
 
-process.stdout.write('Kernel 1.7 validation complete.\n');
+process.stdout.write('Kernel 1.8 validation complete.\n');
