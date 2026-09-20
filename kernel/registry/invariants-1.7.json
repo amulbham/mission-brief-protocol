@@ -1,0 +1,65 @@
+{
+  "kernel_version": "1.7",
+  "inherits": {
+    "kernel_version": "1.6",
+    "registry": "invariants-1.6.json",
+    "release_sha256": "635935b39f7c23b38abb3490bbc35409618dcddacc509b440b6daf6accf4889c"
+  },
+  "flash_capsules": [
+    "CAP-JIT-001-CORE",
+    "CAP-JIT-001-EDGES",
+    "CAP-JIT-001-NODES",
+    "CAP-JIT-001-WATCHDOG",
+    "CAP-JIT-001-VOCAB"
+  ],
+  "status": "FLASHED",
+  "authority": "CONSTITUTIONAL",
+  "records": [
+    {
+      "id": "CAP-JIT-001-CORE",
+      "name": "JIT Core Mechanism",
+      "status": "FLASHED",
+      "sequence": ["RUNN trigger", "DEX trace and grid", "KV-Scribe inject", "SOC compile"],
+      "firing_point": "after capsule closure and before SOC compilation",
+      "module": "modules/48-jit-pruning.md"
+    },
+    {
+      "id": "CAP-JIT-001-EDGES",
+      "name": "JIT Relation Actions",
+      "status": "FLASHED",
+      "registry": "relation-types-1.6.json",
+      "policy": "jit-policy-1.7.json",
+      "preserves": ["type", "direction", "status", "provenance"]
+    },
+    {
+      "id": "CAP-JIT-001-NODES",
+      "name": "JIT Node Priority Tiers",
+      "status": "FLASHED",
+      "tiers": ["CORE_SYSTEM_INVARIANT", "HIGH_PRIORITY_DATA", "TRANSITIONAL_PROSE", "DEPRECATED_STALE_BUFFER"],
+      "ledger_deletion": "PROHIBITED"
+    },
+    {
+      "id": "CAP-JIT-001-WATCHDOG",
+      "name": "JIT Integrity Watchdog",
+      "status": "FLASHED",
+      "threshold": "runtime-configured by DEX",
+      "hardcoded_threshold": "PROHIBITED",
+      "sweep_rule": "context_tokens > MAX_THRESHOLD suppresses effective weight <= 0.4"
+    },
+    {
+      "id": "CAP-JIT-001-VOCAB",
+      "name": "JIT Vocabulary Consolidation",
+      "status": "FLASHED",
+      "active_registry": "relation-types-1.6.json",
+      "retired": ["SUPPORTS", "INHERITS_FROM"],
+      "deferred": ["TRANSIENT"]
+    },
+    {
+      "id": "JIT-HONEST-CEILING",
+      "name": "Prompt Runtime Implementation Boundary",
+      "status": "ENFORCED",
+      "implemented": "SOC compilation-surface suppression",
+      "not_claimed": ["physical context eviction", "token-count reduction", "inference-cost reduction", "guaranteed long-session performance equivalence"]
+    }
+  ]
+}

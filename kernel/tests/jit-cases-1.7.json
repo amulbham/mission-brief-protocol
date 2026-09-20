@@ -1,0 +1,28 @@
+{
+  "node_cases": [
+    {"id":"core-immune","tier":"CORE_SYSTEM_INVARIANT","watchdog":true,"expected":"RETAIN"},
+    {"id":"high-retained","tier":"HIGH_PRIORITY_DATA","watchdog":true,"expected":"RETAIN"},
+    {"id":"transitional-swept","tier":"TRANSITIONAL_PROSE","watchdog":true,"expected":"SUPPRESS"},
+    {"id":"stale-swept","tier":"DEPRECATED_STALE_BUFFER","watchdog":true,"expected":"SUPPRESS"},
+    {"id":"transitional-steady","tier":"TRANSITIONAL_PROSE","watchdog":false,"expected":"RETAIN"}
+  ],
+  "watchdog_cases": [
+    {"id":"below","capacity":200000,"threshold":160000,"tokens":120000,"expected":"STEADY"},
+    {"id":"equal","capacity":200000,"threshold":160000,"tokens":160000,"expected":"STEADY"},
+    {"id":"above","capacity":200000,"threshold":160000,"tokens":160001,"expected":"SWEEP"},
+    {"id":"missing-threshold","capacity":200000,"threshold":null,"tokens":170000,"expected":"CONFIG_FAULT"},
+    {"id":"invalid-threshold","capacity":200000,"threshold":200000,"tokens":170000,"expected":"CONFIG_FAULT"}
+  ],
+  "relation_cases": [
+    {"id":"scope","type":"SCOPED_BY","status":"ACTIVE","expected":0.95},
+    {"id":"active-tension","type":"TENSIONS_WITH","status":"ACTIVE","expected":0.95},
+    {"id":"dependency","type":"DEPENDS_ON","status":"ACTIVE","expected":0.85},
+    {"id":"validation","type":"VALIDATES","status":"ACTIVE","expected":0.85},
+    {"id":"weakening","type":"WEAKENS","status":"ACTIVE","expected":0.85},
+    {"id":"convergence","type":"CONVERGES_FROM","status":"ACTIVE","expected":0.85},
+    {"id":"synthesis","type":"SYNTHESIZES","status":"ACTIVE","expected":0.85},
+    {"id":"active-branch","type":"BRANCHES_TO","status":"ACTIVE","expected":0.60},
+    {"id":"superseded-target","type":"SUPERSEDES","status":"TARGET","expected":0.40},
+    {"id":"resolved-tension","type":"TENSIONS_WITH","status":"RESOLVED","expected":0.10}
+  ]
+}

@@ -95,9 +95,9 @@ SOC performs this path audit silently. Output does not compile until the relatio
 
 Compression cannot restore semantics from the surviving node pair alone. For example, a collapsed `SUPERSEDES` edge does not regain authority ordering merely because both nodes remain.
 
-## Compression and Future JIT Boundary
+## Compression and JIT Boundary
 
-RKI governs every compression or pruning mechanism from Kernel 1.6 onward. Any surviving relation must preserve its type, direction, status, and provenance. Kernel 1.6 defines and tests this preservation contract but does not activate the JIT Pruning Engine; JIT activation remains a separate reviewed change.
+RKI governs every compression or pruning mechanism from Kernel 1.6 onward. Any surviving relation must preserve its type, direction, status, and provenance. Kernel 1.7 activates CAP-JIT-001 under this contract. JIT may select or suppress a working-surface projection, but it cannot collapse, infer, repair, or retype a relation.
 
 ## Jurisdiction Map
 
@@ -107,4 +107,4 @@ RKI governs every compression or pruning mechanism from Kernel 1.6 onward. Any s
 - Capsule DAG fields store non-linear logic links.
 - KV-Scribe stores canonical typed relation records and append-only history.
 - SOC blocks invalid inference paths at compilation.
-- JIT, when separately activated, may prune only within the RKI preservation contract.
+- JIT may prune only within the RKI preservation contract and only after VGATE-R has cleared the relation path.

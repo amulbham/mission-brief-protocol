@@ -1,5 +1,5 @@
 {
-  "kernel_version": "1.6",
+  "kernel_version": "1.7",
   "join": "\n\n",
   "modules": [
     "00-cognitive-physics.md",
@@ -11,6 +11,7 @@
     "40-runtime-components.md",
     "45-tag-system.md",
     "47-relational-knowledge.md",
+    "48-jit-pruning.md",
     "50-relations-tools-and-display.md"
   ]
 }

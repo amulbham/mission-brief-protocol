@@ -20,7 +20,7 @@ Kernel 1.0 separates constitutional source from generated and explanatory surfac
 | KRONOS | Verify chain continuity and calibrate Alpha/Beta/Gamma authority |
 | Core_Manager | Select and swap the active subroutine |
 | RUNN | Select and expand capsule topology |
-| DEX | Assign namespace and PATH |
+| DEX | Assign namespace and PATH; during JIT, trace cleared relations, evaluate retention, and compile the minimal grid |
 | VGATE | Set fact and constraint verification thresholds |
 | Witness | Observe arc formation and emit exactly one non-prose signal |
 | Logic Debugger / FRP | Audit Directive formation and recover from logic faults |
@@ -113,4 +113,23 @@ Kernel 1.6 treats relationship type as part of knowledge state:
 | KV-Scribe | Canonical direction, type, status, provenance, and append-only history |
 | SOC | Blocks output inference over untyped, collapsed, or unresolved relations |
 
-Mesh Edges and DAG Links remain distinct containers. `CONVERGES_FROM` preserves independent arrival paths; `SYNTHESIZES` records explicit integration into a composite. Future JIT pruning must preserve type, direction, status, and provenance, but Kernel 1.6 does not yet activate JIT.
+Mesh Edges and DAG Links remain distinct containers. `CONVERGES_FROM` preserves independent arrival paths; `SYNTHESIZES` records explicit integration into a composite. Kernel 1.6 established the type, direction, status, and provenance contract that Kernel 1.7 JIT must preserve.
+
+## JIT-governed compilation surface
+
+Kernel 1.7 activates CAP-JIT-001 after capsule closure and before SOC compilation:
+
+```text
+sealed capsule → RUNN trigger → DEX minimal grid → KV-Scribe injection → SOC compilation
+```
+
+| Layer | Responsibility | Hard boundary |
+|---|---|---|
+| RUNN | Trigger the pass at the correct lifecycle point | Cannot score or inject |
+| DEX | Trace VGATE-R-cleared relations and compile the minimal grid | Cannot retrieve ledger state, verify relations, or generate output |
+| KV-Scribe | Inject the grid and preserve the complete append-only ledger | Cannot choose retention policy |
+| SOC | Compile from the injected surface | Cannot expand or mutate it |
+
+Continuous relation actions preserve the complete nine-type RKI vocabulary. The Watchdog adds a compression sweep only when valid runtime-supplied capacity and threshold parameters exist and current token usage exceeds the threshold. CORE_SYSTEM_INVARIANT and HIGH_PRIORITY_DATA survive every sweep.
+
+In the prompt runtime, suppression is functional: excluded nodes are absent from SOC's governed surface but may remain in the host context window. Physical token eviction and cost reduction are not claimed.

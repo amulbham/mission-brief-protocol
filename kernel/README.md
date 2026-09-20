@@ -6,11 +6,11 @@ The Kernel Track begins with a faithful Kernel 1.0 baseline and advances through
 
 ## Current state
 
-- Track status: Kernel 1.6 candidate — Change 006
-- Version: `1.6`
+- Track status: Kernel 1.7 candidate — Change 007
+- Version: `1.7`
 - Canonical boot prompt: `boot/MBP_KERNEL_BOOT.md`
-- Immutable snapshot: `releases/1.6/MBP_KERNEL_BOOT.md`
-- Active delta: `changes/006-rki-vgate-r.md`
+- Immutable snapshot: `releases/1.7/MBP_KERNEL_BOOT.md`
+- Active delta: `changes/007-jit-pruning.md`
 
 ## Build and validate
 

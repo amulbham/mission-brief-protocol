@@ -1,0 +1,35 @@
+{
+  "kernel_version": "1.7",
+  "registry": "CAP-JIT-001-EDGES_AND_NODES",
+  "relation_registry": "relation-types-1.6.json",
+  "node_tiers": [
+    {"tier":"CORE_SYSTEM_INVARIANT","weight":1.0,"watchdog_suppressible":false},
+    {"tier":"HIGH_PRIORITY_DATA","weight":0.8,"watchdog_suppressible":false},
+    {"tier":"TRANSITIONAL_PROSE","weight":0.4,"watchdog_suppressible":true},
+    {"tier":"DEPRECATED_STALE_BUFFER","weight":0.1,"watchdog_suppressible":true}
+  ],
+  "relation_actions": [
+    {"type":"SCOPED_BY","status":"ANY","weight":0.95,"action":"RETAIN_COMPRESSED_GOVERNANCE"},
+    {"type":"TENSIONS_WITH","status":"ACTIVE","weight":0.95,"action":"RETAIN_CONFLICT_AND_BLOCK_SOC"},
+    {"type":"DEPENDS_ON","status":"ANY","weight":0.85,"action":"RETAIN_VERIFIED_RESIDUE"},
+    {"type":"VALIDATES","status":"ANY","weight":0.85,"action":"RETAIN_VERIFIED_RESIDUE"},
+    {"type":"WEAKENS","status":"ANY","weight":0.85,"action":"RETAIN_RESIDUE_AND_WEAKENING_METADATA"},
+    {"type":"CONVERGES_FROM","status":"ANY","weight":0.85,"action":"RETAIN_NAMED_INPUT_RESIDUES_AND_TYPED_PATHS"},
+    {"type":"SYNTHESIZES","status":"ANY","weight":0.85,"action":"RETAIN_NAMED_INPUT_RESIDUES_AND_TYPED_PATHS"},
+    {"type":"BRANCHES_TO","status":"ACTIVE","weight":0.60,"action":"RETAIN_ACTIVE_BRANCH_STATE"},
+    {"type":"BRANCHES_TO","status":"INACTIVE","weight":0.60,"action":"SUPPRESS_BRANCH_REASONING_PRESERVE_AUDIT"},
+    {"type":"SUPERSEDES","status":"TARGET","weight":0.40,"action":"SUPPRESS_TARGET_PRESERVE_AUDIT"},
+    {"type":"TENSIONS_WITH","status":"RESOLVED","weight":0.10,"action":"SUPPRESS_CONFLICT_PROSE_PRESERVE_OUTCOME"}
+  ],
+  "watchdog": {
+    "threshold_owner": "DEX",
+    "required_boot_parameters": ["CONTEXT_WINDOW_CAPACITY", "MAX_THRESHOLD"],
+    "validation": "0 < MAX_THRESHOLD < CONTEXT_WINDOW_CAPACITY",
+    "trigger": "context_tokens > MAX_THRESHOLD",
+    "suppression_ceiling": 0.4,
+    "missing_or_invalid": "CONFIG_FAULT"
+  },
+  "retired_types": ["SUPPORTS", "INHERITS_FROM"],
+  "deferred_types": ["TRANSIENT"],
+  "historical_import_aliases": {"FORKS_TO":"BRANCHES_TO"}
+}

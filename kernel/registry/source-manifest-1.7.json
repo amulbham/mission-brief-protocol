@@ -1,0 +1,23 @@
+{
+  "kernel_version": "1.7",
+  "canonical_source": {
+    "title": "MBP JIT PRUNING ENGINE — State Engineering Specification",
+    "filename": "MBP_JIT_SE_Document.pdf",
+    "designation": "CAP-JIT-001",
+    "author": "Amul Bham",
+    "year": 2026,
+    "pages": 15,
+    "sha256": "ded9a66d8c13611c665c4ae6c4231869b5677be710dbbc84b5045098304dffc6",
+    "authority": "CANONICAL_CHANGE_SPEC"
+  },
+  "integration_record": "changes/007-jit-pruning.md",
+  "activation_boundary": "Kernel 1.7 merge",
+  "reconciliations": [
+    "The Kernel 1.6 nine-type RKI registry remains authoritative over the source-era narrower vocabulary",
+    "JIT actions cover WEAKENS, CONVERGES_FROM, SYNTHESIZES, and active or resolved TENSIONS_WITH without collapsing their semantics",
+    "SUPPORTS and INHERITS_FROM are retired; FORKS_TO is import-only normalization to BRANCHES_TO",
+    "TRANSIENT remains deferred until DSS receives independent authority",
+    "Prompt runtime implements SOC-surface suppression and does not claim physical token eviction",
+    "Capsule schema remains v3.10 because JIT executes after seal and adds no capsule field"
+  ]
+}
