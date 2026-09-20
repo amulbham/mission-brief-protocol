@@ -16,10 +16,12 @@ for (const script of [
   resolve(kernelRoot, 'tests/kernel-1.7-release-regression.mjs'),
   resolve(kernelRoot, 'tests/kernel-1.8-conformance.mjs'),
   resolve(kernelRoot, 'tests/kernel-1.9-schema-catalog-conformance.mjs'),
+  resolve(kernelRoot, 'tests/kernel-1.9-boot-profiles-conformance.mjs'),
   resolve(kernelRoot, 'scripts/build-schema-guide.mjs'),
+  resolve(kernelRoot, 'scripts/build-boot-profiles.mjs'),
   resolve(kernelRoot, 'scripts/check-doc-drift.mjs')
 ]) {
-  const args = script.endsWith('build-schema-guide.mjs') ? [script, '--check'] : [script];
+  const args = script.includes('build-') ? [script, '--check'] : [script];
   process.stdout.write(execFileSync(process.execPath, args, { encoding: 'utf8' }));
 }
 

@@ -151,3 +151,21 @@ Tier 1 synthesis reads only IC-Node, PATH, Constraints, and Goal. Its gate check
 Tier 2 keeps stable precision logic immutable. Its VALIDATES and SCOPED_BY relations use `TRANSIENT` status during the capsule, resolve at PoT generation, and preserve their fire-and-resolve ledger history. TRANSIENT is a status, not a tenth RKI type.
 
 The mini-map state strip exposes Mode 1, Mode 2, cache state, and Tier 2 completion in no more than 180 characters. Tool identity expands only for unresolved or blocked exceptions.
+
+## Candidate boot-distribution layer
+
+Kernel 1.9 candidate work separates boot delivery from kernel semantics:
+
+| Profile | Authority at intake | Completion boundary |
+|---|---|---|
+| FULL | Complete registered Kernel 1.9 source set | Direct CAP-000 closure and `KERNEL_READY` |
+| SLIM | Constitution, loader, and Stage B verification algorithm | `BOOTSTRAP_READY` only |
+| GUIDE | No standalone authority; operational source supplement | Enters active state only after SLIM verifies its bound digest and coverage |
+
+The profile registry controls membership and order. The builder compiles GUIDE first, binds its SHA-256 into SLIM, compiles FULL, and then writes the candidate manifest. The manifest proves 47 source atoms across the equivalence boundary:
+
+```text
+COVERAGE(SLIM ∪ GUIDE) = COVERAGE(FULL)
+```
+
+Candidate artifacts remain outside the current release boundary. Kernel 1.8 stays active until the Kernel 1.9 release gate promotes validated artifacts and flashes CAP-142-BPC.

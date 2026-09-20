@@ -1,0 +1,25 @@
+{
+  "kernel_version": "1.9",
+  "inherits": {
+    "kernel_version": "1.8",
+    "registry": "invariants-1.8.json",
+    "release_sha256": "c7419e08be75c8a6a208cc884c42b33b74085bc2999c47fcf9c91c9f3eed4e0e"
+  },
+  "flash_capsules": ["CAP-142-BPC"],
+  "status": "CANDIDATE",
+  "activation_boundary": "Kernel 1.9 validated release merge",
+  "authority_on_activation": "CONSTITUTIONAL",
+  "records": [
+    {
+      "id": "CAP-142-BPC",
+      "name": "Boot Profile Contract",
+      "status": "PENDING_ACTIVATION",
+      "module": "modules/12-boot-profile-contract.md",
+      "profile_registry": "registry/boot-profiles-1.9.json",
+      "profiles": ["FULL", "SLIM", "GUIDE"],
+      "two_stage_terminal": ["BOOTSTRAP_READY", "KERNEL_READY"],
+      "fail_closed": true
+    }
+  ],
+  "schema_delta": "NONE — capsule schema remains v3.11"
+}
