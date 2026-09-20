@@ -1,5 +1,15 @@
 # Kernel Track Changelog
 
+## 1.7
+
+- Flashed all five CAP-JIT-001 constitutional sub-components.
+- Added the post-closure, pre-SOC RUNN → DEX → KV-Scribe → SOC pruning lifecycle.
+- Added nine-type RKI-aware relation actions and four node-priority tiers.
+- Added a DEX-configured Integrity Watchdog without hardcoding a token threshold.
+- Retired SUPPORTS and INHERITS_FROM while keeping DSS TRANSIENT relations deferred.
+- Enforced the prompt-runtime Honest Ceiling: SOC-surface suppression, not physical token eviction.
+- Kept capsule schema at v3.10 because JIT adds no capsule field.
+
 ## 1.6
 
 - Flashed CAP-011-RKI as an irreducible relational LAW and added VGATE-R.

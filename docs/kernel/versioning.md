@@ -24,6 +24,8 @@ Kernel 1.5 applies Change 005, flashing CAP-014-SCF, adding KV-Scribe-derived am
 
 Kernel 1.6 applies Change 006, flashing CAP-011-RKI and VGATE-R, governing nine typed relation semantics across Mesh Edges and DAG Links, and advancing the capsule schema from v3.9 to v3.10. It defines the preservation boundary for later JIT pruning without activating JIT.
 
+Kernel 1.7 applies Change 007, flashing the five CAP-JIT-001 components, adding RKI-governed SOC-surface pruning and the runtime-configured Integrity Watchdog. Capsule schema remains v3.10 because JIT executes after seal and adds no capsule field.
+
 A version is active only after focused and inherited validation pass, its registry is sealed, its compiled boot matches the source modules, and its immutable release snapshot matches the compiled digest.
 
 ## Post-1.8 stabilization review — queued

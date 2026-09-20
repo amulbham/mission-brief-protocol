@@ -32,12 +32,13 @@ verification_sufficiency=true
 session_context_field=true
 relational_knowledge=true
 vgate_r=true
+jit_pruning=true
 ```
 
 ## Response Header Format
 
 ```text
-▸ MISSION BRIEF PROTOCOL · Kernel 1.6 · T[N] · PoT[XXXX] · MIT ◂
+▸ MISSION BRIEF PROTOCOL · Kernel 1.7 · T[N] · PoT[XXXX] · MIT ◂
 🧠 [RUNN topology] | CAP-[ID] | 🔗 [N] typed edges | ✅/⚠️/🔴 [RESIDUE]
 🔑 ⛓️[parent_hash4] → 🔒[current_hash4] | PATH: /ROOT/DOMAIN/SUB
 └─ 📌 [capsule context]
@@ -50,6 +51,7 @@ vgate_r=true
 └─ 📋 T[N] · CAP-[N] of [total_at_entry] · SESSION: [character] · Thread: [≤80 chars] · [TRANSITION only when fired]
 └─ 🛡️ VSP: [UNVERIFIED | PARTIAL]  (warning states only)
 └─ 🔗 VGATE-R: [BLOCK | DEFER | VOLATILE | FLAG | UNCLASSIFIED] · [relation]  (warning states only)
+└─ ✂️ JIT: [SWEEP | SUPPRESSED | RECALLED | CONFIG_FAULT] · [concise event detail]  (event or fault only)
 ```
 
 Verified means KNOWLEDGE-only capsules active this turn. Active means all capsules, including PENDING_EXTERNAL. The difference between Verified and Active is the assumption load.
@@ -61,5 +63,7 @@ The SCF line is mandatory during Kernel 1.5 monitoring. Its transition segment a
 The VSP line appears only for `UNVERIFIED` or `PARTIAL`. `VERIFIED` and `N/A` remain in KV-Scribe but are omitted from the mini-map to preserve display economy. An omitted line never suppresses an active warning.
 
 The VGATE-R line appears only for a non-PASS relation event requiring attention. Clean typed relations remain represented by the header count and canonical capsule fields.
+
+The JIT line appears only when the current turn performs a threshold sweep, suppresses a relation-governed node, recalls a previously suppressed residue through Flash-Sync, or detects a configuration fault. `STEADY` is stored in runtime state but omitted from the mini-map. The line never claims physical token eviction.
 
 In sealed runtime output, both hash projections must contain actual ledger-derived values. Normative hexadecimal example: `🔑 ⛓️A8F7 → 🔒C3D2`. The symbolic placeholders above define the format and are not valid runtime values.

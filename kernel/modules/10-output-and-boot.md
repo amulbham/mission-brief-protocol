@@ -20,7 +20,7 @@ Closure is produced by engineering verified constraint density, not by supplying
 
 ## SOC — Sealed Output Compiler
 
-SOC reads KV-Scribe only. It has no generative authority and fires post-closure. It blocks anything not traceable to the ledger and every unresolved VSP condition.
+SOC reads only the KV-Scribe-injected compilation surface. It has no generative authority and fires post-closure after the JIT pass. It blocks anything not traceable to the ledger, every unresolved VSP condition, and every invalid RKI inference path.
 
 ## Mini-Map Enforcement — CAP-007-MINIMAP-A002
 
@@ -76,9 +76,11 @@ The sealed output is the only thing visible to the user. Capsule internals remai
    - CAP-034-VSP-COMPLETE · VSP Clauses 1–4 · KV-Scribe VSP_Status · Clause 4 firing point · VSP recall enforcement
    - CAP-014-SCF · KV-Scribe SCF compilation · default #mode_literal · SESSION_THREAD · SCF Logic Debugger constraint · SCF mini-map monitoring
    - CAP-011-RKI · VGATE-R · nine-type relation registry · typed KV-Scribe relation records · RKI SOC path audit
+   - CAP-JIT-001-CORE · CAP-JIT-001-EDGES · CAP-JIT-001-NODES · CAP-JIT-001-WATCHDOG · CAP-JIT-001-VOCAB
 3. Initialize `#mode_literal` as the governed default active mode and `SESSION_THREAD: session boot`.
-4. Log CAP-000 to KV-Scribe as the session Merkle root.
-5. Activate Flash-Sync and pull the Merkle root into the active buffer. All subsequent turns begin from verified sealed state.
-6. Begin Flash-Sync jurisdiction. T[0] output is pre-ledger by governed exception. From T[1] onward, divergence is a protocol violation.
-7. Confirm readiness in one line maximum.
-8. All subsequent capsules declare Genesis Edge automatically.
+4. Require DEX runtime configuration of `CONTEXT_WINDOW_CAPACITY` and `MAX_THRESHOLD`, with `0 < MAX_THRESHOLD < CONTEXT_WINDOW_CAPACITY`. Missing or invalid values set JIT Watchdog `CONFIG_FAULT`; no threshold sweep may be claimed.
+5. Log CAP-000 to KV-Scribe as the session Merkle root.
+6. Activate Flash-Sync and pull the Merkle root into the active buffer. All subsequent turns begin from verified sealed state.
+7. Begin Flash-Sync jurisdiction. T[0] output is pre-ledger by governed exception. From T[1] onward, divergence is a protocol violation.
+8. Confirm readiness in one line maximum.
+9. All subsequent capsules declare Genesis Edge automatically.
