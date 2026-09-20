@@ -7,7 +7,7 @@ This index is the documentation-drift control surface for Kernel Track 1.x. An A
 | Cognitive Physics Core | `kernel/modules/00-cognitive-physics.md` | `kernel/registry/invariants-1.0.json` | `kernel/tests/kernel-1.8-conformance.mjs` | `docs/kernel/architecture.md` | ACTIVE |
 | Output / Boot / Mini-map | `kernel/modules/10-output-and-boot.md` | `kernel/registry/invariants-1.8.json` | `kernel/tests/kernel-1.8-conformance.mjs` | `docs/kernel/architecture.md` | ACTIVE |
 | Session Context Field | `kernel/modules/15-session-context.md` | `kernel/registry/invariants-1.5.json` | `kernel/tests/kernel-1.8-conformance.mjs` | `docs/kernel/architecture.md` | ACTIVE |
-| Capsule Schema | `kernel/modules/20-capsule-schema.md` | `kernel/schema/capsule-v3.11.md` | `kernel/tests/kernel-1.8-conformance.mjs` | `docs/kernel/architecture.md` | ACTIVE |
+| Capsule Schema | `kernel/modules/20-capsule-schema.md` | `kernel/schema/capsule-v3.11.md` · `kernel/schema/capsule-fields-v3.11.json` · `kernel/schema/capsule-field-catalog.schema.json` | `kernel/tests/kernel-1.8-conformance.mjs` · `kernel/tests/kernel-1.9-schema-catalog-conformance.mjs` | `docs/kernel/architecture.md` · `docs/kernel/capsule-schema.md` | ACTIVE |
 | KV-Scribe / PoT / KRONOS | `kernel/modules/30-continuity-and-verification.md` | `kernel/registry/invariants-1.5.json` | `kernel/tests/kernel-1.8-conformance.mjs` | `docs/kernel/architecture.md` | ACTIVE |
 | VSP / Clause 4 / VSP_Status | `kernel/modules/35-verification-sufficiency.md` | `kernel/registry/invariants-1.4.json` | `kernel/tests/kernel-1.8-conformance.mjs` | `docs/kernel/architecture.md` | ACTIVE |
 | Core_Manager / RUNN / DEX / VGATE | `kernel/modules/40-runtime-components.md` | `kernel/registry/invariants-1.8.json` | `kernel/tests/kernel-1.8-conformance.mjs` | `docs/kernel/architecture.md` | ACTIVE |
@@ -25,5 +25,6 @@ This index is the documentation-drift control surface for Kernel Track 1.x. An A
 | RKI / VGATE-R | `kernel/changes/006-rki-vgate-r.md` | `kernel/registry/source-manifest-1.6.json` | `kernel/tests/kernel-1.6-conformance.mjs` | `docs/kernel/architecture.md` | ACTIVE |
 | JIT change provenance | `kernel/changes/007-jit-pruning.md` | `kernel/registry/source-manifest-1.7.json` | `kernel/tests/kernel-1.7-conformance.mjs` | `docs/kernel/architecture.md` | ACTIVE |
 | DSS / state-strip provenance | `kernel/changes/008-dss-state-strip.md` | `kernel/registry/source-manifest-1.8.json` | `kernel/tests/kernel-1.8-conformance.mjs` | `docs/kernel/architecture.md` | ACTIVE |
+| Capsule field-catalog provenance | `kernel/changes/009-schema-catalog.md` | `kernel/schema/capsule-fields-v3.11.json` | `kernel/tests/kernel-1.9-schema-catalog-conformance.mjs` | `docs/kernel/capsule-schema.md` | ACTIVE |
 
 Status vocabulary: `ACTIVE`, `PLANNED`, `HISTORICAL`, `SUPERSEDED`.

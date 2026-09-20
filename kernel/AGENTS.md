@@ -28,6 +28,8 @@ Lower layers may explain or compile higher layers but may not silently redefine 
 - Never edit `boot/MBP_KERNEL_BOOT.md` directly; it is generated from modules.
 - Never alter a file under `releases/`; create a new release version.
 - Never treat documentation as constitutional authority.
+- Treat `schema/capsule-fields-v3.11.json` as the field-level catalog for the active v3.11 schema. Preserve exact label order against `modules/20-capsule-schema.md`.
+- Never edit `../docs/kernel/capsule-schema.md` directly; generate it with `node kernel/scripts/build-schema-guide.mjs`.
 - Never weaken an inherited constraint without an explicit supersession record.
 - Never reuse an untyped relationship for inference.
 - Never claim a version is active before its validation suite passes.

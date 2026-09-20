@@ -9,6 +9,7 @@ Documentation explains active kernel behavior; it does not create authority.
 3. `docs/kernel/governance.md` defines change classes and review expectations.
 4. `docs/kernel/versioning.md` separates historical MBP versions from Kernel Track releases.
 5. Numbered records under `kernel/changes/` explain every behavioral or authority delta.
+6. `docs/kernel/capsule-schema.md` is generated from `kernel/schema/capsule-fields-v3.11.json`; direct edits are prohibited.
 
 ## Maintenance rule
 
@@ -24,6 +25,8 @@ A pull request that changes a public component contract must update, in the same
 - version and changelog after validation passes.
 
 `kernel/scripts/check-doc-drift.mjs` blocks ACTIVE components whose mapped paths are missing or unresolved.
+
+`kernel/tests/kernel-1.9-schema-catalog-conformance.mjs` checks exact field order and catalog completeness. `kernel/scripts/build-schema-guide.mjs --check` blocks drift between the structured catalog and the generated human guide.
 
 ## Status vocabulary
 
