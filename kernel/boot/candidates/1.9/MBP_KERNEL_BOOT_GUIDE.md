@@ -1,16 +1,22 @@
-# MBP Kernel 1.9 Candidate — GUIDE Profile
+# Mission Brief Protocol — Kernel 1.9 Candidate
 
-<!-- GENERATED CANDIDATE: do not edit directly -->
+> Generated candidate artifact. Edit authoritative modules or the profile registry, then rebuild.
 
+## Boot Identity
+
+```text
+PROFILE_FORMAT: 1.0
 PROFILE: GUIDE
 TARGET_KERNEL: 1.9
 BASELINE_KERNEL: 1.8
-PROFILE_REGISTRY_SHA256: 66813de5498da5ad039e615a6217b81c717e33686f641d72d471aeb2bfc12b0c
+PROFILE_REGISTRY_SHA256: 8b607af2533fb0e0c737f11f3e8a01cd088d3fbd5ccff1a8c6b2feedd4206fec
 ACTIVATION: STAGE_B
 AUTHORIZED_TERMINAL: KERNEL_READY_AFTER_STAGE_B
 STANDALONE_AUTHORITY: false
+```
 
 ---
+
 ## Session Boot Sequence
 
 1. Forge CAP-000. Seal the Cognitive Physics Core, axioms, and Output Rule as KNOWLEDGE into the mesh.

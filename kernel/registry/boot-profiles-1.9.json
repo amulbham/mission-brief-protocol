@@ -5,6 +5,15 @@
   "status": "CANDIDATE",
   "join": "\n\n",
   "candidate_output_directory": "kernel/boot/candidates/1.9",
+  "presentation": {
+    "format_version": "1.0",
+    "title": "Mission Brief Protocol — Kernel 1.9 Candidate",
+    "single_h1": true,
+    "strip_source_h1": true,
+    "identity_block": "TEXT_FENCE",
+    "newline": "LF",
+    "terminal_newline": true
+  },
   "profiles": {
     "FULL": {
       "output": "MBP_KERNEL_BOOT.md",

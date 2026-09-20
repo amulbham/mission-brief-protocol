@@ -25,3 +25,5 @@ node kernel/scripts/build-boot-profiles.mjs --check
 ```
 
 Candidate presence does not activate Kernel 1.9. Promotion to current boot and immutable release output occurs only after the complete Kernel 1.9 validation and release gate passes.
+
+Candidate presentation follows profile format `1.0`: one current H1, one fenced Boot Identity block, LF newlines, no trailing whitespace, and one terminal newline. See `../../docs/kernel/prompt-style.md`.

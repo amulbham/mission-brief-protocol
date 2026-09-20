@@ -11,6 +11,7 @@ This section explains the current Kernel Track for humans and agents. It is deli
 - `versioning.md` - separation between historical MBP and Kernel Track versions
 - `capsule-schema.md` - generated field-by-field guide for capsule schema v3.11
 - `booting.md` - full and two-stage boot usage, verification, and recovery
+- `prompt-style.md` - generated prompt structure, formatting, and traceability rules
 - `repository-authority-map.md` - active authority chain, historical boundaries, and verified drift inventory
 - `kernel-1.9-implementation-plan.md` - planned boot, schema, formatting, and repository work after Kernel 1.8
 

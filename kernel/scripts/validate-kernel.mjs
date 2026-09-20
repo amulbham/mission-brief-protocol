@@ -17,6 +17,7 @@ for (const script of [
   resolve(kernelRoot, 'tests/kernel-1.8-conformance.mjs'),
   resolve(kernelRoot, 'tests/kernel-1.9-schema-catalog-conformance.mjs'),
   resolve(kernelRoot, 'tests/kernel-1.9-boot-profiles-conformance.mjs'),
+  resolve(kernelRoot, 'tests/kernel-1.9-prompt-format-conformance.mjs'),
   resolve(kernelRoot, 'scripts/build-schema-guide.mjs'),
   resolve(kernelRoot, 'scripts/build-boot-profiles.mjs'),
   resolve(kernelRoot, 'scripts/check-doc-drift.mjs')

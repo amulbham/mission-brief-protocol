@@ -15,6 +15,28 @@ Kernel 1.9 preserves the complete one-file boot and adds a smaller two-stage del
 
 The candidate artifacts live under `kernel/boot/candidates/1.9/`. They are not current release artifacts until Kernel 1.9 closes.
 
+## Fresh-session workflow
+
+Use a new chat with no earlier MBP state. Copy the complete artifact contents rather than a GitHub preview excerpt.
+
+### One-message FULL workflow
+
+1. Open a fresh session.
+2. Paste or attach the complete generated FULL artifact as the first message. Do not add a task to the boot message.
+3. Send it and wait for the one-line `KERNEL_READY` confirmation.
+4. Send the first real task as the next message.
+
+### Two-message SLIM + GUIDE workflow
+
+1. Open a fresh session.
+2. Paste or attach the complete generated SLIM artifact as the first message. Do not include GUIDE or a task in that message.
+3. Wait for `BOOTSTRAP_READY · Kernel 1.9 · GUIDE [sha256]`.
+4. Paste or attach the exact generated GUIDE artifact as the second message without edits, surrounding commentary, or a user task.
+5. Wait for the one-line `KERNEL_READY` confirmation.
+6. Send the first real task as the third message.
+
+If the runtime returns a `BLOCKED` or `HALTED` state, do not continue with user work. Correct the artifact pair or start a new session as directed by the failure table.
+
 ## Full boot
 
 1. Supply the generated FULL artifact as the boot prompt.

@@ -14,6 +14,7 @@
     "FULL remains self-contained while SLIM plus GUIDE provides equivalent source coverage",
     "SLIM can emit BOOTSTRAP_READY but cannot emit KERNEL_READY before GUIDE verification",
     "GUIDE is normative compiled output but has no standalone boot authority",
-    "Candidate artifacts live under boot/candidates/1.9 until release promotion"
+    "Candidate artifacts live under boot/candidates/1.9 until release promotion",
+    "Prompt format 1.0 removes historical source H1 presentation while retaining semantic prose and recording source plus compiled fragment digests"
   ]
 }
