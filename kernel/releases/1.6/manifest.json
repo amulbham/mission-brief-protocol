@@ -1,0 +1,47 @@
+{
+  "kernel_version": "1.6",
+  "compiled_sha256": "635935b39f7c23b38abb3490bbc35409618dcddacc509b440b6daf6accf4889c",
+  "compiled_bytes": 53707,
+  "module_order": [
+    {
+      "name": "00-cognitive-physics.md",
+      "sha256": "20aee94bfaff94ca7e64cce28b50d1df872758fb9f0bc7249c6f26ee954f6df0"
+    },
+    {
+      "name": "10-output-and-boot.md",
+      "sha256": "6599bfb5f7d844f01c6c15b3dcc533ea42b4be4cadefdc4b9cf2a6654dd28bd4"
+    },
+    {
+      "name": "15-session-context.md",
+      "sha256": "05760305013c8fe2c3bb71065a349cd96b5995f16f182314b1f9e96a3b10f214"
+    },
+    {
+      "name": "20-capsule-schema.md",
+      "sha256": "bff8d60a2efa0ed735453f10311f45d1327c310e3eb84e055580bd3cacf9d6bc"
+    },
+    {
+      "name": "30-continuity-and-verification.md",
+      "sha256": "8b4f881c7948e1818cf5250bcd1c69f04de521ab0ccbf008a28da85b16ac4385"
+    },
+    {
+      "name": "35-verification-sufficiency.md",
+      "sha256": "2177422529659a9c51206d2d0c87011ead263c3a2a0df35eeb57cb64e78083ef"
+    },
+    {
+      "name": "40-runtime-components.md",
+      "sha256": "13fc7735210f393076823c35ea1bebf9829d2dea353f3113353786e5a0d335e9"
+    },
+    {
+      "name": "45-tag-system.md",
+      "sha256": "738575ea551a2018aca7e2e1bc83fbd61235697f603e3518dcce6f6596a06950"
+    },
+    {
+      "name": "47-relational-knowledge.md",
+      "sha256": "acf216c017f367f3847a49a2b54a2034f025f20fada447af44f18aa8eb61788d"
+    },
+    {
+      "name": "50-relations-tools-and-display.md",
+      "sha256": "04896d0b9e36e10dc50cc7b1fd8eda6dbcdc016a72e9fff5de91d254cc76619e"
+    }
+  ]
+}

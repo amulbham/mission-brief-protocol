@@ -22,6 +22,8 @@ Kernel 1.4 applies Change 004, flashing CAP-034-VSP-COMPLETE, adding the Clause 
 
 Kernel 1.5 applies Change 005, flashing CAP-014-SCF, adding KV-Scribe-derived ambient session context before IC-Node, activating Dynamic Vector Trigger T3, and advancing the capsule schema from v3.8 to v3.9. The source specification's v3.5 identifier remains provenance.
 
+Kernel 1.6 applies Change 006, flashing CAP-011-RKI and VGATE-R, governing nine typed relation semantics across Mesh Edges and DAG Links, and advancing the capsule schema from v3.9 to v3.10. It defines the preservation boundary for later JIT pruning without activating JIT.
+
 A version is active only after focused and inherited validation pass, its registry is sealed, its compiled boot matches the source modules, and its immutable release snapshot matches the compiled digest.
 
 ## Post-1.8 stabilization review — queued

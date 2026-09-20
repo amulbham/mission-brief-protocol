@@ -1,0 +1,48 @@
+{
+  "kernel_version": "1.6",
+  "inherits": {
+    "kernel_version": "1.5",
+    "registry": "invariants-1.5.json",
+    "release_sha256": "5fcd1da625af48c3a70cea90179f5f6c72720c67ebc9508c205e384ca94e43a6"
+  },
+  "flash_capsules": ["CAP-011-RKI"],
+  "status": "FLASHED",
+  "authority": "CONSTITUTIONAL",
+  "records": [
+    {
+      "id": "CAP-011-RKI",
+      "name": "Relational Knowledge Invariant",
+      "tier": "LAW",
+      "status": "FLASHED",
+      "statement": "Ω(K,E) ≠ Ω(K,E') when E' degrades relation types while K is held constant",
+      "schema_delta": "v3.9 → v3.10",
+      "module": "modules/47-relational-knowledge.md"
+    },
+    {
+      "id": "VGATE-R",
+      "name": "Relational Verification Gate",
+      "status": "FLASHED",
+      "jurisdiction": "edge and relationship intake only",
+      "outputs": ["PASS", "BLOCK", "DEFER", "VOLATILE", "VERIFY", "FLAG", "UNCLASSIFIED"]
+    },
+    {
+      "id": "RKI-RELATION-REGISTRY",
+      "name": "Valid Relation-Type Registry",
+      "status": "FLASHED",
+      "types": ["DEPENDS_ON", "SCOPED_BY", "VALIDATES", "SUPERSEDES", "TENSIONS_WITH", "BRANCHES_TO", "CONVERGES_FROM", "SYNTHESIZES", "WEAKENS"]
+    },
+    {
+      "id": "RKI-SOC",
+      "name": "Relational Inference Path Audit",
+      "status": "FLASHED",
+      "blocks": ["untyped relation", "UNCLASSIFIED relation", "collapsed relation", "unresolved TENSIONS_WITH"]
+    },
+    {
+      "id": "RKI-COMPRESSION-CONTRACT",
+      "name": "Relation Preservation Under Compression",
+      "status": "FLASHED",
+      "preserves": ["type", "direction", "status", "provenance"],
+      "jit_activation": "NOT_ACTIVE_IN_KERNEL_1.6"
+    }
+  ]
+}

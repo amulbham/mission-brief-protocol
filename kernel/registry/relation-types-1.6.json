@@ -1,0 +1,16 @@
+{
+  "kernel_version": "1.6",
+  "registry": "RKI-RELATION-REGISTRY",
+  "count": 9,
+  "types": [
+    {"type":"DEPENDS_ON","container":"MESH","meaning":"causal or logical prerequisite"},
+    {"type":"SCOPED_BY","container":"MESH","meaning":"governing constraint"},
+    {"type":"VALIDATES","container":"MESH","meaning":"evidential support"},
+    {"type":"SUPERSEDES","container":"MESH","meaning":"active authority replacement"},
+    {"type":"TENSIONS_WITH","container":"MESH","meaning":"closure-unsafe conflict requiring resolution"},
+    {"type":"WEAKENS","container":"MESH","meaning":"partial authority reduction without replacement"},
+    {"type":"BRANCHES_TO","container":"DAG","meaning":"exploratory fork with persistent audit record"},
+    {"type":"CONVERGES_FROM","container":"DAG","meaning":"independent incoming paths reach the same residue"},
+    {"type":"SYNTHESIZES","container":"DAG","meaning":"named inputs integrated into a new composite residue"}
+  ]
+}

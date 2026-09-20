@@ -1,0 +1,19 @@
+{
+  "kernel_version": "1.6",
+  "canonical_source": {
+    "title": "KERNEL INVARIANT FLASH — RKI and VGATE-R Edge Sprint",
+    "designation": "CAP-011-RKI",
+    "author": "Amul Bham",
+    "source_date": "2026-09-08",
+    "authority": "CANONICAL_CHANGE_SPEC"
+  },
+  "integration_record": "changes/006-rki-vgate-r.md",
+  "activation_boundary": "Kernel 1.6 merge",
+  "reconciliations": [
+    "SYNTHESIZES remains registered because it is part of the active pre-RKI DAG schema",
+    "BRANCHES_TO audit history persists after its active inference edge becomes inactive",
+    "Compression preservation covers type, direction, status, and provenance",
+    "Kernel 1.6 defines the JIT preservation boundary but does not activate JIT",
+    "Mesh Edges and DAG Links remain separate containers governed by one semantic registry"
+  ]
+}
