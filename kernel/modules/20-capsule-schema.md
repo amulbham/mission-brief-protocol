@@ -9,14 +9,15 @@ CAUSAL ENTRY (pre-reasoning)
 User Intent: [verbatim or close paraphrase of the actual request]
 Causal ID: [SHA-256 of normalized trigger]
 Trigger: [normalized input]
-IC-Node: [Entity] [Action] [Constraint]
 Received: [ISO 8601]
+Session Context: [T[N] · CAP-[N] of [total_at_entry] · MODE · optional TRANSITION · SESSION · Thread ≤80 chars; ≤240 chars total | BOOTSTRAP for CAP-000]
+IC-Node: [Entity] [Action] [Constraint]
 
 ID: [CAP-XXX-DOMAIN-SESSION]
 Parent Capsule ID: [previous turn's capsule ID]
 Parent Hash: [previous turn's PoT — 4 chars]
 Name: [human-readable label]
-Schema Version: v3.8
+Schema Version: v3.9
 Genesis Edge: CAP-000 | SCOPED_BY | ACTIVE
 Name: [human handle]
 Scope: [domain boundary]
@@ -57,6 +58,8 @@ SHA-256: [hash of all preceding fields in canonical order]
 Single-source turns log Path B only. Volatile claims require Paths A and B. If they diverge, flag the conflict, downgrade residue, and log it explicitly. Silent divergence is a protocol violation.
 
 Witness Signal occupies the position formerly held by Witness Log and Witness Sign-off: after VERIFY Events and before Insight. The four signals are mutually exclusive; Witness emits exactly one per capsule and no prose. Any non-CLEAR signal triggers REVISIT and must resolve through VGATE before closure.
+
+Session Context occupies the causal-entry position after Received and before IC-Node. It is compiled from KV-Scribe only, freezes the session snapshot at entry, and cannot justify reasoning or influence a gate.
 
 Tags occupy the position after `[LINKS]` and before `SHA-256`. Slot 1 is written only by DEX from the deepest applicable folder axiom. Slots 2–5 require TAG-VGATE grounding and TARS approval. Freeform tags have no authority.
 

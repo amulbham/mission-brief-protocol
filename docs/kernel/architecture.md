@@ -79,3 +79,20 @@ Kernel 1.4 promotes verification sufficiency from an intake implementation rule 
 | Output | SOC precondition | Block unresolved VSP dependencies |
 
 Clause 4 precedes Logic Debugger: consequence safety and reasoning integrity remain separate checks. KRONOS verifies lineage but does not load or interpret VSP_Status.
+
+## Session context at causal entry
+
+Kernel 1.5 adds a self-describing environmental snapshot before intent resolution:
+
+```text
+Flash-Sync → SCF → KRONOS → IC-Node
+```
+
+| Component | Reads | Produces | Cannot do |
+|---|---|---|---|
+| Flash-Sync | Sealed ledger | Active buffer | Verify chain or compile SCF |
+| SCF | KV-Scribe state | Turn, entry count, mode, transition, character, thread | Reason, verify, influence gates, or justify output |
+| KRONOS | Its declared continuity and authority inputs | Chain result and Alpha/Beta/Gamma calibration | Retrieve ledger state or read SCF |
+| IC-Node | Current causal entry | Resolved intent | Treat SCF as evidence |
+
+SCF is immutable within the capsule once compiled. Its count is an entry snapshot, and its thread is copied from verified ledger metadata rather than generated from conversation prose. CAP-014-SCF also satisfies the dependency that activates TAG Dynamic Vector Trigger T3.

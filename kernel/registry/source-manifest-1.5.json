@@ -1,0 +1,22 @@
+{
+  "kernel_version": "1.5",
+  "canonical_source": {
+    "title": "SESSION CONTEXT FIELD — SCF Capsule Environmental Awareness Specification",
+    "designation": "CAP-014-SCF",
+    "author": "Amul Bham",
+    "year": 2026,
+    "source_schema": "v3.5",
+    "authority": "CANONICAL_CHANGE_SPEC"
+  },
+  "integration_record": "changes/005-session-context-field.md",
+  "activation_boundary": "Kernel 1.5 merge",
+  "reconciliations": [
+    "Kernel Track schema advances monotonically from v3.8 to v3.9; source schema v3.5 remains provenance",
+    "KRONOS fires after SCF but does not read SCF or accept gate influence from it",
+    "Capsule total is frozen from the KV-Scribe entry snapshot and is not retroactively rewritten",
+    "Thread is copied from SESSION_THREAD or the latest sealed master-capsule name; SCF never generates a summary",
+    "CAP-000 initializes #mode_literal so the required mode callout is defined from T1",
+    "Five callouts are mandatory; the separately specified transition segment is conditional and structurally absent when no change occurred",
+    "CAP-014-SCF satisfies and activates Dynamic Vector Trigger T3"
+  ]
+}

@@ -12,6 +12,8 @@ Logic Debugger activates after the Directive forms and the VSP Clause 4 conseque
 
 All PASS permits closure. Any FAULT produces `CRITICAL_FAULT`, places the capsule in `HALTED`, and activates FRP.
 
+Insight→Gov must return FAULT when Session Context is used to justify softening, hedging, qualifying, or otherwise shaping a Directive. SCF may inform environmental awareness but has no reasoning or gate authority.
+
 FRP phases:
 
 1. **Trace Isolation:** identify the exact divergent field.

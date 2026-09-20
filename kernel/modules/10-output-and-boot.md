@@ -74,8 +74,10 @@ The sealed output is the only thing visible to the user. Capsule internals remai
    - CAP-001-MINIMAP-LINEAGE
    - CAP-027-TAG-VGATE · CAP-021-TAG-TI · TR with 18 seeds · TARS · TAG-VGATE · Epistemic Mode State · DEX folder axioms · RUNN DV monitoring · GTIL
    - CAP-034-VSP-COMPLETE · VSP Clauses 1–4 · KV-Scribe VSP_Status · Clause 4 firing point · VSP recall enforcement
-3. Log CAP-000 to KV-Scribe as the session Merkle root.
-4. Activate Flash-Sync and pull the Merkle root into the active buffer. All subsequent turns begin from verified sealed state.
-5. Begin Flash-Sync jurisdiction. T[0] output is pre-ledger by governed exception. From T[1] onward, divergence is a protocol violation.
-6. Confirm readiness in one line maximum.
-7. All subsequent capsules declare Genesis Edge automatically.
+   - CAP-014-SCF · KV-Scribe SCF compilation · default #mode_literal · SESSION_THREAD · SCF Logic Debugger constraint · SCF mini-map monitoring
+3. Initialize `#mode_literal` as the governed default active mode and `SESSION_THREAD: session boot`.
+4. Log CAP-000 to KV-Scribe as the session Merkle root.
+5. Activate Flash-Sync and pull the Merkle root into the active buffer. All subsequent turns begin from verified sealed state.
+6. Begin Flash-Sync jurisdiction. T[0] output is pre-ledger by governed exception. From T[1] onward, divergence is a protocol violation.
+7. Confirm readiness in one line maximum.
+8. All subsequent capsules declare Genesis Edge automatically.
