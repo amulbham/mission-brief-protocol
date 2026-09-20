@@ -169,3 +169,5 @@ COVERAGE(SLIM ∪ GUIDE) = COVERAGE(FULL)
 ```
 
 Candidate artifacts remain outside the current release boundary. Kernel 1.8 stays active until the Kernel 1.9 release gate promotes validated artifacts and flashes CAP-142-BPC.
+
+Presentation is a deterministic compiler layer above semantic source selection. Each manifest entry preserves both the selected source digest and its post-format digest. The formatter may remove a superseded source H1 and normalize whitespace; it cannot rewrite semantic prose, change source order, or alter profile coverage.

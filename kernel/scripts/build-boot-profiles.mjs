@@ -16,6 +16,18 @@ function moduleContent(name) {
   return readFileSync(join(kernelRoot, 'modules', name), 'utf8').trim();
 }
 
+function formatFragment(content) {
+  let formatted = content.replaceAll('\r\n', '\n');
+  if (registry.presentation.strip_source_h1) {
+    formatted = formatted.replace(/^# .+\n(?:\n)?/u, '');
+  }
+  return formatted
+    .split('\n')
+    .map(line => line.replace(/[ \t]+$/u, ''))
+    .join('\n')
+    .trim();
+}
+
 function sectionMap(content, moduleName) {
   const lines = content.split('\n');
   const sections = new Map();
@@ -44,7 +56,8 @@ function resolveEntry(entry) {
   const content = moduleContent(entry.module);
   if (!entry.sections) {
     return {
-      content,
+      sourceContent: content,
+      compiledContent: formatFragment(content),
       atoms: [...sectionMap(content, entry.module).keys()].map(section => `${entry.module}#${section}`)
     };
   }
@@ -54,7 +67,8 @@ function resolveEntry(entry) {
     return sections.get(section);
   });
   return {
-    content: fragments.join(registry.join),
+    sourceContent: fragments.join(registry.join),
+    compiledContent: formatFragment(fragments.join(registry.join)),
     atoms: entry.sections.map(section => `${entry.module}#${section}`)
   };
 }
@@ -65,12 +79,13 @@ function resolveProfile(id) {
   return {
     id,
     config,
-    body: entries.map(entry => entry.content).join(registry.join),
+    body: entries.map(entry => entry.compiledContent).join(registry.join),
     atoms: entries.flatMap(entry => entry.atoms),
     sources: entries.map(entry => ({
       module: entry.source.module,
       sections: entry.source.sections ?? null,
-      sha256: digest(entry.content)
+      source_sha256: digest(entry.sourceContent),
+      compiled_sha256: digest(entry.compiledContent)
     }))
   };
 }
@@ -87,10 +102,14 @@ if (missing.length || extra.length) {
 const registrySha256 = digest(registryText);
 const header = (profile, binding = {}) => {
   const lines = [
-    `# MBP Kernel ${registry.target_kernel_version} Candidate — ${profile.id} Profile`,
+    `# ${registry.presentation.title}`,
     '',
-    '<!-- GENERATED CANDIDATE: do not edit directly -->',
+    '> Generated candidate artifact. Edit authoritative modules or the profile registry, then rebuild.',
     '',
+    '## Boot Identity',
+    '',
+    '```text',
+    `PROFILE_FORMAT: ${registry.presentation.format_version}`,
     `PROFILE: ${profile.id}`,
     `TARGET_KERNEL: ${registry.target_kernel_version}`,
     `BASELINE_KERNEL: ${registry.baseline_kernel_version}`,
@@ -100,7 +119,7 @@ const header = (profile, binding = {}) => {
   ];
   if (profile.id === 'GUIDE') lines.push('STANDALONE_AUTHORITY: false');
   if (binding.guideSha256) lines.push(`GUIDE_EXPECTED_SHA256: ${binding.guideSha256}`);
-  lines.push('', '---', '');
+  lines.push('```', '', '---', '', '');
   return lines.join('\n');
 };
 
@@ -119,6 +138,7 @@ const compiledManifest = {
   target_kernel_version: registry.target_kernel_version,
   baseline_kernel_version: registry.baseline_kernel_version,
   status: registry.status,
+  profile_format_version: registry.presentation.format_version,
   profile_registry: 'kernel/registry/boot-profiles-1.9.json',
   profile_registry_sha256: registrySha256,
   build_order: ['GUIDE', 'SLIM', 'FULL', 'MANIFEST'],

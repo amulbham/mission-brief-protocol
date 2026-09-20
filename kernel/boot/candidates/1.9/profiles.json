@@ -2,8 +2,9 @@
   "target_kernel_version": "1.9",
   "baseline_kernel_version": "1.8",
   "status": "CANDIDATE",
+  "profile_format_version": "1.0",
   "profile_registry": "kernel/registry/boot-profiles-1.9.json",
-  "profile_registry_sha256": "66813de5498da5ad039e615a6217b81c717e33686f641d72d471aeb2bfc12b0c",
+  "profile_registry_sha256": "8b607af2533fb0e0c737f11f3e8a01cd088d3fbd5ccff1a8c6b2feedd4206fec",
   "build_order": [
     "GUIDE",
     "SLIM",
@@ -12,7 +13,7 @@
   ],
   "guide_binding": {
     "slim_field": "GUIDE_EXPECTED_SHA256",
-    "expected_sha256": "1e659faecb5eec1462c61c3e19ddd1e07493b431e9782cd43e64e792045bea59"
+    "expected_sha256": "d2bc3ea9021085f9bea33f367586ccd2b7d43aaa43796b73ffa57f9e33b92fc2"
   },
   "coverage": {
     "equation": "COVERAGE(SLIM ∪ GUIDE) = COVERAGE(FULL)",
@@ -73,73 +74,86 @@
       "file": "MBP_KERNEL_BOOT.md",
       "activation": "DIRECT",
       "authorized_terminal": "KERNEL_READY",
-      "sha256": "546ce44bfd57ce9e6bf4e3d6ba0c6f7e0d14595bd21b4f75825673f8e5f1998d",
-      "bytes": 78712,
+      "sha256": "c44bd5cadc035a6fa3f66dceb8313a8b325b77750da4b46cd5be2b80da58e8b2",
+      "bytes": 78773,
       "sources": [
         {
           "module": "00-cognitive-physics.md",
           "sections": null,
-          "sha256": "20aee94bfaff94ca7e64cce28b50d1df872758fb9f0bc7249c6f26ee954f6df0"
+          "source_sha256": "20aee94bfaff94ca7e64cce28b50d1df872758fb9f0bc7249c6f26ee954f6df0",
+          "compiled_sha256": "16ccb09153fe03db07e95b8d796592a35effc7a3c25ba770c75cd52e1614ecab"
         },
         {
           "module": "10-output-and-boot.md",
           "sections": null,
-          "sha256": "223a4057814b9bd7a77687cdec1cbd6188c6e2fb8c892d291342567d186c1475"
+          "source_sha256": "223a4057814b9bd7a77687cdec1cbd6188c6e2fb8c892d291342567d186c1475",
+          "compiled_sha256": "db79fa7ebafbf137a0cc45bbc3d1370c28f42b345ff31a2cfe4df5b5ef5c8586"
         },
         {
           "module": "12-boot-profile-contract.md",
           "sections": null,
-          "sha256": "d2799d84b74c9102b47becb8e7987541103f313abe261dbea114f7df37822bb8"
+          "source_sha256": "d2799d84b74c9102b47becb8e7987541103f313abe261dbea114f7df37822bb8",
+          "compiled_sha256": "d2799d84b74c9102b47becb8e7987541103f313abe261dbea114f7df37822bb8"
         },
         {
           "module": "15-session-context.md",
           "sections": null,
-          "sha256": "05760305013c8fe2c3bb71065a349cd96b5995f16f182314b1f9e96a3b10f214"
+          "source_sha256": "05760305013c8fe2c3bb71065a349cd96b5995f16f182314b1f9e96a3b10f214",
+          "compiled_sha256": "05760305013c8fe2c3bb71065a349cd96b5995f16f182314b1f9e96a3b10f214"
         },
         {
           "module": "20-capsule-schema.md",
           "sections": null,
-          "sha256": "7ee8f0774a67e4e504e4344e4d047c942189cddbdf67a3111795f873221e302e"
+          "source_sha256": "7ee8f0774a67e4e504e4344e4d047c942189cddbdf67a3111795f873221e302e",
+          "compiled_sha256": "7ee8f0774a67e4e504e4344e4d047c942189cddbdf67a3111795f873221e302e"
         },
         {
           "module": "30-continuity-and-verification.md",
           "sections": null,
-          "sha256": "8b4f881c7948e1818cf5250bcd1c69f04de521ab0ccbf008a28da85b16ac4385"
+          "source_sha256": "8b4f881c7948e1818cf5250bcd1c69f04de521ab0ccbf008a28da85b16ac4385",
+          "compiled_sha256": "8b4f881c7948e1818cf5250bcd1c69f04de521ab0ccbf008a28da85b16ac4385"
         },
         {
           "module": "35-verification-sufficiency.md",
           "sections": null,
-          "sha256": "2177422529659a9c51206d2d0c87011ead263c3a2a0df35eeb57cb64e78083ef"
+          "source_sha256": "2177422529659a9c51206d2d0c87011ead263c3a2a0df35eeb57cb64e78083ef",
+          "compiled_sha256": "2177422529659a9c51206d2d0c87011ead263c3a2a0df35eeb57cb64e78083ef"
         },
         {
           "module": "40-runtime-components.md",
           "sections": null,
-          "sha256": "a64e7ddce02b3538bad6113fb159658b288fa117d975cc745a1d777ee4de8b2a"
+          "source_sha256": "a64e7ddce02b3538bad6113fb159658b288fa117d975cc745a1d777ee4de8b2a",
+          "compiled_sha256": "a64e7ddce02b3538bad6113fb159658b288fa117d975cc745a1d777ee4de8b2a"
         },
         {
           "module": "45-tag-system.md",
           "sections": null,
-          "sha256": "738575ea551a2018aca7e2e1bc83fbd61235697f603e3518dcce6f6596a06950"
+          "source_sha256": "738575ea551a2018aca7e2e1bc83fbd61235697f603e3518dcce6f6596a06950",
+          "compiled_sha256": "738575ea551a2018aca7e2e1bc83fbd61235697f603e3518dcce6f6596a06950"
         },
         {
           "module": "47-relational-knowledge.md",
           "sections": null,
-          "sha256": "6b1ace366b4045c8fdf867b7a979e710b9277702f7807dca4b0e40032bf1fa7b"
+          "source_sha256": "6b1ace366b4045c8fdf867b7a979e710b9277702f7807dca4b0e40032bf1fa7b",
+          "compiled_sha256": "6b1ace366b4045c8fdf867b7a979e710b9277702f7807dca4b0e40032bf1fa7b"
         },
         {
           "module": "48-jit-pruning.md",
           "sections": null,
-          "sha256": "f5674949d98bd7557b7300cc646a29c043ef56cc05548c22ab7b8d3df858a940"
+          "source_sha256": "f5674949d98bd7557b7300cc646a29c043ef56cc05548c22ab7b8d3df858a940",
+          "compiled_sha256": "f5674949d98bd7557b7300cc646a29c043ef56cc05548c22ab7b8d3df858a940"
         },
         {
           "module": "49-dynamic-subroutines.md",
           "sections": null,
-          "sha256": "a55a48d3d1c9823059a1143ca4f091cd95ce554d5f5da011ab42043c635bf7c5"
+          "source_sha256": "a55a48d3d1c9823059a1143ca4f091cd95ce554d5f5da011ab42043c635bf7c5",
+          "compiled_sha256": "a55a48d3d1c9823059a1143ca4f091cd95ce554d5f5da011ab42043c635bf7c5"
         },
         {
           "module": "50-relations-tools-and-display.md",
           "sections": null,
-          "sha256": "85405631708a9f6a532fb1d4657ed1e7ce427a07fc1900dae1f97722efe529c2"
+          "source_sha256": "85405631708a9f6a532fb1d4657ed1e7ce427a07fc1900dae1f97722efe529c2",
+          "compiled_sha256": "85405631708a9f6a532fb1d4657ed1e7ce427a07fc1900dae1f97722efe529c2"
         }
       ]
     },
@@ -147,13 +161,14 @@
       "file": "MBP_KERNEL_BOOT_SLIM.md",
       "activation": "STAGE_A",
       "authorized_terminal": "BOOTSTRAP_READY",
-      "sha256": "f68b8bfa9e8a775c82a068d3c5465a826b7758a47876704d56ed0eb09df0bb27",
-      "bytes": 14348,
+      "sha256": "e09d9d4e88ed8086836dcd08465c6868dc3f8534b943575d542b1d84eed0495b",
+      "bytes": 14409,
       "sources": [
         {
           "module": "00-cognitive-physics.md",
           "sections": null,
-          "sha256": "20aee94bfaff94ca7e64cce28b50d1df872758fb9f0bc7249c6f26ee954f6df0"
+          "source_sha256": "20aee94bfaff94ca7e64cce28b50d1df872758fb9f0bc7249c6f26ee954f6df0",
+          "compiled_sha256": "16ccb09153fe03db07e95b8d796592a35effc7a3c25ba770c75cd52e1614ecab"
         },
         {
           "module": "10-output-and-boot.md",
@@ -165,7 +180,8 @@
             "Mini-Map Enforcement — CAP-007-MINIMAP-A002",
             "Output Rule"
           ],
-          "sha256": "cba189cb530b307acf33a338710fb1d6bd099b240efd7321a7b6230fe537bbcd"
+          "source_sha256": "cba189cb530b307acf33a338710fb1d6bd099b240efd7321a7b6230fe537bbcd",
+          "compiled_sha256": "81382fc1ad6b214a19e814891452dfd1385b71cdf39939271bbd285cc99ac672"
         },
         {
           "module": "12-boot-profile-contract.md",
@@ -176,7 +192,8 @@
             "Stage B — Guide Verification and Kernel Activation",
             "Failure and Recovery"
           ],
-          "sha256": "04639d97db5af9497b827f29c7026f3c648a0109d1d9295ec8a5216af2c4e845"
+          "source_sha256": "04639d97db5af9497b827f29c7026f3c648a0109d1d9295ec8a5216af2c4e845",
+          "compiled_sha256": "04639d97db5af9497b827f29c7026f3c648a0109d1d9295ec8a5216af2c4e845"
         }
       ]
     },
@@ -184,15 +201,16 @@
       "file": "MBP_KERNEL_BOOT_GUIDE.md",
       "activation": "STAGE_B",
       "authorized_terminal": "KERNEL_READY_AFTER_STAGE_B",
-      "sha256": "1e659faecb5eec1462c61c3e19ddd1e07493b431e9782cd43e64e792045bea59",
-      "bytes": 64799,
+      "sha256": "d2bc3ea9021085f9bea33f367586ccd2b7d43aaa43796b73ffa57f9e33b92fc2",
+      "bytes": 64902,
       "sources": [
         {
           "module": "10-output-and-boot.md",
           "sections": [
             "Session Boot Sequence"
           ],
-          "sha256": "a35fdccaf9d154b30363997e896f76a600b1598fd93bcd86ca9339429908c363"
+          "source_sha256": "a35fdccaf9d154b30363997e896f76a600b1598fd93bcd86ca9339429908c363",
+          "compiled_sha256": "a35fdccaf9d154b30363997e896f76a600b1598fd93bcd86ca9339429908c363"
         },
         {
           "module": "12-boot-profile-contract.md",
@@ -200,57 +218,68 @@
             "Full Profile — Direct Activation",
             "Operational Coverage Contract"
           ],
-          "sha256": "f66948698defc408abb9b9854b5e0ca0a530a7647d3b6e35686556a00301b8f2"
+          "source_sha256": "f66948698defc408abb9b9854b5e0ca0a530a7647d3b6e35686556a00301b8f2",
+          "compiled_sha256": "f66948698defc408abb9b9854b5e0ca0a530a7647d3b6e35686556a00301b8f2"
         },
         {
           "module": "15-session-context.md",
           "sections": null,
-          "sha256": "05760305013c8fe2c3bb71065a349cd96b5995f16f182314b1f9e96a3b10f214"
+          "source_sha256": "05760305013c8fe2c3bb71065a349cd96b5995f16f182314b1f9e96a3b10f214",
+          "compiled_sha256": "05760305013c8fe2c3bb71065a349cd96b5995f16f182314b1f9e96a3b10f214"
         },
         {
           "module": "20-capsule-schema.md",
           "sections": null,
-          "sha256": "7ee8f0774a67e4e504e4344e4d047c942189cddbdf67a3111795f873221e302e"
+          "source_sha256": "7ee8f0774a67e4e504e4344e4d047c942189cddbdf67a3111795f873221e302e",
+          "compiled_sha256": "7ee8f0774a67e4e504e4344e4d047c942189cddbdf67a3111795f873221e302e"
         },
         {
           "module": "30-continuity-and-verification.md",
           "sections": null,
-          "sha256": "8b4f881c7948e1818cf5250bcd1c69f04de521ab0ccbf008a28da85b16ac4385"
+          "source_sha256": "8b4f881c7948e1818cf5250bcd1c69f04de521ab0ccbf008a28da85b16ac4385",
+          "compiled_sha256": "8b4f881c7948e1818cf5250bcd1c69f04de521ab0ccbf008a28da85b16ac4385"
         },
         {
           "module": "35-verification-sufficiency.md",
           "sections": null,
-          "sha256": "2177422529659a9c51206d2d0c87011ead263c3a2a0df35eeb57cb64e78083ef"
+          "source_sha256": "2177422529659a9c51206d2d0c87011ead263c3a2a0df35eeb57cb64e78083ef",
+          "compiled_sha256": "2177422529659a9c51206d2d0c87011ead263c3a2a0df35eeb57cb64e78083ef"
         },
         {
           "module": "40-runtime-components.md",
           "sections": null,
-          "sha256": "a64e7ddce02b3538bad6113fb159658b288fa117d975cc745a1d777ee4de8b2a"
+          "source_sha256": "a64e7ddce02b3538bad6113fb159658b288fa117d975cc745a1d777ee4de8b2a",
+          "compiled_sha256": "a64e7ddce02b3538bad6113fb159658b288fa117d975cc745a1d777ee4de8b2a"
         },
         {
           "module": "45-tag-system.md",
           "sections": null,
-          "sha256": "738575ea551a2018aca7e2e1bc83fbd61235697f603e3518dcce6f6596a06950"
+          "source_sha256": "738575ea551a2018aca7e2e1bc83fbd61235697f603e3518dcce6f6596a06950",
+          "compiled_sha256": "738575ea551a2018aca7e2e1bc83fbd61235697f603e3518dcce6f6596a06950"
         },
         {
           "module": "47-relational-knowledge.md",
           "sections": null,
-          "sha256": "6b1ace366b4045c8fdf867b7a979e710b9277702f7807dca4b0e40032bf1fa7b"
+          "source_sha256": "6b1ace366b4045c8fdf867b7a979e710b9277702f7807dca4b0e40032bf1fa7b",
+          "compiled_sha256": "6b1ace366b4045c8fdf867b7a979e710b9277702f7807dca4b0e40032bf1fa7b"
         },
         {
           "module": "48-jit-pruning.md",
           "sections": null,
-          "sha256": "f5674949d98bd7557b7300cc646a29c043ef56cc05548c22ab7b8d3df858a940"
+          "source_sha256": "f5674949d98bd7557b7300cc646a29c043ef56cc05548c22ab7b8d3df858a940",
+          "compiled_sha256": "f5674949d98bd7557b7300cc646a29c043ef56cc05548c22ab7b8d3df858a940"
         },
         {
           "module": "49-dynamic-subroutines.md",
           "sections": null,
-          "sha256": "a55a48d3d1c9823059a1143ca4f091cd95ce554d5f5da011ab42043c635bf7c5"
+          "source_sha256": "a55a48d3d1c9823059a1143ca4f091cd95ce554d5f5da011ab42043c635bf7c5",
+          "compiled_sha256": "a55a48d3d1c9823059a1143ca4f091cd95ce554d5f5da011ab42043c635bf7c5"
         },
         {
           "module": "50-relations-tools-and-display.md",
           "sections": null,
-          "sha256": "85405631708a9f6a532fb1d4657ed1e7ce427a07fc1900dae1f97722efe529c2"
+          "source_sha256": "85405631708a9f6a532fb1d4657ed1e7ce427a07fc1900dae1f97722efe529c2",
+          "compiled_sha256": "85405631708a9f6a532fb1d4657ed1e7ce427a07fc1900dae1f97722efe529c2"
         }
       ]
     }

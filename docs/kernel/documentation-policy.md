@@ -11,6 +11,7 @@ Documentation explains active kernel behavior; it does not create authority.
 5. Numbered records under `kernel/changes/` explain every behavioral or authority delta.
 6. `docs/kernel/capsule-schema.md` is generated from `kernel/schema/capsule-fields-v3.11.json`; direct edits are prohibited.
 7. `docs/kernel/booting.md` explains profile use; boot authority remains in modules, registries, validated compiled artifacts, and release state.
+8. `docs/kernel/prompt-style.md` governs generated presentation without modifying semantic source authority.
 
 ## Maintenance rule
 
@@ -30,6 +31,8 @@ A pull request that changes a public component contract must update, in the same
 `kernel/tests/kernel-1.9-schema-catalog-conformance.mjs` checks exact field order and catalog completeness. `kernel/scripts/build-schema-guide.mjs --check` blocks drift between the structured catalog and the generated human guide.
 
 `kernel/scripts/build-boot-profiles.mjs --check` blocks candidate profile drift. `kernel/tests/kernel-1.9-boot-profiles-conformance.mjs` checks artifact hashes, guide binding, activation states, and full-versus-two-stage source coverage.
+
+`kernel/tests/kernel-1.9-prompt-format-conformance.mjs` checks the single-H1 rule, Boot Identity placement, current title, source/compiled fragment hashes, whitespace normalization, and terminal newline.
 
 ## Status vocabulary
 
