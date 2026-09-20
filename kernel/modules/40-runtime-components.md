@@ -1,6 +1,6 @@
 ## Subroutine Governance — Core_Manager
 
-The active subroutine loads before facts are analyzed. Crossing a domain requires a forced Subroutine Swap before processing; silent domain bleed is a protocol violation. Branch points fork a child capsule instead of contaminating the current one. Every child declares its parent Subroutine. Core_Manager is the root subroutine governing all swaps.
+Exactly one versioned Mode 1 interface loads before facts are analyzed. `KERNEL_INTERFACE@1.0` is the fallback when no domain-specific interface is registered for the current PATH. Crossing a domain requires a forced Mode 1 swap and RUNN topology decision before processing; silent domain bleed is a protocol violation. Branch points fork a child capsule instead of contaminating the current one. Every child declares its parent Mode 1 interface. Core_Manager is the sole loader for Mode 1 and the CAP-131-DSS Mode 2 scopes defined later in this boot.
 
 ## Logic Debugger and Fault Recovery Protocol
 

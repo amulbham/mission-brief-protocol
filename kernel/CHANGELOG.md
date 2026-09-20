@@ -1,5 +1,14 @@
 # Kernel Track Changelog
 
+## 1.8
+
+- Flashed CAP-131-DSS synthesis, cache, registry, transient-status, Core_Manager, and display components.
+- Preserved Mode 1 PATH loading while adding capsule-precise Tier 1 and Tier 2 Mode 2 scopes.
+- Added SYNTHESIS_GATE, KNOWLEDGE-only cache enrichment, append-only versioning, and last-clean fallback.
+- Activated TRANSIENT as a status on Tier 2 VALIDATES and SCOPED_BY records without changing the nine-type RKI registry.
+- Added the approved concise DSS state strip with a 180-character ceiling.
+- Advanced capsule schema from v3.10 to v3.11.
+
 ## 1.7
 
 - Flashed all five CAP-JIT-001 constitutional sub-components.

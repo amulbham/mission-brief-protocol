@@ -1,0 +1,31 @@
+{
+  "kernel_version": "1.8",
+  "canonical_source": {
+    "title": "MBP SPRINT UPDATE — Component 6 · Dynamic Subroutine System",
+    "filename": "Dynamic Subroutine System_MBP_Sprint_DSS_Component6.pdf",
+    "designation": "CAP-131-DSS",
+    "source_version": "0.4",
+    "source_schema": "v3.7 → v3.8 additive",
+    "author": "Amul Bham",
+    "year": 2026,
+    "pages": 14,
+    "sha256": "b9c062056047a722fbd69f51e8c0c3fba8b186ec3bb8638c0e206b75fe57d346",
+    "authority": "CANONICAL_CHANGE_SPEC"
+  },
+  "approved_supplement": {
+    "title": "DSS concise mini-map state strip",
+    "approved_at": "2026-09-19",
+    "authority": "APPROVED_INTEGRATION_DELTA"
+  },
+  "integration_record": "changes/008-dss-state-strip.md",
+  "activation_boundary": "Kernel 1.8 merge",
+  "reconciliations": [
+    "Kernel Track schema advances from v3.10 to v3.11 while source schema remains provenance",
+    "TRANSIENT is a lifecycle status on VALIDATES and SCOPED_BY, not a tenth RKI type",
+    "CAP-009-SCHEMA behavior is implemented by CAP-131-DSS registry validation",
+    "CAP-035 META/DOMAIN separation is enforced locally by CAP-131-DSS",
+    "PSAC Q3 intent is handled by the existing unnumbered PSAC challenge",
+    "Synthesis cache is logical session state and does not claim model-weight updates or cross-session learning",
+    "Approved DSS strip is always visible, capped at 180 characters, and expands only exceptions"
+  ]
+}

@@ -73,12 +73,12 @@ If either boot parameter is absent or invalid, Watchdog status is `CONFIG_FAULT`
 
 ### Vocabulary Consolidation
 
-The nine-type RKI registry is the complete active Kernel 1.7 relation vocabulary. `SUPPORTS` and `INHERITS_FROM` are retired and carry no authority. Use `VALIDATES` or `DEPENDS_ON` for the former and `SCOPED_BY` for the latter.
+The nine-type RKI registry is the complete active Kernel 1.8 relation-type vocabulary. `SUPPORTS` and `INHERITS_FROM` are retired and carry no authority. Use `VALIDATES` or `DEPENDS_ON` for the former and `SCOPED_BY` for the latter.
 
-The source-era `FORKS_TO` label is not an emitted Kernel 1.7 type. Historical imports may normalize it to `BRANCHES_TO` only through an explicit VGATE-R event with imported provenance. DSS `TRANSIENT` relations remain deferred until DSS is separately flashed; JIT does not activate them.
+The source-era `FORKS_TO` label is not an emitted Kernel 1.8 type. Historical imports may normalize it to `BRANCHES_TO` only through an explicit VGATE-R event with imported provenance. CAP-131-DSS activates `TRANSIENT` as a status on Tier 2 VALIDATES and SCOPED_BY records, not as a relation type. Those records resolve at PoT generation and their active projections flush before JIT constructs the SOC surface.
 
 ### Prompt-Runtime Ceiling
 
-Kernel 1.7 implements functional surface suppression. Suppressed text may remain in the host model's physical context window, so JIT does not claim token eviction, reduced inference cost, or guaranteed long-session performance equivalence. True buffer eviction belongs to an infrastructure runtime beyond this boot prompt.
+Kernel 1.8 inherits functional surface suppression. Suppressed text may remain in the host model's physical context window, so JIT does not claim token eviction, reduced inference cost, or guaranteed long-session performance equivalence. True buffer eviction belongs to an infrastructure runtime beyond this boot prompt.
 
 Any claim that prompt-only JIT physically removed tokens is a verification fault. JIT's current enforced effect is narrower: SOC compiles only from the governed KV-Scribe projection.

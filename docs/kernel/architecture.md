@@ -18,7 +18,7 @@ Kernel 1.0 separates constitutional source from generated and explanatory surfac
 |---|---|
 | KV-Scribe / Flash-Sync | Retrieve and surface sealed ledger state |
 | KRONOS | Verify chain continuity and calibrate Alpha/Beta/Gamma authority |
-| Core_Manager | Select and swap the active subroutine |
+| Core_Manager | Load one Mode 1 interface and govern DSS Mode 2 lifecycle |
 | RUNN | Select and expand capsule topology |
 | DEX | Assign namespace and PATH; during JIT, trace cleared relations, evaluate retention, and compile the minimal grid |
 | VGATE | Set fact and constraint verification thresholds |
@@ -133,3 +133,21 @@ sealed capsule → RUNN trigger → DEX minimal grid → KV-Scribe injection →
 Continuous relation actions preserve the complete nine-type RKI vocabulary. The Watchdog adds a compression sweep only when valid runtime-supplied capacity and threshold parameters exist and current token usage exceeds the threshold. CORE_SYSTEM_INVARIANT and HIGH_PRIORITY_DATA survive every sweep.
 
 In the prompt runtime, suppression is functional: excluded nodes are absent from SOC's governed surface but may remain in the host context window. Physical token eviction and cost reduction are not claimed.
+
+## Dynamic subroutine layers
+
+Kernel 1.8 separates stable PATH context from capsule-precise specialization:
+
+| Layer | Trigger | Lifetime | State owner |
+|---|---|---|---|
+| Mode 1 | PATH assignment or domain crossing | Persists until governed Mode 1 swap | Core_Manager |
+| Tier 1 Mode 2 | `LOAD: [DOMAIN_TYPE]` after SYNTHESIS_GATE | Current capsule; cache manifest persists for session | Core_Manager + KV-Scribe |
+| Tier 2 Mode 2 | `LOAD: REG:[TOOL_ID]` after registry validation | Current capsule only | Core_Manager + KV-Scribe |
+
+Mode 2 does not change PATH. A real domain crossing still requires RUNN topology governance and a Mode 1 swap. `KERNEL_INTERFACE@1.0` is the explicit fallback Mode 1 state when no specialized interface applies.
+
+Tier 1 synthesis reads only IC-Node, PATH, Constraints, and Goal. Its gate checks structural completeness rather than truth, so synthesized scope cannot supply Facts or satisfy verification. Only clean KNOWLEDGE invocations enrich the session cache; faulted versions remain append-only and fall back to the last clean version.
+
+Tier 2 keeps stable precision logic immutable. Its VALIDATES and SCOPED_BY relations use `TRANSIENT` status during the capsule, resolve at PoT generation, and preserve their fire-and-resolve ledger history. TRANSIENT is a status, not a tenth RKI type.
+
+The mini-map state strip exposes Mode 1, Mode 2, cache state, and Tier 2 completion in no more than 180 characters. Tool identity expands only for unresolved or blocked exceptions.
