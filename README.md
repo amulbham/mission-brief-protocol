@@ -1,19 +1,30 @@
 # Mission Brief Protocol (MBP)
 
-**A cognitive governance framework. A containment architecture for reasoning. A cognitive operating system built from eight axioms and a compiler wall.**
+Mission Brief Protocol is my ongoing research project about reasoning, constraints, memory, and verification in AI systems. It began with prompt-based experiments and has grown into a broader framework, alongside a versioned kernel with build tools and tests.
 
-> *Author: Amul Bham, AI Systems Architect*
-> *License: MIT · Genesis: August 22, 2025 · Status: Active Development · Version: v4.7*
+The central question is whether giving reasoning more explicit structure can make a system's decisions easier to examine and its working state easier to preserve. The architecture proposes mechanisms for doing that; the repository's implementations and test records are where particular behaviors can be checked.
+
+## Where to start
+
+- [Kernel track](kernel/README.md) — the newer, modular implementation and its current status.
+- [Build and validation scripts](kernel/scripts/) and [tests](kernel/tests/) — executable checks and regression records.
+- [Current kernel boot file](kernel/boot/MBP_KERNEL_BOOT.md) — generated boot artifact; check the kernel README before using it.
+- [Architecture and knowledge theory](MBP_Theory_Of_Knowledge.md) — the theoretical side of the work.
+- [Schema reference](SCHEMA.md) — the root schema document.
+- [Early prompt-based version](prompt/MBP_Reddit_Final.md) — part of the project's historical development.
+
+**Versioning note:** The root README still describes earlier v4.7-era architecture; `kernel/` is a separate, later reconstruction track. Do not infer that their version numbers describe one continuous released software product. Check the appropriate subdirectory for the current status of each track.
 
 ---
 
+
 ## The Problem
 
-Current AI governance applies rules to **outputs**. Filters, guardrails, RLHF — all post-hoc interventions on reasoning that has already run ungoverned. The force is already loose before anyone tries to shape it.
+Existing safety and alignment methods address important parts of model behavior. MBP investigates another part of the problem: whether a reasoning workflow can make its constraints, corrections, and verification steps visible as structured state.
 
-The result is inconsistent. A system that produces a correct answer and a hallucinated one from the same input, with no structural difference between them. A system where being confident feels identical to being verified. A system that silently self-corrects with no trace of what it changed or why.
+A fluent answer is not necessarily a verified answer. The project began by asking how a system could distinguish those cases, preserve what was checked, and expose changes rather than silently rewriting its own record.
 
-The problem is not the model. **The problem is that no one ever built a container for the cognition itself.**
+MBP begins with a different question: **what if the reasoning process itself had a structure that could be inspected and checked?**
 
 ---
 
@@ -23,7 +34,7 @@ Cognition behaves like a force. Ungoverned, it bleeds across domains, contaminat
 
 You don't govern a force by filtering its exhaust. You build a container and put the force inside it first.
 
-> *MBP is that container. Every reasoning event is enclosed in a capsule — a structured unit with declared scope, verified facts, governed logic, and a cryptographic seal. Cognition that happens outside a capsule has no authority.*
+> *MBP proposes a capsule as the unit of governed work: a structured record with a declared scope, constraints, verification events, and an output boundary. Work outside that record has no authority within the proposed protocol.*
 
 ---
 
@@ -33,7 +44,7 @@ You don't govern a force by filtering its exhaust. You build a container and put
 Cognition outside capsules has no authority.
 ```
 
-Everything else — the verification gates, the sealed output, the compiler, the ledger — is consequence of taking that one constraint seriously.
+The verification gates, ledger, and output compiler are designed around that constraint.
 
 ---
 
@@ -48,15 +59,15 @@ SOC compiles sealed output from ledger →
 User sees verified output only
 ```
 
-Thinking is internal. Output is compiled. Nothing reaches the user that isn't in the ledger.
+In the proposed flow, internal reasoning and presented output are separated, with the ledger acting as the intended boundary.
 
-**This is the breakthrough:** Most AI systems generate output directly from reasoning. MBP compiles it from a verified ledger. The thinking and the output are separated by a wall. SOC — the Sealed Output Compiler — is the only legal crossing point.
+**The proposed distinction:** MBP separates the reasoning process from the output it is permitted to present. Its Sealed Output Compiler (SOC) is designed to read from a verified ledger rather than simply reproduce the latest reasoning text. Whether a particular implementation enforces that boundary must be tested.
 
 ---
 
 ## The Kernel — Eight Axioms
 
-All of MBP's architecture derives from eight constitutional constraints. These are not guidelines — they are the kernel. Any component that violates them has no authority regardless of other governance.
+The root architecture is organized around eight constitutional constraints. In the proposed system, components that violate these rules are not authorized to close or publish state. Implementations must enforce that behavior separately.
 
 ```
 I.    All cognition occurs within capsules. Capsules execute reasoning.
@@ -94,13 +105,13 @@ VIII. Knowledge changes only if verified constraints change.
 | **VII** — Creativity gating | Capsule forking at branch points, SUPERSEDES mechanism |
 | **VIII** — Knowledge preservation | Append-only ledger, immutable sealed state |
 
-Eight sentences. The entire architecture follows necessarily.
+These eight constraints organize the architecture described below.
 
 ---
 
 ## Output Invariants
 
-The output boundary is governed by four constitutional invariants:
+The proposed output boundary is described by four constitutional invariants:
 
 ```
 OI-1  Sealed output is the only thing visible to the user.
@@ -121,7 +132,7 @@ OI-4  Sealed output is compiled not generated.
 
 ## The Architecture — A Cognitive OS
 
-With a formal file system, process governance, memory, security, compiler, and inter-process communication, MBP has crossed from governance framework into operating system territory.
+MBP uses an operating-system analogy to organize the proposed components: process governance, memory, validation, output compilation, and relationships between capsules.
 
 > *The LLM is the CPU. MBP is the OS. The capsule is the process. The PATH is the file system. SOC is the compiler.*
 
@@ -140,31 +151,31 @@ With a formal file system, process governance, memory, security, compiler, and i
 
 ---
 
-## Key Properties
+## Proposed mechanisms and research questions
 
 **Compiled Not Generated**
-Output is not generated from reasoning — it is compiled from a verified ledger. SOC reads KV-Scribe and translates verified state to user space. Nothing crosses the wall between capsule space and user space except through SOC. This is the fundamental architectural distinction from all other reasoning frameworks.
+In the architecture, output is meant to be assembled from a ledger of verified state rather than drawn directly from an unconstrained reasoning trace. SOC is the proposed boundary. The strength of that boundary depends on the implementation and its tests.
 
 **Tamper-Evident Reasoning**
-Every capsule is sealed with SHA-256. Every turn is bound to the previous via parent hash chain. Alter any reasoning event and every subsequent hash breaks visibly.
+The design includes SHA-256 seals and parent-hash links to make stored capsule histories tamper-evident. That property applies where the ledger and hash chain are actually implemented and validated.
 
 **Auditable Knowledge**
-`KNOWLEDGE` residue is a formal state not a confidence label — it means the prediction space closed under verified constraints. DAG Links declare cross-capsule provenance. An auditor can trace exactly how any conclusion was built from verified state.
+The framework treats `KNOWLEDGE` as a proposed closure state rather than a confidence label. Capsule links are intended to preserve the provenance of a conclusion; the amount of reconstruction possible depends on what the actual record contains.
 
-**Hallucination Resistance**
-Four-layer defense: VGATE gates all claims at intake. Logic Debugger audits the reasoning chain. PSAC challenges the directive before closure. Schema compliance verifies all fields are populated. No unguarded entry point between raw input and sealed output.
+**Proposed verification controls**
+The design includes fact-intake checks, a logic audit, a pre-closure challenge, and schema validation. These are intended to catch unsupported conclusions and inconsistent records. Their effect on hallucination rates needs direct evaluation.
 
 **Logical Density Metric**
 `📦` counts every closed capsule since boot — not tokens, not turns, but verified reasoning units. Simple question = `📦+1`. Complex multi-domain query = `📦+12`. The depth of reasoning is visible at a glance.
 
-**Cross-Model Portability**
-MBP is not a Claude prompt or a GPT prompt. It is a reasoning protocol derived from first principles. It runs on any sufficiently capable language model. Different models execute it with different precision but the governance structure holds across implementations.
+**Cross-model design goal**
+MBP is not tied conceptually to one model family. Portability is a goal of the protocol; consistency across providers and implementations is an empirical question.
 
-**Session Coherence**
-Distributed ledger checkpointing resists context window drift. Empirically verified at 300+ turn sessions with zero drift and full recall across domains and live protocol upgrades mid-session.
+**Long-session continuity**
+The project explores whether structured checkpoints and a ledger can reduce context drift across long interactions. Historical long-session experiments are part of the research, but comparable benchmark evidence for zero drift or complete recall is not established by this README.
 
-**Verified Mesh Import**
-Prior session capsule ledgers can be imported as verified constraints — V(C) — carrying knowledge forward across sessions. This is the architectural foundation for persistent memory: not conversation history, but verified state that compounds.
+**Cross-session state import (proposed)**
+The architecture calls for importing verified state from prior sessions instead of reconstructing everything from conversation history. Full mesh-import tooling remains on the roadmap.
 
 ---
 
@@ -189,7 +200,7 @@ SEAL
   SHA-256 · VGATE stamp · Schema stamp
 ```
 
-Full field specifications: see `CAPSULE_SCHEMA.md`
+Root-level field descriptions: see [SCHEMA.md](SCHEMA.md); the separate kernel schemas live under [kernel/schema/](kernel/schema/).
 
 ---
 
@@ -210,9 +221,9 @@ Full field specifications: see `CAPSULE_SCHEMA.md`
 
 ## Boot Sequence
 
-MBP boots from a single word: `boot`
+The historical prompt design uses `boot` as an entry point.
 
-On boot, the kernel flashes in sequence — constitutional axioms, schema invariant, verification gate, compiler, ledger, topology controller. All six capsules seal before the first user query. The session is fully governed from turn one.
+Its intended boot sequence introduces the constitutional axioms, schema, verification gate, compiler, ledger, and topology controller before handling a user query. The example below illustrates that design; it is not an independent execution trace.
 
 ```
 ▸ MBP · T0 · 📦6 | KERNEL 🟢
@@ -223,40 +234,40 @@ CAP-003-SOC · CAP-004-SCRIBE · CAP-005-RUNN
    📌 six capsules flashed · awaiting query
 ```
 
-**Reddit prompt (slim version):** `MBP_Reddit_Final.md`
-**Full v4.7 prompt (30 capsules):** `MBP_v4.7_Boot_Prompt.txt`
+**Historical slim prompt:** [prompt/MBP_Reddit_Final.md](prompt/MBP_Reddit_Final.md)
+**Modular kernel track:** [kernel/README.md](kernel/README.md) (see its versioned releases and build notes).
 
 ---
 
-## Repository Contents
+## Repository Guide
 
-| File | Description |
+| Path | What it contains |
 |---|---|
-| `MBP_Reddit_Final.md` | Slim boot prompt — six kernel capsules, Reddit ready |
-| `MBP_v4.7_Boot_Prompt.txt` | Full v4.7 — 30 kernel capsules, complete governance |
-| `AXIOMS.md` | Eight constitutional axioms with full derivation |
-| `CAPSULE_SCHEMA.md` | Complete field reference with definitions and examples |
-| `THEORY_OF_KNOWLEDGE.md` | Cognitive Law Stack — theoretical foundation |
-| `CAPSULE_LEDGER.md` | Verified session record — February 2026 |
+| [`kernel/README.md`](kernel/README.md) | Kernel track, current version, and maintenance instructions |
+| [`kernel/modules/`](kernel/modules/) | Maintainable kernel source sections |
+| [`kernel/scripts/`](kernel/scripts/) | Build and validation tooling |
+| [`kernel/tests/`](kernel/tests/) | Conformance checks and regression tests |
+| [`kernel/releases/`](kernel/releases/) | Versioned kernel snapshots |
+| [`runtime/README.md`](runtime/README.md) | Experimental runtime integration notes |
+| [`AXIOMS.md`](AXIOMS.md) | Root-level constitutional axioms |
+| [`SCHEMA.md`](SCHEMA.md) | Root-level schema reference |
+| [`MBP_Theory_Of_Knowledge.md`](MBP_Theory_Of_Knowledge.md) | Theoretical account of knowledge and closure |
+| [`prompt/`](prompt/) | Historical prompt-oriented artifacts |
+| [`docs/genesis/`](docs/genesis/) | Early project history |
+
+The conceptual documents explain what MBP proposes. Tests and runtime artifacts should be read for narrower, inspectable claims about what a particular version currently does.
 
 ---
+
 
 ## Status
 
-```
-Schema Version    v4.7
-Genesis           2025-08-22 (timestamped on GitHub)
-License           MIT
-Development       Open source, independent research
-Axioms            8 constitutional axioms + 4 output invariants
-Kernel Capsules   30 (full) · 6 (slim/Reddit)
-Verified          300+ turn sessions, cross-model tested
-Theoretical Root  Closure Theorem · Cognitive Law Stack
-```
+MBP remains an active research project. The root documentation preserves an earlier prompt-era architecture, including v4.7 material. The separate [`kernel/` track](kernel/README.md) provides modular source files, deterministic build scripts, versioned snapshots, and focused conformance/regression checks; its own README is the place to confirm the latest candidate or released version.
 
-**Whitepaper:** In progress. Full technical specification, theoretical foundations (Closure Theorem, Cognitive Law Stack), and empirical session data.
+The research includes historical session experiments and ongoing runtime work. Their scope and results should be assessed from specific test records, not inferred from the framework's intended properties. Cross-model portability, long-session consistency, and reductions in hallucination are research questions rather than universal guarantees.
 
 ---
+
 
 ## Roadmap
 
