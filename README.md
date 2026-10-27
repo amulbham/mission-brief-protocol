@@ -15,6 +15,8 @@ The central question is whether giving reasoning more explicit structure can mak
 
 **Versioning note:** The root README still describes earlier v4.7-era architecture; `kernel/` is a separate, later reconstruction track. Do not infer that their version numbers describe one continuous released software product. Check the appropriate subdirectory for the current status of each track.
 
+**Original README:** The [October 27, 2026 snapshot](docs/archive/README-root-2026-10-27.md) is preserved verbatim, including historical explanations and claims, for comparison with this revised introduction.
+
 ---
 
 
